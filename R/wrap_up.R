@@ -7,6 +7,9 @@
 #' sequential script execution, identifying the script at which execution was
 #' interrupted.
 #'
+#' @param start_time A POSIXct object created by executing
+#' 'start_time <- Sys.time()'.
+#'
 #' @param pipeline_message A character vector object used to convey information
 #' about the current status of the pipeline.
 #'
