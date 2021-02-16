@@ -11,20 +11,23 @@
 #' scripts.
 #' @param action Defaults to "up". Whether to adjust file numbers up or down.
 #'
+#' @param step Defaults to 1. The step by which to increment or decrement the
+#' file numbering.
+#'
 #' @return Renumbers filenames in the specified directory, according to the
 #' specified action. Only affects the target file and above.
 #' @export
-adj_file_nos <- function(target, directory = "munge", action = "up") {
+adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   x <- list.files(directory)
 
   # filter out anything that doesn't contain digits at start of string
   y <- x[grepl("^[0-9]", x)]
 
   # extract numbering
-  z <- as.numeric(stringr::str_extract(y, "^[0-9]{2}"))
+  z <- as.numeric(stringr::str_extract(y, "^[0-9.]*"))
 
   # remove all numbers from listed filenames vector
-  y_new <- stringr::str_remove(y, "^[0-9]{2}")
+  y_new <- stringr::str_remove(y, "^[0-9.]*")
 
   # test lengths are equal
   if (length(y) != length(z)) {
@@ -42,13 +45,13 @@ adj_file_nos <- function(target, directory = "munge", action = "up") {
   # by one
   if (action == "up") {
     z_new <- z
-    z_new[z_new >= target] <- z_new[z_new >= target] + 1
+    z_new[z_new >= target] <- z_new[z_new >= target] + step
     print(paste(length(z_new[z_new >= target]), "file(s) incremented"))
 
     # if action == down, decrease numbers from target and larger down by one
   } else if (action == "down") {
     z_new <- z
-    z_new[z_new >= target] <- z_new[z_new >= target] - 1
+    z_new[z_new >= target] <- z_new[z_new >= target] - step
     print(paste(length(z_new[z_new >= target]), "file(s) decreased"))
   }
 

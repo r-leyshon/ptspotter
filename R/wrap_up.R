@@ -13,7 +13,7 @@
 #' @return Interrupts sequential script execution with an auditory signal. Logs
 #' the elapsed time and outputs the script location.
 #' @export
-wrap_up <- function(pipeline_message) {
+wrap_up <- function(start_time, pipeline_message) {
   # calculate elapsed time
   elapsed <- Sys.time() - start_time
   # # add to logfile
@@ -23,7 +23,7 @@ wrap_up <- function(pipeline_message) {
   # write all lines to logs/logfile
   readLines(my_logfile)
 
-  # update pipeline message. '<<-' searches for `pipeline_message` in parent env
+  # update pipeline message. '<<-' searches for `pipeline_message` in global scope
   pipeline_message <<- "Pipeline halted."
 
   # sound alert when script completes
