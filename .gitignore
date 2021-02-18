@@ -49,3 +49,5 @@ po/*~
 
 # munge directory
 munge/
+# logs directory
+logs/

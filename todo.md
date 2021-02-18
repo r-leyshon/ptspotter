@@ -1,6 +1,5 @@
 
-# enable_log - detect presence of logfile. If exists stop.
-# enable logging function - setup infrastructure for logging with log4r
+# revisit arguments and control flow for log_enable
 # functions with logging - check for logging setup
 # functions with timing - check for presence of sys.time object and output warning
 # unit tests for all functions
