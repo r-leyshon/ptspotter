@@ -3,6 +3,12 @@
 #' Create the necessary infrastructure to efficiently get up and running with
 #' log4r
 #'
+#' @param dir_path The name of the folder in which the logfile should be saved.
+#' Creates the folder if required. Defaults to "logs".
+#'
+#' @param logfile_nm Provide a name for the logfile. Do not include suffix.
+#' Defaults to "logfile".
+#'
 #' @return Creates log directory, log file, file appender.
 #' @export
 enable_log <- function(dir_path = "logs", logfile_nm = "logfile"){
