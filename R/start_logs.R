@@ -4,28 +4,57 @@
 #'
 #' @param logfile_loc The path to the logfile. Defaults to "logs/logfile.txt".
 #'
-#' @param logger_nm Provide a name for the logger object. Defaults to "my_logger"
-#'
-#'@param attached_pkgs Defaults to otherPkgs listed in utils::sessionInfo.
-#'
-#' @return Creates log directory, log file, file appender.
+#' @return Creates logger and file appender.
 #' @export
-
 log_enable <- function(logfile_loc = "logs/logfile.txt") {
-  # assign file appender
-  assign("file_app",
-         value = log4r::file_appender(logfile_loc,
-                                      append = TRUE,
-                                      layout = log4r::default_log_layout()),
-         envir = .GlobalEnv)
 
-  # create logger
-  assign("my_logger", value = log4r::logger(
-    threshold = "INFO",
-    appenders = file_app
-  ),
-  envir = .GlobalEnv)
-}
+  # get all attached packages as character vector
+  attached_pkgs <- unlist(lapply(utils::sessionInfo()[["otherPkgs"]],
+                                 "[", "Package"))
+
+  # if there are no attached pkgs or log4r is not loaded
+  if(is.null(attached_pkgs) |
+     !"log4r" %in% attached_pkgs){
+    # stop execution and output a warning
+    stop("log4r not loaded. Have you installed and loaded the package?")
+
+  } else {
+    # file appender
+    # check for presence of file_app in case of reruns
+    if(!"file_app" %in% ls(name = .GlobalEnv)){
+      # assign file appender
+      file_app <<- log4r::file_appender(logfile_loc,
+                                        append = TRUE,
+                                        layout = log4r::default_log_layout())
+      #test for presence
+      if("file_app" %in% ls(name = .GlobalEnv)){
+        print("File appender successfully assigned to 'file_app'")
+      } else{
+        stop("File appender not assigned. Logging not enabled.")
+      }
+      } else {
+        print("file appender already exists. Not re-assigned")
+      }
+
+    # logger object
+    #test for presence of my_logger in case of reruns
+    if(!"my_logger" %in% ls(name = .GlobalEnv)){
+      # create logger
+      my_logger <<- log4r::logger(
+        threshold = "INFO",
+        appenders = file_app)
+
+      # test for presence
+      if("my_logger" %in% ls(name = .GlobalEnv)){
+        print("Logger object sucessfully assigned to 'my_logger'")
+        } else{
+          stop("Logger object not assigned. Logging not enabled.")
+        }
+      } else{
+      print("my_logger already exists. Not re-assigned.")
+      }
+    }
+  }
 
 
 # log_file_ops ------------------------------------------------------------
@@ -70,11 +99,11 @@ log_file_ops <- function(dir_path = "logs",
     # create log directory
     dir.create(dir_path)
 
-  } else {
-  # create logfile
-  file.create(log_loc, showWarnings = TRUE)
-
   }
+
+  # create the logfile
+  file.create(log_loc)
+
 }
 
 
