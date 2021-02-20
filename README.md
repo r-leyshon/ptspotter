@@ -1,4 +1,4 @@
-# PT Spotter
+# PT Spotter version 0.1.
 
 Helper functions for working with [ProjectTemplate](http://projecttemplate.net/)
 
