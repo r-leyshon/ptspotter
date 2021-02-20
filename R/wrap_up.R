@@ -7,18 +7,19 @@
 #' sequential script execution, identifying the script at which execution was
 #' interrupted.
 #'
-#' @param start_time A POSIXct object created by executing
-#' 'start_time <- Sys.time()'.
+#' @param s_time A POSIXct object created by executing Sys.time()'. Defaults to
+#' start_time. Ensure this object is assigned prior to calling wrap_up().
 #'
 #' @param pipeline_message A character vector object used to convey information
-#' about the current status of the pipeline.
+#' about the current status of the pipeline. Ensure this object is assigned
+#' prior to calling wrap_up().
 #'
 #' @return Interrupts sequential script execution with an auditory signal. Logs
 #' the elapsed time and outputs the script location.
 #' @export
-wrap_up <- function(start_time, pipeline_message) {
+wrap_up <- function(s_time = start_time, pipeline_message) {
   # calculate elapsed time
-  elapsed <- Sys.time() - start_time
+  elapsed <- Sys.time() - s_time
   # # add to logfile
   log4r::info(my_logger, "Script executed. Duration: ")
   log4r::info(my_logger, capture.output(round(elapsed, digits = 3)))

@@ -30,7 +30,13 @@ Arguments:
 'start_time <- Sys.time()' using [{log4r}](https://cran.r-project.org/package=log4r).
 Updates `pipeline_message` with "Pipeline halted.". Plays an audio jingle using
 [{beepr}](https://cran.r-project.org/package=beepr). Stops execution with a
-message indicating file location of wrap_up() call.
+message indicating file location of wrap_up() call.  
+Arguments:  
+<u>s_time</u>: A POSIXct object created by executing Sys.time()'. Defaults to
+start_time. Ensure this object is assigned prior to calling wrap_up().  
+<u>pipeline_message</u>: A character vector object used to convey information
+about the current status of the pipeline. Ensure this object is assigned
+prior to calling wrap_up().
 
 * **log_file_ops**: Creates a specified logging directory and logfile if required.
 Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.
