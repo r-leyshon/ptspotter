@@ -74,8 +74,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
 #' to assign necessary logging objects in global scope.
 #' @export
 log_file_ops <- function(dir_path = "logs",
-                         logfile_nm = "logfile",
-                         logger_nm = "my_logger"){
+                         logfile_nm = "logfile"){
   # get all attached packages as character vector
   attached_pkgs <- unlist(lapply(utils::sessionInfo()[["otherPkgs"]],
                                  "[", "Package"))
@@ -99,10 +98,18 @@ log_file_ops <- function(dir_path = "logs",
     # create log directory
     dir.create(dir_path)
 
+    if(dir.exists(dir_path)){
+      print(paste0("Logging directory successfully created at '",
+                   dir_path, "/'"))
+    }
+
   }
 
   # create the logfile
   file.create(log_loc)
+  if(file.exists(log_loc)){
+    print(paste0("Logfile successfully created at '", log_loc, "'"))
+  }
 
 }
 
