@@ -4,6 +4,8 @@
 #'
 #' @return Performs garbage collection and logs memory size and script name
 #' currently being executed.
+#'
+#' @param logger the name of the log4r logger object. Defaults to my_logger.
 #' @export
 memory_report <- function(logger = my_logger) {
   # perform a manual garbage collection
@@ -17,10 +19,9 @@ memory_report <- function(logger = my_logger) {
     print(paste(
       "Memory size checked at",
       thisfile, "is",
-
       if(Sys.info()["sysname"] == "Darwin"){
-      pryr::mem_used()
-      } else(memory.size())
+        pryr::mem_used()
+        } else(memory.size())
     ))
   )
 }

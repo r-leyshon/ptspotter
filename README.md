@@ -19,8 +19,12 @@ file numbering. Accepts decimals also.
 to provide the name of the R script being executed.
 
 * **memory_report()**: Performs a manual garbage collection. Report and log
-memory size using [{log4r}](https://cran.r-project.org/package=log4r). Expects
-log4r infrastructure configured. See also **log_file_ops** and **log_enable**.
+memory size using [{log4r}](https://cran.r-project.org/package=log4r). Uses 
+**utils::memory.size()** unless on Mac OS, where **pryr::mem_used()** is logged
+instead. Expects log4r infrastructure configured. See also **log_file_ops** and
+**log_enable**.
+Arguments:  
+<u>logger</u>: The name of the log4r logger object. Defaults to my_logger.
 
 * **wrap_up()**: Calculates and logs execution duration since
 'start_time <- Sys.time()' using [{log4r}](https://cran.r-project.org/package=log4r).
