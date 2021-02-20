@@ -6,6 +6,7 @@
 #' currently being executed.
 #'
 #' @param logger the name of the log4r logger object. Defaults to my_logger.
+#'
 #' @export
 memory_report <- function(logger = my_logger) {
   # perform a manual garbage collection

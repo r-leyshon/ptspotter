@@ -1,7 +1,10 @@
 # PT Spotter version 0.1.
 
+## Description
+
 Helper functions for working with [ProjectTemplate](http://projecttemplate.net/)
 
+## Functions
 
 * **adj_file_nos()**: Increase or decrease scripts with numerical prefixes.  
 Arguments:  
@@ -39,7 +42,22 @@ about the current status of the pipeline. Ensure this object is assigned
 prior to calling wrap_up().
 
 * **log_file_ops**: Creates a specified logging directory and logfile if required.
-Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.
+Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.  
+Arguments:  
+<u>dir_path</u>: The name of the folder in which the logfile should be saved.
+Creates the folder if required. Defaults to "logs".  
+<u>logfile_nm</u>: Provide a name for the logfile. Do not include suffix.
+Defaults to "logfile".  
+
 
 * **log_enable**: Assigns file appender and logger objects to global environment.
-Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.
+Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.  
+Arguments:  
+<u>logfile_loc</u>: The path to the logfile. Defaults to "logs/logfile.txt".
+
+## Changelog
+
+### Version 0.1
+
+* current_file() cleans string differently for Mac OS.
+* wrap_up() uses control flow to prompt for log4r infrastructure.
