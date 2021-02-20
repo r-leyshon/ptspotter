@@ -7,5 +7,14 @@
 #' @export
 current_file <- function(){
   # get last element of this.path()
-  sapply(stringr::str_split(this.path::this.path(), pattern = "\\\\"), tail, 1)
+  if(Sys.info()["sysname"] == "Darwin"){
+    cur_file <- sapply(stringr::str_split(this.path::this.path(),
+                                          pattern = "/"), tail, 1)
+  } else{
+  cur_file <- sapply(stringr::str_split(this.path::this.path(),
+                                        pattern = "\\\\"), tail, 1)
+  }
+
+  return(cur_file)
+
 }
