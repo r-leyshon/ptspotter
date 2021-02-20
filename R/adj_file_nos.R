@@ -18,57 +18,62 @@
 #' specified action. Only affects the target file and above.
 #' @export
 adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
-  x <- list.files(directory)
+  # list all files in specified directory
+  files_found <- list.files(directory)
 
   # filter out anything that doesn't contain digits at start of string
-  y <- x[grepl("^[0-9]", x)]
+  num_filenms <- files_found[grepl("^[0-9]*", files_found)]
 
   # extract numbering
-  z <- as.numeric(stringr::str_extract(y, "^[0-9.]*"))
+  nums_only <- as.numeric(stringr::str_extract(num_filenms, "^[0-9.]*"))
 
   # remove all numbers from listed filenames vector
-  y_new <- stringr::str_remove(y, "^[0-9.]*")
+  alpha_only <- stringr::str_remove(num_filenms, "^[0-9.]*")
 
   # test lengths are equal
-  if (length(y) != length(z)) {
+  if (length(num_filenms) != length(nums_only)) {
     stop(
       paste(
         "Execution halted: Number of files and extracted digits unequal.",
-        paste("Length of filenames:", length(y), paste(y, collapse = ", ")),
-        paste("Length of extracted digits:", length(z),
-              paste(z, collapse = ", "))
+        paste0("Length of filenames: ", length(num_filenms), ". ",
+              paste(num_filenms, collapse = ", ")),
+        paste0("Length of extracted digits: ", length(nums_only), ". ",
+              paste(nums_only, collapse = ", "))
       )
     )
   }
+  # reassign the numbers ready for increasing / decreasing
+  nums_new <- nums_only
 
   # if action == up (the default), increment numbers from target and larger up
-  # by one
+  # by step
   if (action == "up") {
-    z_new <- z
-    z_new[z_new >= target] <- z_new[z_new >= target] + step
-    print(paste(length(z_new[z_new >= target]), "file(s) incremented"))
+    # any file numbers greater than the specified target, increase by step
+    nums_new[nums_new >= target] <- nums_new[nums_new >= target] + step
+    # print the number of files incremented.
+    print(paste(length(nums_new[nums_new >= target]), "file(s) incremented"))
 
-    # if action == down, decrease numbers from target and larger down by one
+    # if action == down, decrease numbers from target and larger down by step
   } else if (action == "down") {
-    z_new <- z
-    z_new[z_new >= target] <- z_new[z_new >= target] - step
-    print(paste(length(z_new[z_new >= target]), "file(s) decreased"))
+    # any file numbers greater thanspecified target, decrease by step
+    nums_new[nums_new >= target] <- nums_new[nums_new >= target] - step
+    # print the number of files decreased
+    print(paste(length(nums_new[nums_new >= target]), "file(s) decreased"))
   }
 
-  # convert to character
-  format(z_new)
   # wherever the digits are single, add a 0 in front
-  z_new[stringr::str_count(z_new) == 1] <- paste0(
-    "0", z_new[stringr::str_count(z_new) == 1]
+  nums_new[stringr::str_count(nums_new) == 1] <- paste0(
+    "0", nums_new[stringr::str_count(nums_new) == 1]
   )
-  print(paste("Digits assigned: ", paste(z_new, collapse = ", ")))
+  print(paste("Digits assigned: ", paste(nums_new, collapse = ", ")))
 
   # paste together new digits and filenames
-  adj_filenames <- paste0(z_new, y_new)
+  adj_filenames <- paste0(nums_new, alpha_only)
 
   # paste directory name to complete write path
-  old_filenames <- paste(directory, y[y != adj_filenames], sep = "/")
-  adj_filenames <- paste(directory, adj_filenames[adj_filenames != y],
+  old_filenames <- paste(directory,
+                         num_filenms[num_filenms != adj_filenames], sep = "/")
+  adj_filenames <- paste(directory, adj_filenames[adj_filenames != num_filenms],
                          sep = "/")
   # test lengths are equal
   if (length(old_filenames) != length(adj_filenames)) {
@@ -90,10 +95,21 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   }
   # write out only adjusted filenames
   file.rename(from = old_filenames, to = adj_filenames)
+  # print confirmation msg to console
   print(paste(
     length(old_filenames), "Filenames adjusted from: ",
-    paste(old_filenames, collapse = ", "),
+    paste(
+      if(Sys.info()["sysname"] == "Darwin"){
+        lapply(stringr::str_split(old_filenames, pattern = "/"), tail, 1)
+      } else{
+        lapply(stringr::str_split(old_filenames, pattern = "\\\\"), tail,  1)
+      }, collapse = ", "),
     "to",
-    paste(adj_filenames, collapse = ", ")
+    paste(
+      if(Sys.info()["sysname"] == "Darwin"){
+        lapply(stringr::str_split(adj_filenames, pattern = "/"), tail, 1)
+      } else{
+        lapply(stringr::str_split(adj_filenames, pattern = "\\\\"), tail,  1)
+      }, collapse = ", ")
   ))
 }
