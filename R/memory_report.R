@@ -5,7 +5,7 @@
 #' @return Performs garbage collection and logs memory size and script name
 #' currently being executed.
 #' @export
-memory_report <- function() {
+memory_report <- function(logger = my_logger) {
   # perform a manual garbage collection
   gc()
   # show me the filename of current file
@@ -13,10 +13,14 @@ memory_report <- function() {
 
   # log the used memory at this point
   log4r::info(
-    my_logger,
+    logger,
     print(paste(
       "Memory size checked at",
-      thisfile, "is", memory.size()
+      thisfile, "is",
+
+      if(Sys.info()["sysname"] == "Darwin"){
+      pryr::mem_used()
+      } else(memory.size())
     ))
   )
 }
