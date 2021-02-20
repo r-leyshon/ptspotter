@@ -17,3 +17,9 @@ Updates `pipeline_message` with "Pipeline halted.". Plays an audio jingle using
 [{beepr}](https://cran.r-project.org/package=beepr). Stops execution with a
 message indicating file location of wrap_up() call.
 
+
+* **log_file_ops**: Creates a specified logging directory and logfile if required.
+Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.
+
+* **log_enable**: Assigns file appender and logger objects to global environment.
+Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.
