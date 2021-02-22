@@ -2,10 +2,10 @@
 #'
 #' Used to log memory allocation at points during sequential script execution.
 #'
+#' @param logger the name of the log4r logger object. Defaults to my_logger.
+#'
 #' @return Performs garbage collection and logs memory size and script name
 #' currently being executed.
-#'
-#' @param logger the name of the log4r logger object. Defaults to my_logger.
 #'
 #' @export
 memory_report <- function(logger = my_logger) {
