@@ -7,12 +7,17 @@
 #'
 #' @param n The number of files to create. Also accepts numerical vector.
 #'
-#' @param filetype. The suffix to append the filename. Defaults to ".R".
+#' @param filetype The suffix to append the filename. Defaults to ".R".
 #'
-#' @return Creates logger and file appender.
+#'@param force Defaults to FALSE. If set to TRUE, sequence_file_ops will
+#'overwrite any pre-existing files that match the write filenames asked for.
+#'
+#' @return Write a series of sequentially numbered files within a specified
+#' directory. Creates the directory if required.
 #' @export
 
-sequence_file_ops <- function(target_dir = "munge", n, filetype = "R"){
+sequence_file_ops <- function(target_dir = "munge", n, filetype = "R",
+                              force = FALSE){
   if(!file.exists(target_dir)){
     # if the directory doesn't exist, create it with a prompt.
     dir.create(target_dir)
@@ -42,8 +47,26 @@ sequence_file_ops <- function(target_dir = "munge", n, filetype = "R"){
   req_files <- paste(paste(target_dir, req_nos, sep = "/"), filetype, sep = ".")
   print(paste("Required files are", paste(req_files, collapse = ", ")))
 
-  # write the files
-  invisible(file.create(req_files))
+  if(force == FALSE){
+  # find any preexisting files
+  ex_files <-  req_files[file.exists(req_files)]
+  # print message
+  warning(paste("Following found files will not be overwritten:",
+                paste(ex_files, collapse = ", ")))
+  # write only new files
+  only_new <- req_files[!(req_files %in% ex_files)]
+  invisible(file.create(only_new))
+  # print conf msg
+  print(paste("New files created:", paste(only_new, collapse = ", ")))
 
+  } else{
+    # print conf msg
+    print(paste(
+      "force = TRUE. Files may be overwritten. Following files created",
+      paste(req_files, collapse = ", ")
+      ))
+    # write all files asked for
+    invisible(file.create(req_files))
+
+  }
 }
-

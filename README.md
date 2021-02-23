@@ -61,6 +61,7 @@ Arguments:
 
 * current_file() cleans string differently for Mac OS.
 * wrap_up() uses control flow to prompt for log4r infrastructure.
+* sequence_file_ops() - function to quickly create numbered scripts. Only overwrites pre-existing files if argument force = TRUE.
 
 ## Installation Notes
 
