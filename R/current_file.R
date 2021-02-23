@@ -9,10 +9,10 @@ current_file <- function(){
   # get last element of this.path()
   if(Sys.info()["sysname"] == "Darwin"){
     cur_file <- sapply(stringr::str_split(this.path::this.path(),
-                                          pattern = "/"), tail, 1)
+                                          pattern = "/"), utils::tail, 1)
   } else{
   cur_file <- sapply(stringr::str_split(this.path::this.path(),
-                                        pattern = "\\\\"), tail, 1)
+                                        pattern = "\\\\"), utils::tail, 1)
   }
 
   return(cur_file)

@@ -100,16 +100,16 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
     length(old_filenames), "Filenames adjusted from: ",
     paste(
       if(Sys.info()["sysname"] == "Darwin"){
-        lapply(stringr::str_split(old_filenames, pattern = "/"), tail, 1)
+        lapply(stringr::str_split(old_filenames, pattern = "/"), utils::tail, 1)
       } else{
-        lapply(stringr::str_split(old_filenames, pattern = "\\\\"), tail,  1)
+        lapply(stringr::str_split(old_filenames, pattern = "\\\\"), utils::tail,  1)
       }, collapse = ", "),
     "to",
     paste(
       if(Sys.info()["sysname"] == "Darwin"){
-        lapply(stringr::str_split(adj_filenames, pattern = "/"), tail, 1)
+        lapply(stringr::str_split(adj_filenames, pattern = "/"), utils::tail, 1)
       } else{
-        lapply(stringr::str_split(adj_filenames, pattern = "\\\\"), tail,  1)
+        lapply(stringr::str_split(adj_filenames, pattern = "\\\\"), utils::tail,  1)
       }, collapse = ", ")
   ))
 }

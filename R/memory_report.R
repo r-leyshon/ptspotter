@@ -22,7 +22,7 @@ memory_report <- function(logger = my_logger) {
       thisfile, "is",
       if(Sys.info()["sysname"] == "Darwin"){
         pryr::mem_used()
-        } else(memory.size())
+        } else(utils::memory.size())
     ))
   )
 }

@@ -20,6 +20,8 @@ about the current status of the pipeline. Ensure this object is assigned
 prior to calling wrap_up().}
 
 \item{logger}{Name of the logger object. Defaults to 'my_logger'.}
+
+\item{logfile_loc}{Path to logfile. Default to "logs/logfile.txt".}
 }
 \value{
 Interrupts sequential script execution with an auditory signal. Logs

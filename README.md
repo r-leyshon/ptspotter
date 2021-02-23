@@ -94,3 +94,10 @@ prior to calling wrap_up.
 
 * If installing from GitHub results in a non-zero exit status, try:
 `Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS=TRUE)`, solution from [here](https://github.com/r-lib/remotes/issues/434).
+
+***
+
+## To do
+
+* unit tests for all functions  
+* function to trim decimals from filenames  

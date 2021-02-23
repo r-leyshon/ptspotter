@@ -16,6 +16,8 @@
 #'
 #' @param logger Name of the logger object. Defaults to 'my_logger'.
 #'
+#' @param logfile_loc Path to logfile. Default to "logs/logfile.txt".
+#'
 #' @return Interrupts sequential script execution with an auditory signal. Logs
 #' the elapsed time and outputs the script location.
 #' @export
@@ -47,7 +49,7 @@ wrap_up <- function(s_time = start_time,
   elapsed <- Sys.time() - s_time
   # # add to logfile
   log4r::info(my_logger, "Script executed. Duration: ")
-  log4r::info(my_logger, capture.output(round(elapsed, digits = 3)))
+  log4r::info(my_logger, utils::capture.output(round(elapsed, digits = 3)))
 
   # update pipeline message. '<<-' searches for `pipeline_message` in global scope
   pipeline_message <<- "Pipeline halted."
