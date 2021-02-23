@@ -7,6 +7,14 @@
 #' @return Creates logger and file appender.
 #' @export
 log_enable <- function(logfile_loc = "logs/logfile.txt") {
+  # local binding to avoid notes in R CMD check
+  "<<-" <- NULL
+  file_app <- log4r::file_appender(logfile_loc,
+                                   append = TRUE,
+                                   layout = log4r::default_log_layout())
+  my_logger <- log4r::logger(
+    threshold = "INFO",
+    appenders = file_app)
 
   # get all attached packages as character vector
   attached_pkgs <- unlist(lapply(utils::sessionInfo()[["otherPkgs"]],
@@ -23,9 +31,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
     # check for presence of file_app in case of reruns
     if(!"file_app" %in% ls(name = .GlobalEnv)){
       # assign file appender
-      file_app <<- log4r::file_appender(logfile_loc,
-                                        append = TRUE,
-                                        layout = log4r::default_log_layout())
+      file_app <<- file_app
       #test for presence
       if("file_app" %in% ls(name = .GlobalEnv)){
         print("File appender successfully assigned to 'file_app'")
@@ -40,9 +46,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
     #test for presence of my_logger in case of reruns
     if(!"my_logger" %in% ls(name = .GlobalEnv)){
       # create logger
-      my_logger <<- log4r::logger(
-        threshold = "INFO",
-        appenders = file_app)
+      my_logger <<- my_logger
 
       # test for presence
       if("my_logger" %in% ls(name = .GlobalEnv)){
@@ -75,12 +79,15 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
 #' @export
 log_file_ops <- function(dir_path = "logs",
                          logfile_nm = "logfile"){
+  # local binding to avoid notes in R CMD check
+  "<<-" <- NULL
+
   # get all attached packages as character vector
   attached_pkgs <- unlist(lapply(utils::sessionInfo()[["otherPkgs"]],
                                  "[", "Package"))
 
   # store log location
-  log_loc <<- paste0(dir_path, "/", logfile_nm, ".txt")
+  log_loc <- paste0(dir_path, "/", logfile_nm, ".txt")
 
   # if there are no attached pkgs or log4r is not loaded
   if(is.null(attached_pkgs) |

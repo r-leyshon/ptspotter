@@ -44,13 +44,8 @@ Arguments:
 
 ***
 
-* **memory_report**: Performs a manual garbage collection. Report and log
-memory size using [{log4r}](https://cran.r-project.org/package=log4r). Uses 
-**utils::memory.size** unless on Mac OS, where **pryr::mem_used** is logged
-instead. Expects log4r infrastructure configured. See also **log_file_ops** and
-**log_enable**.
-Arguments:  
-<u>logger</u>: The name of the log4r logger object. Defaults to my_logger.  
+* **memory_report**: Performs a manual garbage collection. Print memory size. Uses **utils::memory.size** unless on Mac OS, where **pryr::mem_used** is used
+instead. 
 
 ***
 
@@ -66,14 +61,12 @@ verwrite any pre-existing files that match the write filenames asked for.
 
 ***
 
-* **wrap_up**: Calculates and logs execution duration since
-'start_time <- Sys.time' using [{log4r}](https://cran.r-project.org/package=log4r).
-Updates `pipeline_message` with "Pipeline halted.". Plays an audio jingle using
+* **wrap_up**: Calculates and prints execution duration since
+'start_time <- Sys.time' Updates `pipeline_message` with "Pipeline halted.". Plays an audio jingle using
 [{beepr}](https://cran.r-project.org/package=beepr). Stops execution with a
 message indicating file location of wrap_up call.  
 Arguments:  
-<u>s_time</u>: A POSIXct object created by executing Sys.time'. Defaults to
-start_time. Ensure this object is assigned prior to calling wrap_up.  
+<u>s_time</u>: A POSIXct object created by executing Sys.time'. Ensure this object is assigned prior to calling wrap_up.  
 <u>pipeline_message</u>: A character vector object used to convey information
 about the current status of the pipeline. Ensure this object is assigned
 prior to calling wrap_up.
@@ -99,5 +92,6 @@ prior to calling wrap_up.
 
 ## To do
 
+* issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc. adj_file_nos(target = 4) then removes period, leaving syntax 01R etc.
 * unit tests for all functions  
 * function to trim decimals from filenames  

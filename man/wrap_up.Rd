@@ -4,24 +4,15 @@
 \alias{wrap_up}
 \title{Wrap up file execution.}
 \usage{
-wrap_up(
-  s_time = start_time,
-  pipeline_message,
-  logger = my_logger,
-  logfile_loc = "logs/logfile.txt"
-)
+wrap_up(start_time, pipeline_message)
 }
 \arguments{
-\item{s_time}{A POSIXct object created by executing Sys.time()'. Defaults to
-start_time. Ensure this object is assigned prior to calling wrap_up().}
+\item{start_time}{A POSIXct object created by executing Sys.time()'.Ensure
+this object is assigned prior to calling wrap_up().}
 
 \item{pipeline_message}{A character vector object used to convey information
 about the current status of the pipeline. Ensure this object is assigned
 prior to calling wrap_up().}
-
-\item{logger}{Name of the logger object. Defaults to 'my_logger'.}
-
-\item{logfile_loc}{Path to logfile. Default to "logs/logfile.txt".}
 }
 \value{
 Interrupts sequential script execution with an auditory signal. Logs
@@ -29,9 +20,8 @@ the elapsed time and outputs the script location.
 }
 \description{
 Used to interrupt sequential script execution while testing or debugging.
-Logs the elapsed time since execution of \code{start_time}. Assign \code{start_time} at
-the start of the first sequential script. Writes all logged lines to the
-logfile. Updates the pipeline message. Outputs an auditory signal and breaks
-sequential script execution, identifying the script at which execution was
-interrupted.
+Prints the elapsed time since execution of \code{start_time}. Assign \code{start_time}
+at the start of the first sequential script. Updates the pipeline message.
+Outputs an auditory signal and breaks sequential script execution,
+identifying the script at which execution was interrupted.
 }

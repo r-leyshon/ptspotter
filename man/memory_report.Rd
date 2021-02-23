@@ -4,13 +4,10 @@
 \alias{memory_report}
 \title{Perform garbage collection and log allocated memory.}
 \usage{
-memory_report(logger = my_logger)
-}
-\arguments{
-\item{logger}{the name of the log4r logger object. Defaults to my_logger.}
+memory_report()
 }
 \value{
-Performs garbage collection and logs memory size and script name
+Performs garbage collection then prints memory size and script name
 currently being executed.
 }
 \description{
