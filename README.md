@@ -92,7 +92,7 @@ prior to calling wrap_up.
 
 ## To do
 
-* adj_file_nos issue: now only writing final incremented file.
+* adj_file_nos issue: now only writing final incremented file. Print statements are correct but do not correspond with file ops. Convert this to test once resolved.
 * issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc. adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved but convert to a test.
 * unit tests for all functions  
 * function to trim decimals from filenames  
