@@ -50,9 +50,13 @@ sequence_file_ops <- function(target_dir = "munge", n, filetype = "R",
   if(force == FALSE){
   # find any preexisting files
   ex_files <-  req_files[file.exists(req_files)]
+  # only print warning if at least one existing file is found
+  if(length(ex_files) > 0){
   # print message
   warning(paste("Following found files will not be overwritten:",
                 paste(ex_files, collapse = ", ")))
+  }
+
   # write only new files
   only_new <- req_files[!(req_files %in% ex_files)]
   invisible(file.create(only_new))
