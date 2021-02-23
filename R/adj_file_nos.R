@@ -28,7 +28,7 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   nums_only <- as.numeric(stringr::str_extract(num_filenms, "^[0-9.]*"))
 
   # remove all numbers from listed filenames vector
-  alpha_only <- stringr::str_remove(num_filenms, "^[0-9.]*")
+  alpha_only <- stringr::str_remove(num_filenms, "^[0-9]*")
 
   # test lengths are equal
   if (length(num_filenms) != length(nums_only)) {
