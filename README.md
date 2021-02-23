@@ -4,9 +4,11 @@
 
 Helper functions for working with [ProjectTemplate](http://projecttemplate.net/)
 
+***
+
 ## Functions
 
-* **adj_file_nos()**: Increase or decrease scripts with numerical prefixes.  
+* **adj_file_nos**: Increase or decrease scripts with numerical prefixes.  
 Arguments:  
 <u>target</u>: Required. The number in the sequential scripts to begin the
 adjustment. The adjustment will affect script with that leading digit and
@@ -18,28 +20,12 @@ up or down.
 <u>step</u>: Defaults to 1. The step by which to increment (or decrease) the
 file numbering. Accepts decimals also.  
 
-* **current_file()**: Cleans the output of [{this.path}](https://CRAN.R-project.org/package=this.path)
+***
+
+* **current_file**: Cleans the output of [{this.path}](https://CRAN.R-project.org/package=this.path)
 to provide the name of the R script being executed.
 
-* **memory_report()**: Performs a manual garbage collection. Report and log
-memory size using [{log4r}](https://cran.r-project.org/package=log4r). Uses 
-**utils::memory.size()** unless on Mac OS, where **pryr::mem_used()** is logged
-instead. Expects log4r infrastructure configured. See also **log_file_ops** and
-**log_enable**.
-Arguments:  
-<u>logger</u>: The name of the log4r logger object. Defaults to my_logger.
-
-* **wrap_up()**: Calculates and logs execution duration since
-'start_time <- Sys.time()' using [{log4r}](https://cran.r-project.org/package=log4r).
-Updates `pipeline_message` with "Pipeline halted.". Plays an audio jingle using
-[{beepr}](https://cran.r-project.org/package=beepr). Stops execution with a
-message indicating file location of wrap_up() call.  
-Arguments:  
-<u>s_time</u>: A POSIXct object created by executing Sys.time()'. Defaults to
-start_time. Ensure this object is assigned prior to calling wrap_up().  
-<u>pipeline_message</u>: A character vector object used to convey information
-about the current status of the pipeline. Ensure this object is assigned
-prior to calling wrap_up().
+***
 
 * **log_file_ops**: Creates a specified logging directory and logfile if required.
 Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.  
@@ -49,19 +35,60 @@ Creates the folder if required. Defaults to "logs".
 <u>logfile_nm</u>: Provide a name for the logfile. Do not include suffix.
 Defaults to "logfile".  
 
+***
 
 * **log_enable**: Assigns file appender and logger objects to global environment.
 Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.  
 Arguments:  
 <u>logfile_loc</u>: The path to the logfile. Defaults to "logs/logfile.txt".
 
+***
+
+* **memory_report**: Performs a manual garbage collection. Report and log
+memory size using [{log4r}](https://cran.r-project.org/package=log4r). Uses 
+**utils::memory.size** unless on Mac OS, where **pryr::mem_used** is logged
+instead. Expects log4r infrastructure configured. See also **log_file_ops** and
+**log_enable**.
+Arguments:  
+<u>logger</u>: The name of the log4r logger object. Defaults to my_logger.  
+
+***
+
+* **sequence_file_ops**:  Write a series of sequentially numbered files within a specified directory. Creates the directory if required.  
+Arguments:  
+<u>target_dir</u>: Directory to create files. Defaults to "munge". Creates
+the directory if file.exists(target_dir) evaluates to FALSE.  
+<u>n</u>: The number of files to create. Accepts a single number or numerical
+vector.  
+<u>filetype</u>: The suffix to append the filename with. Do not include full stops / periods. Defaults to "R".  
+<u>force</u>: Defaults to FALSE. If set to TRUE, sequence_file_ops will
+verwrite any pre-existing files that match the write filenames asked for.
+
+***
+
+* **wrap_up**: Calculates and logs execution duration since
+'start_time <- Sys.time' using [{log4r}](https://cran.r-project.org/package=log4r).
+Updates `pipeline_message` with "Pipeline halted.". Plays an audio jingle using
+[{beepr}](https://cran.r-project.org/package=beepr). Stops execution with a
+message indicating file location of wrap_up call.  
+Arguments:  
+<u>s_time</u>: A POSIXct object created by executing Sys.time'. Defaults to
+start_time. Ensure this object is assigned prior to calling wrap_up.  
+<u>pipeline_message</u>: A character vector object used to convey information
+about the current status of the pipeline. Ensure this object is assigned
+prior to calling wrap_up.
+
+***
+
 ## Changelog
 
 ### Version 0.1
 
-* current_file() cleans string differently for Mac OS.
-* wrap_up() uses control flow to prompt for log4r infrastructure.
-* sequence_file_ops() - function to quickly create numbered scripts. Only overwrites pre-existing files if argument force = TRUE.
+* current_file cleans string differently for Mac OS.
+* wrap_up uses control flow to prompt for log4r infrastructure.
+* sequence_file_ops - function to quickly create numbered scripts. Only overwrites pre-existing files if argument force = TRUE.
+
+***
 
 ## Installation Notes
 
