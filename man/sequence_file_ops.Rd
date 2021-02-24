@@ -4,13 +4,13 @@
 \alias{sequence_file_ops}
 \title{sequence_file_ops}
 \usage{
-sequence_file_ops(target_dir = "munge", n, filetype = "R", force = FALSE)
+sequence_file_ops(n, target_dir = "munge", filetype = "R", force = FALSE)
 }
 \arguments{
+\item{n}{The number of files to create. Also accepts numerical vector.}
+
 \item{target_dir}{Directory to create files. Defaults to "munge". Creates
 the directory if file.exists(target_dir) evaluates to FALSE.}
-
-\item{n}{The number of files to create. Also accepts numerical vector.}
 
 \item{filetype}{The suffix to append the filename. Defaults to ".R".}
 

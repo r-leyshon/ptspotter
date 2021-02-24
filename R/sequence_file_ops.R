@@ -2,10 +2,10 @@
 #'
 #' Quickly create the required number of sequentially labelled files.
 #'
+#' @param n The number of files to create. Also accepts numerical vector.
+#'
 #' @param target_dir Directory to create files. Defaults to "munge". Creates
 #' the directory if file.exists(target_dir) evaluates to FALSE.
-#'
-#' @param n The number of files to create. Also accepts numerical vector.
 #'
 #' @param filetype The suffix to append the filename. Defaults to ".R".
 #'
@@ -16,7 +16,7 @@
 #' directory. Creates the directory if required.
 #' @export
 
-sequence_file_ops <- function(target_dir = "munge", n, filetype = "R",
+sequence_file_ops <- function(n, target_dir = "munge", filetype = "R",
                               force = FALSE){
   if(!file.exists(target_dir)){
     # if the directory doesn't exist, create it with a prompt.
@@ -44,7 +44,8 @@ sequence_file_ops <- function(target_dir = "munge", n, filetype = "R",
   print(paste("Required numbers are", paste0(req_nos, collapse = ", ")))
 
   # create the filenames
-  req_files <- paste(paste(target_dir, req_nos, sep = "/"), filetype, sep = ".")
+  req_files <- paste(paste(target_dir, req_nos, sep = "/"), filetype,
+                     sep = ".")
   print(paste("Required files are", paste(req_files, collapse = ", ")))
 
   if(force == FALSE){

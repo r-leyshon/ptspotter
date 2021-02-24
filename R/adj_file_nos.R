@@ -67,14 +67,22 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   )
   print(paste("Digits assigned: ", paste(nums_new, collapse = ", ")))
 
+  # if all of the filenames following the numbers are identical,
+  # names will need to be introduced to prevent incorrect rename
+  if(all(alpha_only == alpha_only[1])){
+    # introduce random hashes for identical filenames
+    alpha_only <- paste0("-",
+                         stringi::stri_rand_strings(n = length(alpha_only),
+                                                    length = 10), alpha_only)
+    warning("Identical filenames found. Alphanumeric hashes introduced.")
+  }
+
   # paste together new digits and filenames
-  adj_filenames <- paste0(nums_new, alpha_only)
+  adj_filenames <- paste(directory, paste0(nums_new, alpha_only), sep = "/")
 
   # paste directory name to complete write path
-  old_filenames <- paste(directory,
-                         num_filenms[num_filenms != adj_filenames], sep = "/")
-  adj_filenames <- paste(directory, adj_filenames[adj_filenames != num_filenms],
-                         sep = "/")
+  old_filenames <- paste(directory, files_found, sep = "/")
+
   # test lengths are equal
   if (length(old_filenames) != length(adj_filenames)) {
     stop(
@@ -93,20 +101,9 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
       )
     )
   }
-  # write out only adjusted filenames
-  #file.rename(from = old_filenames, to = adj_filenames)
-  # above vector method found to be unreliable on mac. Using apply instead.
 
-  count <- 1
-  lapply(old_filenames, FUN = function(f_name){
-    print(paste("Count is", count))
-    print(paste("Old filename is", f_name))
-    print(paste("New filename is", adj_filenames[[count]]))
-    print(paste("Renaming", f_name, "to", adj_filenames[[count]]))
-    file.rename(from = f_name, to = adj_filenames[[count]])
-    count <<- count + 1
-  }
-  )
+  # write out only adjusted filenames
+  file.rename(from = old_filenames, to = adj_filenames)
 
   # print confirmation msg to console
   print(paste(

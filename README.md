@@ -77,6 +77,7 @@ prior to calling wrap_up.
 
 ### Version 0.1
 
+* adj_file_nos introduces alphanumeric hash into filename if all files are identical.
 * current_file cleans string differently for Mac OS.
 * wrap_up uses control flow to prompt for log4r infrastructure.
 * sequence_file_ops - function to quickly create numbered scripts. Only overwrites pre-existing files if argument force = TRUE.
@@ -93,6 +94,6 @@ prior to calling wrap_up.
 ## To do
 
 * adj_file_nos issue: now only writing final incremented file. Print statements are correct but do not correspond with file ops. Convert this to test once resolved.
-* issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc. adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved but convert to a test.
+* issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc. adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved but convert to a test. Above issue only applies when filename alpha are all equal.
 * unit tests for all functions  
 * function to trim decimals from filenames  
