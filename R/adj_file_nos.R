@@ -94,7 +94,20 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
     )
   }
   # write out only adjusted filenames
-  file.rename(from = old_filenames, to = adj_filenames)
+  #file.rename(from = old_filenames, to = adj_filenames)
+  # above vector method found to be unreliable on mac. Using apply instead.
+
+  count <- 1
+  lapply(old_filenames, FUN = function(f_name){
+    print(paste("Count is", count))
+    print(paste("Old filename is", f_name))
+    print(paste("New filename is", adj_filenames[[count]]))
+    print(paste("Renaming", f_name, "to", adj_filenames[[count]]))
+    file.rename(from = f_name, to = adj_filenames[[count]])
+    count <<- count + 1
+  }
+  )
+
   # print confirmation msg to console
   print(paste(
     length(old_filenames), "Filenames adjusted from: ",
@@ -102,14 +115,16 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
       if(Sys.info()["sysname"] == "Darwin"){
         lapply(stringr::str_split(old_filenames, pattern = "/"), utils::tail, 1)
       } else{
-        lapply(stringr::str_split(old_filenames, pattern = "\\\\"), utils::tail,  1)
+        lapply(stringr::str_split(old_filenames, pattern = "\\\\"), utils::tail,
+               1)
       }, collapse = ", "),
     "to",
     paste(
       if(Sys.info()["sysname"] == "Darwin"){
         lapply(stringr::str_split(adj_filenames, pattern = "/"), utils::tail, 1)
       } else{
-        lapply(stringr::str_split(adj_filenames, pattern = "\\\\"), utils::tail,  1)
+        lapply(stringr::str_split(adj_filenames, pattern = "\\\\"), utils::tail,
+               1)
       }, collapse = ", ")
   ))
 }
