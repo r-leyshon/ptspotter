@@ -51,3 +51,5 @@ po/*~
 munge/
 # logs directory
 logs/
+# git_ignore directory
+git_ignore

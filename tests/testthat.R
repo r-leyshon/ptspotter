@@ -1,4 +1,4 @@
 library(testthat)
 library(ptspotter)
 
-test_check("ptspotter")
+test_check("ptspotter", reporter = "check")
