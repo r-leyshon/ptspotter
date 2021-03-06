@@ -109,6 +109,8 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
+* devtools::install_github("r-leyshon/ptspotter", ref = "0.2") error installing
+from branch, devtools::check log4r:: warning, base 4.0.2. Update.
 * adj_file_nos issue: now only writing final incremented file. Print statements
 are correct but do not correspond with file ops. Issue encountered when all
 names of files are identical except for sequential numbering. Was noticeable by
