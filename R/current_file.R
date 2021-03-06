@@ -18,3 +18,8 @@ current_file <- function(){
   return(cur_file)
 
 }
+
+
+# current_file <- function ()
+#   basename(this.path::this.path())
+

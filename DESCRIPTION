@@ -18,7 +18,7 @@ Imports:
     pryr (>= 0.1.4),
     stringi (>= 1.5.3),
     stringr (>= 1.4.0),
-    this.path (>= 0.2.0),
+    this.path (>= 0.4.0),
     utils (>= 4.0.1)
 Suggests:
     ProjectTemplate (>= 0.9.3),
