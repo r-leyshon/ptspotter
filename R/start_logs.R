@@ -24,12 +24,12 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
                                  "[", "Package"))
 
   # if there are no attached pkgs or log4r is not loaded
-  if(is.null(attached_pkgs) |
-     !"log4r" %in% attached_pkgs){
-    # stop execution and output a warning
-    stop("log4r not loaded. Have you installed and loaded the package?")
-
-  } else {
+  # if(is.null(attached_pkgs) |
+  #    !"log4r" %in% attached_pkgs){
+  #   # stop execution and output a warning
+  #   stop("log4r not loaded. Have you installed and loaded the package?")
+  #
+  # } else {
     # file appender
     # check for presence of file_app in case of reruns
     if(!"file_app" %in% ls(name = .GlobalEnv)){
@@ -42,7 +42,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
         stop("File appender not assigned. Logging not enabled.")
       }
       } else {
-        print("file appender already exists. Not re-assigned")
+        print("File appender already exists. Not re-assigned")
       }
 
     # logger object
@@ -93,12 +93,13 @@ log_file_ops <- function(dir_path = "logs",
   log_loc <- paste0(dir_path, "/", logfile_nm, ".txt")
 
   # if there are no attached pkgs or log4r is not loaded
-  if(is.null(attached_pkgs) |
-     !"log4r" %in% attached_pkgs){
-    # stop execution and output a warning
-    stop("log4r not loaded. Have you installed and loaded the package?")
-
-  } else if(file.exists(log_loc)){
+  # if(is.null(attached_pkgs) |
+  #    !"log4r" %in% attached_pkgs){
+  #   # stop execution and output a warning
+  #   stop("log4r not loaded. Have you installed and loaded the package?")
+  #
+  # } else
+  if(file.exists(log_loc)){
     # if logfile exists output warning & stop
     stop("Logfile with name matching logfile_nm found. Have you previously run
          enable_log()?")
