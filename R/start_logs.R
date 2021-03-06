@@ -61,7 +61,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
       print("my_logger already exists. Not re-assigned.")
       }
     }
-  }
+  # }
 
 
 # log_file_ops ------------------------------------------------------------
