@@ -23,12 +23,14 @@ file numbering. Accepts decimals also.
 ***
 
 * **current_file**: Cleans the output of [{this.path}](https://CRAN.R-project.org/package=this.path)
-to provide the name of the R script being executed.
+to provide the base name of the R script being executed.
 
 ***
 
-* **log_file_ops**: Creates a specified logging directory and logfile if required.
-Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.  
+* **log_file_ops**: Creates a specified logging directory and logfile if
+required.
+Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to
+namespace.  
 Arguments:  
 <u>dir_path</u>: The name of the folder in which the logfile should be saved.
 Creates the folder if required. Defaults to "logs".  
@@ -37,36 +39,43 @@ Defaults to "logfile".
 
 ***
 
-* **log_enable**: Assigns file appender and logger objects to global environment.
-Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to namespace.  
+* **log_enable**: Assigns file appender and logger objects to global
+environment.
+Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to
+namespace.  
 Arguments:  
 <u>logfile_loc</u>: The path to the logfile. Defaults to "logs/logfile.txt".
 
 ***
 
-* **memory_report**: Performs a manual garbage collection. Print memory size. Uses **utils::memory.size** unless on Mac OS, where **pryr::mem_used** is used
+* **memory_report**: Performs a manual garbage collection. Print memory size.
+Uses **utils::memory.size** unless on Mac OS, where **pryr::mem_used** is used
 instead. 
 
 ***
 
-* **sequence_file_ops**:  Write a series of sequentially numbered files within a specified directory. Creates the directory if required.  
+* **sequence_file_ops**:  Write a series of sequentially numbered files within a
+specified directory. Creates the directory if required.  
 Arguments:  
 <u>target_dir</u>: Directory to create files. Defaults to "munge". Creates
 the directory if file.exists(target_dir) evaluates to FALSE.  
 <u>n</u>: The number of files to create. Accepts a single number or numerical
 vector.  
-<u>filetype</u>: The suffix to append the filename with. Do not include full stops / periods. Defaults to "R".  
+<u>filetype</u>: The suffix to append the filename with. Do not include full
+stops / periods. Defaults to "R".  
 <u>force</u>: Defaults to FALSE. If set to TRUE, sequence_file_ops will
 verwrite any pre-existing files that match the write filenames asked for.
 
 ***
 
 * **wrap_up**: Calculates and prints execution duration since
-'start_time <- Sys.time' Updates `pipeline_message` with "Pipeline halted.". Plays an audio jingle using
+'start_time <- Sys.time' Updates `pipeline_message` with "Pipeline halted.".
+Plays an audio jingle using
 [{beepr}](https://cran.r-project.org/package=beepr). Stops execution with a
 message indicating file location of wrap_up call.  
 Arguments:  
-<u>s_time</u>: A POSIXct object created by executing Sys.time'. Ensure this object is assigned prior to calling wrap_up.  
+<u>s_time</u>: A POSIXct object created by executing Sys.time'. Ensure this
+object is assigned prior to calling wrap_up.  
 <u>pipeline_message</u>: A character vector object used to convey information
 about the current status of the pipeline. Ensure this object is assigned
 prior to calling wrap_up.
@@ -75,12 +84,19 @@ prior to calling wrap_up.
 
 ## Changelog
 
+### Version 0.2
+
+* current_file now uses basename() for more efficient implementation.
+
+
 ### Version 0.1
 
-* adj_file_nos introduces alphanumeric hash into filename if all files are identical.
+* adj_file_nos introduces alphanumeric hash into filename if all files are
+identical.
 * current_file cleans string differently for Mac OS.
 * wrap_up uses control flow to prompt for log4r infrastructure.
-* sequence_file_ops - function to quickly create numbered scripts. Only overwrites pre-existing files if argument force = TRUE.
+* sequence_file_ops - function to quickly create numbered scripts. Only
+overwrites pre-existing files if argument force = TRUE.
 
 ***
 
@@ -93,7 +109,16 @@ prior to calling wrap_up.
 
 ## To do
 
-* adj_file_nos issue: now only writing final incremented file. Print statements are correct but do not correspond with file ops. Convert this to test once resolved.
-* issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc. adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved but convert to a test. Above issue only applies when filename alpha are all equal.
+* adj_file_nos issue: now only writing final incremented file. Print statements
+are correct but do not correspond with file ops. Issue encountered when all
+names of files are identical except for sequential numbering. Was noticeable by
+applying adj_file_nos to the output of sequence_file_ops. Now introduces hashes
+if detected as identical. Resolved but convert to a test. Count number of files
+in and out.
+* issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc.
+adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved
+but convert to a test. Above issue only applies when filename alpha are all
+equal.
 * unit tests for all functions  
 * function to trim decimals from filenames  
+* Remove current_file and replace all usage with basename()
