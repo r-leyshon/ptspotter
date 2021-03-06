@@ -121,4 +121,5 @@ but convert to a test. Above issue only applies when filename alpha are all
 equal.
 * unit tests for all functions  
 * function to trim decimals from filenames  
-* Remove current_file and replace all usage with basename()
+* Remove current_file and replace all usage with basename(). Prefer basename()
+also in adj_file_nos.

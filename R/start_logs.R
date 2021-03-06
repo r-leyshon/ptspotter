@@ -5,6 +5,9 @@
 #' @param logfile_loc The path to the logfile. Defaults to "logs/logfile.txt".
 #'
 #' @return Creates logger and file appender.
+#'
+#' @import log4r
+#'
 #' @export
 log_enable <- function(logfile_loc = "logs/logfile.txt") {
   # local binding to avoid notes in R CMD check

@@ -4,6 +4,9 @@
 #' logging and debugging.
 #'
 #' @return Returns the name of the script currently being executed.
+#'
+#' @import this.path
+#'
 #' @export
 
 current_file <- function ()
