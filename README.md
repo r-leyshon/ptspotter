@@ -88,7 +88,7 @@ prior to calling wrap_up.
 
 * current_file now uses basename() for more efficient implementation.
 * log_enable asks for log_file_ops if logfile does not exist.
-* Prefers assign over <<-
+* Prefers assign over <<- with position parameter.
 
 ### Version 0.1
 

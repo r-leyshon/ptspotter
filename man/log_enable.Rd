@@ -4,10 +4,13 @@
 \alias{log_enable}
 \title{log_enable}
 \usage{
-log_enable(logfile_loc = "logs/logfile.txt")
+log_enable(logfile_loc = "logs/logfile.txt", pos = 1)
 }
 \arguments{
 \item{logfile_loc}{The path to the logfile. Defaults to "logs/logfile.txt".}
+
+\item{pos}{The environment which to assign pipeline_message. Defaults to 1,
+equivalent to the .GlobalEnv.}
 }
 \value{
 Creates logger and file appender.

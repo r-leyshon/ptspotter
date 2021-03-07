@@ -13,10 +13,13 @@
 #' about the current status of the pipeline. Ensure this object is assigned
 #' prior to calling wrap_up().
 #'
+#' @param pos The environment which to assign pipeline_message. Defaults to 1,
+#' equivalent to the .GlobalEnv.
+#'
 #' @return Interrupts sequential script execution with an auditory signal. Logs
 #' the elapsed time and outputs the script location.
 #' @export
-wrap_up <- function(start_time, pipeline_message) {
+wrap_up <- function(start_time, pipeline_message, pos = 1) {
   # calculate elapsed time
   elapsed <- Sys.time() - start_time
   # print execution duration
@@ -25,7 +28,7 @@ wrap_up <- function(start_time, pipeline_message) {
 
   # update pipeline message.
   pip_msg <- "Pipeline halted."
-  assign("pipeline_message", pip_msg, envir = .GlobalEnv)
+  assign("pipeline_message", pip_msg, envir = as.environment(pos))
 
   # sound alert when script completes
   beepr::beep("coin")

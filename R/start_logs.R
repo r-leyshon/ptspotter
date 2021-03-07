@@ -4,12 +4,15 @@
 #'
 #' @param logfile_loc The path to the logfile. Defaults to "logs/logfile.txt".
 #'
+#' @param pos The environment which to assign pipeline_message. Defaults to 1,
+#' equivalent to the .GlobalEnv.
+#'
 #' @return Creates logger and file appender.
 #'
 #' @import log4r
 #'
 #' @export
-log_enable <- function(logfile_loc = "logs/logfile.txt") {
+log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
   file_app <- log4r::file_appender(logfile_loc,
                                    append = TRUE,
                                    layout = log4r::default_log_layout())
@@ -21,7 +24,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
   # check for presence of file_app in case of reruns
   if(!"file_app" %in% ls(name = .GlobalEnv)){
     # assign file appender
-    assign("file_app", file_app, envir = .GlobalEnv)
+    assign("file_app", file_app, envir = as.environment(pos))
     #test for presence
 
     if("file_app" %in% ls(name = .GlobalEnv)){
@@ -40,7 +43,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
   #test for presence of my_logger in case of reruns
   if(!"my_logger" %in% ls(name = .GlobalEnv)){
     # create logger
-    assign("my_logger", my_logger, envir = .GlobalEnv)
+    assign("my_logger", my_logger, envir = as.environment(pos))
     # test for presence
     if("my_logger" %in% ls(name = .GlobalEnv)){
       print("Logger object sucessfully assigned to 'my_logger'")
