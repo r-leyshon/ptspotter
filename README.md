@@ -109,6 +109,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
+* Logging functions executed in wrong order - issue a warning.
 * adj_file_nos issue: now only writing final incremented file. Print statements
 are correct but do not correspond with file ops. Issue encountered when all
 names of files are identical except for sequential numbering. Was noticeable by

@@ -22,46 +22,37 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
   # get all attached packages as character vector
   attached_pkgs <- unlist(lapply(utils::sessionInfo()[["otherPkgs"]],
                                  "[", "Package"))
+  # file appender
+  # check for presence of file_app in case of reruns
+  if(!"file_app" %in% ls(name = .GlobalEnv)){
+    # assign file appender
+    file_app <<- file_app
+    #test for presence
 
-  # if there are no attached pkgs or log4r is not loaded
-  # if(is.null(attached_pkgs) |
-  #    !"log4r" %in% attached_pkgs){
-  #   # stop execution and output a warning
-  #   stop("log4r not loaded. Have you installed and loaded the package?")
-  #
-  # } else {
-    # file appender
-    # check for presence of file_app in case of reruns
-    if(!"file_app" %in% ls(name = .GlobalEnv)){
-      # assign file appender
-      file_app <<- file_app
-      #test for presence
-      if("file_app" %in% ls(name = .GlobalEnv)){
-        print("File appender successfully assigned to 'file_app'")
+    if("file_app" %in% ls(name = .GlobalEnv)){
+      print("File appender successfully assigned to 'file_app'")
       } else{
         stop("File appender not assigned. Logging not enabled.")
-      }
-      } else {
-        print("File appender already exists. Not re-assigned")
-      }
+        }
+    } else {
+      print("File appender already exists. Not re-assigned")
+    }
 
-    # logger object
-    #test for presence of my_logger in case of reruns
-    if(!"my_logger" %in% ls(name = .GlobalEnv)){
-      # create logger
-      my_logger <<- my_logger
-
-      # test for presence
-      if("my_logger" %in% ls(name = .GlobalEnv)){
-        print("Logger object sucessfully assigned to 'my_logger'")
+  # logger object
+  #test for presence of my_logger in case of reruns
+  if(!"my_logger" %in% ls(name = .GlobalEnv)){
+    # create logger
+    my_logger <<- my_logger
+    # test for presence
+    if("my_logger" %in% ls(name = .GlobalEnv)){
+      print("Logger object sucessfully assigned to 'my_logger'")
         } else{
           stop("Logger object not assigned. Logging not enabled.")
         }
       } else{
-      print("my_logger already exists. Not re-assigned.")
+        print("my_logger already exists. Not re-assigned.")
       }
     }
-  # }
 
 
 # log_file_ops ------------------------------------------------------------
@@ -92,13 +83,6 @@ log_file_ops <- function(dir_path = "logs",
   # store log location
   log_loc <- paste0(dir_path, "/", logfile_nm, ".txt")
 
-  # if there are no attached pkgs or log4r is not loaded
-  # if(is.null(attached_pkgs) |
-  #    !"log4r" %in% attached_pkgs){
-  #   # stop execution and output a warning
-  #   stop("log4r not loaded. Have you installed and loaded the package?")
-  #
-  # } else
   if(file.exists(log_loc)){
     # if logfile exists output warning & stop
     stop("Logfile with name matching logfile_nm found. Have you previously run
@@ -123,8 +107,3 @@ log_file_ops <- function(dir_path = "logs",
   }
 
 }
-
-
-
-
-
