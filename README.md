@@ -87,6 +87,7 @@ prior to calling wrap_up.
 ### Version 0.2
 
 * current_file now uses basename() for more efficient implementation.
+* log_enable asks for log_file_ops if logfile does not exist.
 
 
 ### Version 0.1
@@ -109,7 +110,14 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* Logging functions executed in wrong order - issue a warning.
+* Prefer assign over <<-
+* unit tests for all functions  
+* Remove current_file and replace all usage with basename(). Prefer basename()
+also in adj_file_nos
+* function to trim decimals from filenames.
+
+## Resolved: Convert to test.
+
 * adj_file_nos issue: now only writing final incremented file. Print statements
 are correct but do not correspond with file ops. Issue encountered when all
 names of files are identical except for sequential numbering. Was noticeable by
@@ -120,7 +128,3 @@ in and out.
 adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved
 but convert to a test. Above issue only applies when filename alpha are all
 equal.
-* unit tests for all functions  
-* function to trim decimals from filenames  
-* Remove current_file and replace all usage with basename(). Prefer basename()
-also in adj_file_nos.

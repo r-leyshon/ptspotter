@@ -19,9 +19,6 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
     threshold = "INFO",
     appenders = file_app)
 
-  # get all attached packages as character vector
-  attached_pkgs <- unlist(lapply(utils::sessionInfo()[["otherPkgs"]],
-                                 "[", "Package"))
   # file appender
   # check for presence of file_app in case of reruns
   if(!"file_app" %in% ls(name = .GlobalEnv)){
@@ -31,11 +28,14 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
 
     if("file_app" %in% ls(name = .GlobalEnv)){
       print("File appender successfully assigned to 'file_app'")
+
       } else{
         stop("File appender not assigned. Logging not enabled.")
+
         }
     } else {
       print("File appender already exists. Not re-assigned")
+
     }
 
   # logger object
@@ -46,12 +46,21 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
     # test for presence
     if("my_logger" %in% ls(name = .GlobalEnv)){
       print("Logger object sucessfully assigned to 'my_logger'")
+
         } else{
           stop("Logger object not assigned. Logging not enabled.")
+
         }
       } else{
         print("my_logger already exists. Not re-assigned.")
+
       }
+
+  # Check if the logfile already exists, if not output a warning.
+  if(!file.exists(logfile_loc)){
+    warning("Logfile not found. Please run ptspotter::log_file_ops prior to attempting to write to logfile.")
+  }
+
     }
 
 
@@ -75,10 +84,6 @@ log_file_ops <- function(dir_path = "logs",
                          logfile_nm = "logfile"){
   # local binding to avoid notes in R CMD check
   "<<-" <- NULL
-
-  # get all attached packages as character vector
-  attached_pkgs <- unlist(lapply(utils::sessionInfo()[["otherPkgs"]],
-                                 "[", "Package"))
 
   # store log location
   log_loc <- paste0(dir_path, "/", logfile_nm, ".txt")
