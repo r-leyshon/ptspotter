@@ -88,7 +88,7 @@ prior to calling wrap_up.
 
 * current_file now uses basename() for more efficient implementation.
 * log_enable asks for log_file_ops if logfile does not exist.
-
+* Prefers assign over <<-
 
 ### Version 0.1
 
@@ -110,7 +110,6 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* Prefer assign over <<-
 * unit tests for all functions  
 * Remove current_file and replace all usage with basename(). Prefer basename()
 also in adj_file_nos

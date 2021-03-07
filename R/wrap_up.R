@@ -23,8 +23,9 @@ wrap_up <- function(start_time, pipeline_message) {
   print("Script executed. Duration: ")
   print(utils::capture.output(round(elapsed, digits = 3)))
 
-  # update pipeline message. '<<-' searches for `pipeline_message` in global scope
-  pipeline_message <<- "Pipeline halted."
+  # update pipeline message.
+  pip_msg <- "Pipeline halted."
+  assign("pipeline_message", pip_msg, envir = .GlobalEnv)
 
   # sound alert when script completes
   beepr::beep("coin")

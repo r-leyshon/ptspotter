@@ -10,8 +10,6 @@
 #'
 #' @export
 log_enable <- function(logfile_loc = "logs/logfile.txt") {
-  # local binding to avoid notes in R CMD check
-  "<<-" <- NULL
   file_app <- log4r::file_appender(logfile_loc,
                                    append = TRUE,
                                    layout = log4r::default_log_layout())
@@ -23,7 +21,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
   # check for presence of file_app in case of reruns
   if(!"file_app" %in% ls(name = .GlobalEnv)){
     # assign file appender
-    file_app <<- file_app
+    assign("file_app", file_app, envir = .GlobalEnv)
     #test for presence
 
     if("file_app" %in% ls(name = .GlobalEnv)){
@@ -42,7 +40,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
   #test for presence of my_logger in case of reruns
   if(!"my_logger" %in% ls(name = .GlobalEnv)){
     # create logger
-    my_logger <<- my_logger
+    assign("my_logger", my_logger, envir = .GlobalEnv)
     # test for presence
     if("my_logger" %in% ls(name = .GlobalEnv)){
       print("Logger object sucessfully assigned to 'my_logger'")
@@ -82,8 +80,6 @@ log_enable <- function(logfile_loc = "logs/logfile.txt") {
 #' @export
 log_file_ops <- function(dir_path = "logs",
                          logfile_nm = "logfile"){
-  # local binding to avoid notes in R CMD check
-  "<<-" <- NULL
 
   # store log location
   log_loc <- paste0(dir_path, "/", logfile_nm, ".txt")
