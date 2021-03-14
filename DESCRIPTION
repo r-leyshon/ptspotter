@@ -1,11 +1,15 @@
 Package: ptspotter
 Title: Helper Functions for use with Project Template
 Version: 0.1
-Authors@R: 
-    person(given = "Rich",
+Authors@R:
+    c(person(given = "Rich",
            family = "Leyshon",
            role = c("aut", "cre"),
-           email = "leyshonrr@hotmail.co.uk")
+           email = "leyshonrr@hotmail.co.uk"),
+      person(given = "Andrew",
+           family = "Simmons",
+           role = "ctb",
+           email = "akwsimmo@gmail.com"))
 Description: ptspotter functions are utility functions produced specifically
     (but not limited to) for working with Project Template data pipelines.
 License: MIT + file LICENSE
