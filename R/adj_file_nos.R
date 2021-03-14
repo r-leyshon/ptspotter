@@ -69,11 +69,18 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
 
   # if all of the filenames following the numbers are identical,
   # names will need to be introduced to prevent incorrect rename
-  if(all(alpha_only == alpha_only[1])){
+  if(any(duplicated(alpha_only))){
+    # get the duplicated filename suffixes
+    dupes <- alpha_only[duplicated(alpha_only)]
     # introduce random hashes for identical filenames
-    alpha_only <- paste0("-",
-                         stringi::stri_rand_strings(n = length(alpha_only),
-                                                    length = 10), alpha_only)
+    dupes <- paste0("-",
+                         stringi::stri_rand_strings(n = length(dupes),
+                                                    length = 10), dupes)
+    # find the uniques and join to the new filenames for dupes
+    not_dupes <- alpha_only[!duplicated(alpha_only)]
+
+    alpha_only <- c(not_dupes, dupes)
+
     warning("Identical filenames found. Alphanumeric hashes introduced.")
   }
 

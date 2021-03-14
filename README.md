@@ -89,6 +89,8 @@ prior to calling wrap_up.
 * current_file now uses basename() for more efficient implementation.
 * log_enable asks for log_file_ops if logfile does not exist.
 * Prefers assign over <<- with position parameter.
+* adj_file_nos uses filename hashes for part filename duplication in the target
+directory (when some files have been named and some have not).
 
 ### Version 0.1
 
@@ -110,8 +112,10 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* adj_file_nos needs to paste filename hashes for cases when part of the munge
-directory has identical file suffixes and part doesn't.
+* adj_file_nos is currently failing unit test. Losing first file. Resolve.
+* seq_file_ops avoids overwriting existing files. But if the files are named,
+additional numbered scripts are introduced which would cause conflict in
+sequential script execution. Detect the numbers and prevent this from happening.
 * unit tests for all functions  
 * Remove current_file and replace all usage with basename(). Prefer basename()
 also in adj_file_nos
@@ -119,12 +123,6 @@ also in adj_file_nos
 
 ## Resolved: Convert to test.
 
-* adj_file_nos issue: now only writing final incremented file. Print statements
-are correct but do not correspond with file ops. Issue encountered when all
-names of files are identical except for sequential numbering. Was noticeable by
-applying adj_file_nos to the output of sequence_file_ops. Now introduces hashes
-if detected as identical. Resolved but convert to a test. Count number of files
-in and out.
 * issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc.
 adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved
 but convert to a test. Above issue only applies when filename alpha are all
