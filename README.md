@@ -112,6 +112,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
+* include a seq_file_ops hash argument to create hashes for filenames from the off.
 * adj_file_nos is currently failing unit test. Losing first file. Resolve.
 * seq_file_ops avoids overwriting existing files. But if the files are named,
 additional numbered scripts are introduced which would cause conflict in
