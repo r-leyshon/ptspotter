@@ -110,6 +110,8 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
+* adj_file_nos needs to paste filename hashes for cases when part of the munge
+directory has identical file suffixes and part doesn't.
 * unit tests for all functions  
 * Remove current_file and replace all usage with basename(). Prefer basename()
 also in adj_file_nos
