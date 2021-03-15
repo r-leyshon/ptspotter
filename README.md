@@ -113,7 +113,6 @@ overwrites pre-existing files if argument force = TRUE.
 ## To do
 
 * include a seq_file_ops hash argument to create hashes for filenames from the off.
-* adj_file_nos is currently failing unit test. Losing first file. Resolve.
 * seq_file_ops avoids overwriting existing files. But if the files are named,
 additional numbered scripts are introduced which would cause conflict in
 sequential script execution. Detect the numbers and prevent this from happening.
@@ -124,6 +123,8 @@ also in adj_file_nos
 
 ## Resolved: Convert to test.
 
+* adj_file_nos is currently failing unit test. Losing first file. Issue is when 
+target = 1. Adjust to use file.copy then file.remove the original source files.
 * issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc.
 adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved
 but convert to a test. Above issue only applies when filename alpha are all

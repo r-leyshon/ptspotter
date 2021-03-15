@@ -2,7 +2,7 @@
 # create infrastructure for testing ---------------------------------------
 sequence_file_ops(n = 5)
 start_count <- length(list.files("munge"))
-adj_file_nos(target = 1)
+adj_file_nos(target = 2)
 end_count <- length(list.files("munge"))
 
 # tests -------------------------------------------------------------------
