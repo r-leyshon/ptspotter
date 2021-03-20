@@ -22,13 +22,13 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   files_found <- list.files(directory)
 
   # filter out anything that doesn't contain digits at start of string
-  num_filenms <- files_found[grepl("^[0-9]*", files_found)]
+  num_filenms <- files_found[grepl("^[0-9].", files_found)]
 
   # extract numbering
-  nums_only <- as.numeric(stringr::str_extract(num_filenms, "^[0-9.]*"))
+  nums_only <- as.numeric(stringr::str_extract(num_filenms, "^[0-9]."))
 
   # remove all numbers from listed filenames vector
-  alpha_only <- stringr::str_remove(num_filenms, "^[0-9]*")
+  alpha_only <- stringr::str_remove(num_filenms, "^[0-9].")
 
   # test lengths are equal
   if (length(num_filenms) != length(nums_only)) {
@@ -88,16 +88,16 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   adj_filenames <- paste(directory, paste0(nums_new, alpha_only), sep = "/")
 
   # paste directory name to complete write path
-  old_filenames <- paste(directory, files_found, sep = "/")
+  old_nums <- paste(directory, num_filenms, sep = "/")
 
   # test lengths are equal
-  if (length(old_filenames) != length(adj_filenames)) {
+  if (length(old_nums) != length(adj_filenames)) {
     stop(
       paste(
-        "Execution halted: Number of old and new filenames are unequal.",
+        "Execution halted: Number of old and new numbered filenames unequal.",
         paste(
-          "Length of old filenames:", length(old_filenames), paste(
-            old_filenames,
+          "Length of old filenames:", length(old_nums), paste(
+            old_nums,
             collapse = ", "
           )
         ),
@@ -110,16 +110,16 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   }
 
   # write out only adjusted filenames
-  file.rename(from = old_filenames, to = adj_filenames)
+  file.rename(from = old_nums, to = adj_filenames)
 
   # print confirmation msg to console
   print(paste(
-    length(old_filenames), "Filenames adjusted from: ",
+    length(old_nums), "Filenames adjusted from: ",
     paste(
       if(Sys.info()["sysname"] == "Darwin"){
-        lapply(stringr::str_split(old_filenames, pattern = "/"), utils::tail, 1)
+        lapply(stringr::str_split(old_nums, pattern = "/"), utils::tail, 1)
       } else{
-        lapply(stringr::str_split(old_filenames, pattern = "\\\\"), utils::tail,
+        lapply(stringr::str_split(old_nums, pattern = "\\\\"), utils::tail,
                1)
       }, collapse = ", "),
     "to",
