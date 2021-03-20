@@ -5,12 +5,14 @@
 #' @return Performs garbage collection then prints memory size and script name
 #' currently being executed.
 #'
+#' @import this.path this.path
+#'
 #' @export
 memory_report <- function() {
   # perform a manual garbage collection
   gc()
   # show me the filename of current file
-  thisfile <- current_file()
+  thisfile <- basename(this.path::this.path())
 
   # print the used memory at this point
   print(paste(

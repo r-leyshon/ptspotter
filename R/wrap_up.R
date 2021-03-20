@@ -18,6 +18,9 @@
 #'
 #' @return Interrupts sequential script execution with an auditory signal. Logs
 #' the elapsed time and outputs the script location.
+#'
+#' @import this.path this.path
+#'
 #' @export
 wrap_up <- function(start_time, pipeline_message, pos = 1) {
   # calculate elapsed time
@@ -34,5 +37,5 @@ wrap_up <- function(start_time, pipeline_message, pos = 1) {
   beepr::beep("coin")
 
   # stop execution
-  stop(paste("wrap_up at", current_file()))
+  stop(paste("wrap_up at", basename(this.path::this.path())))
 }

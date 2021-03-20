@@ -118,12 +118,10 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
+* unit tests for all functions  
 * seq_file_ops avoids overwriting existing files. But if the files are named,
 additional numbered scripts are introduced which would cause conflict in
 sequential script execution. Detect the numbers and prevent this from happening.
-* unit tests for all functions  
-* Remove current_file and replace all usage with basename(). Prefer basename()
-also in adj_file_nos
 * function to trim decimals from filenames.
 
 ## Resolved: Convert to test.
