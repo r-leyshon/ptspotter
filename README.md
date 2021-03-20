@@ -89,14 +89,11 @@ prior to calling wrap_up.
 * current_file now uses basename() for more efficient implementation.
 * log_enable asks for log_file_ops if logfile does not exist.
 * Prefers assign over <<- with position parameter.
-* adj_file_nos uses filename hashes for part filename duplication in the target
-directory (when some files have been named and some have not).
-* adj_file_nos uses hashes to prevent duplicate file names. Matters when passing
-the output of sequence_file_ops to adj_file_nos, which deletes files
-inadvertently if identical <0-9>filenames are found. Note that this issue exists
-despite the sequential filenames resulting in unique filenames.
-
-
+* adj_file_nos and sequence_file_ops use filename hashes for part filename
+duplication in the target directory (when some files have been named and some
+have not).
+* adj_file_nos no longer errors if target directory is a mix of numbered and
+non-numbered files.
 
 ### Version 0.1
 
