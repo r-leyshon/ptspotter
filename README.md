@@ -1,4 +1,4 @@
-# PT Spotter version 0.1.
+# PT Spotter version 0.2.
 
 ## Description
 
