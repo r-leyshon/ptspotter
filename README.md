@@ -91,6 +91,12 @@ prior to calling wrap_up.
 * Prefers assign over <<- with position parameter.
 * adj_file_nos uses filename hashes for part filename duplication in the target
 directory (when some files have been named and some have not).
+* adj_file_nos uses hashes to prevent duplicate file names. Matters when passing
+the output of sequence_file_ops to adj_file_nos, which deletes files
+inadvertently if identical <0-9>filenames are found. Note that this issue exists
+despite the sequential filenames resulting in unique filenames.
+
+
 
 ### Version 0.1
 
@@ -112,7 +118,6 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* include a seq_file_ops hash argument to create hashes for filenames from the off.
 * seq_file_ops avoids overwriting existing files. But if the files are named,
 additional numbered scripts are introduced which would cause conflict in
 sequential script execution. Detect the numbers and prevent this from happening.
