@@ -24,6 +24,9 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   # filter out anything that doesn't contain digits at start of string
   num_filenms <- files_found[grepl("^[0-9].", files_found)]
 
+  # reverse filenames to ensure chain rewrite doesn't occur
+  num_filenms <- num_filenms[rev(grep("^[0-9].", num_filenms))]
+
   # extract numbering
   nums_only <- as.numeric(stringr::str_extract(num_filenms, "^[0-9]."))
 
@@ -55,7 +58,7 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
 
     # if action == down, decrease numbers from target and larger down by step
   } else if (action == "down") {
-    # any file numbers greater thanspecified target, decrease by step
+    # any file numbers greater than specified target, decrease by step
     nums_new[nums_new >= target] <- nums_new[nums_new >= target] - step
     # print the number of files decreased
     print(paste(length(nums_new[nums_new >= target]), "file(s) decreased"))
@@ -69,23 +72,24 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
 
   # if all of the filenames following the numbers are identical,
   # names will need to be introduced to prevent incorrect rename
-  if(any(duplicated(alpha_only))){
-    # get the duplicated filename suffixes
-    dupes <- alpha_only[duplicated(alpha_only)]
-    # introduce random hashes for identical filenames
-    dupes <- paste0("-",
-                         stringi::stri_rand_strings(n = length(dupes),
-                                                    length = 10), dupes)
-    # find the uniques and join to the new filenames for dupes
-    not_dupes <- alpha_only[!duplicated(alpha_only)]
-
-    alpha_only <- c(not_dupes, dupes)
-
-    warning("Identical filenames found. Alphanumeric hashes introduced.")
-  }
+  # if(any(duplicated(alpha_only))){
+  #   # get the duplicated filename suffixes
+  #   dupes <- alpha_only[duplicated(alpha_only)]
+  #   # introduce random hashes for identical filenames
+  #   dupes <- paste0("-",
+  #                        stringi::stri_rand_strings(n = length(dupes),
+  #                                                   length = 10), dupes)
+  #   # find the uniques and join to the new filenames for dupes
+  #   not_dupes <- alpha_only[!duplicated(alpha_only)]
+  #
+  #   alpha_only <- c(not_dupes, dupes)
+  #
+  #   warning("Identical filenames found. Alphanumeric hashes introduced.")
+  # }
 
   # paste together new digits and filenames
-  adj_filenames <- paste(directory, paste0(nums_new, alpha_only), sep = "/")
+  adj_filenames <- paste(directory, paste(nums_new, alpha_only, sep = "."),
+                         sep = "/")
 
   # paste directory name to complete write path
   old_nums <- paste(directory, num_filenms, sep = "/")
