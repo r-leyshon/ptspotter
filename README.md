@@ -22,11 +22,6 @@ file numbering. Accepts decimals also.
 
 ***
 
-* **current_file**: Cleans the output of [{this.path}](https://CRAN.R-project.org/package=this.path)
-to provide the base name of the R script being executed.
-
-***
-
 * **log_file_ops**: Creates a specified logging directory and logfile if
 required.
 Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to
