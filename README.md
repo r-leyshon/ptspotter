@@ -1,4 +1,4 @@
-# PT Spotter version 0.2.
+# PT Spotter version 0.3.
 
 ## Description
 
@@ -79,6 +79,9 @@ prior to calling wrap_up.
 
 ## Changelog
 
+### Version 0.3
+
+
 ### Version 0.2
 
 * current_file now uses basename() for more efficient implementation.
@@ -111,9 +114,6 @@ overwrites pre-existing files if argument force = TRUE.
 ## To do
 
 * unit tests for all functions  
-* seq_file_ops avoids overwriting existing files. But if the files are named,
-additional numbered scripts are introduced which would cause conflict in
-sequential script execution. Detect the numbers and prevent this from happening.
 * function to trim decimals from filenames.
 
 ## Resolved: Convert to test.
