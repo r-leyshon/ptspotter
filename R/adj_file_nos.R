@@ -115,20 +115,8 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   # print confirmation msg to console
   print(paste(
     length(old_nums), "Filenames adjusted from: ",
-    paste(
-      if(Sys.info()["sysname"] == "Darwin"){
-        lapply(stringr::str_split(old_nums, pattern = "/"), utils::tail, 1)
-      } else{
-        lapply(stringr::str_split(old_nums, pattern = "\\\\"), utils::tail,
-               1)
-      }, collapse = ", "),
+    paste(basename(old_nums), collapse = ", "),
     "to",
-    paste(
-      if(Sys.info()["sysname"] == "Darwin"){
-        lapply(stringr::str_split(adj_filenames, pattern = "/"), utils::tail, 1)
-      } else{
-        lapply(stringr::str_split(adj_filenames, pattern = "\\\\"), utils::tail,
-               1)
-      }, collapse = ", ")
+    paste(basename(adj_filenames), collapse = ", ")
   ))
 }
