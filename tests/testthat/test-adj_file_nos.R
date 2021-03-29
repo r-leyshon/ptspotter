@@ -13,12 +13,19 @@ mixed_start_count <- length(list.files("mixed_folder"))
 adj_file_nos(target = 2, directory = "mixed_folder")
 mixed_end_count <- length(list.files("mixed_folder"))
 
+# down --------------------------------------------------------------------
+dir.create("action_down")
+sequence_file_ops(c(5:10), target_dir = "action_down")
+start_files <- list.files("action_down")
+start_nums <- as.numeric(stringr::str_extract(start_files, "^[0-9]."))
+adj_file_nos(target = 5, directory = "action_down", action = "down")
+
 
 # tests -------------------------------------------------------------------
 
 # file counts -------------------------------------------------------------
 
-test_that("Compare input to output", {
+test_that("input count matches output", {
   # count files
   expect_identical(start_count,
                    end_count)
@@ -28,22 +35,27 @@ test_that("Compare input to output", {
 
 # duplicated files --------------------------------------------------------
 
-test_that("Check output files are unique",
+test_that("filenames are unique",
           expect_false(object = any(duplicated(list.files("munge")))
                       )
           )
 
 # recurring fullstops -----------------------------------------------------
 
-test_that("Check for double dots",
+test_that("there are no double dots",
           expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("munge"))))
           )
 
-# action == "up" ----------------------------------------------------------
 
 
 # action == "down" --------------------------------------------------------
-
+test_that("all file numbers are decreased",
+          expect_true(
+            all(
+              as.numeric(stringr::str_extract(
+                list.files("action_down"), "^[0-9].")) < start_nums)
+            )
+          )
 
 # 0 in front --------------------------------------------------------------
 
