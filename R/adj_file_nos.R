@@ -88,7 +88,7 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   # }
 
   # paste together new digits and filenames
-  adj_filenames <- paste(directory, paste(nums_new, alpha_only, sep = "."),
+  adj_filenames <- paste(directory, paste0(nums_new, alpha_only),
                          sep = "/")
 
   # paste directory name to complete write path
