@@ -38,3 +38,13 @@ test_that("Check output files are unique",
 test_that("Check for double dots",
           expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("munge"))))
           )
+
+# action == "up" ----------------------------------------------------------
+
+
+# action == "down" --------------------------------------------------------
+
+
+# 0 in front --------------------------------------------------------------
+
+

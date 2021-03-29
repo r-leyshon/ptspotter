@@ -65,25 +65,6 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   # paste directory name to complete write path
   old_nums <- paste(directory, num_filenms, sep = "/")
 
-  # test lengths are equal
-  if (length(old_nums) != length(adj_filenames)) {
-    stop(
-      paste(
-        "Execution halted: Number of old and new numbered filenames unequal.",
-        paste(
-          "Length of old filenames:", length(old_nums), paste(
-            old_nums,
-            collapse = ", "
-          )
-        ),
-        paste("Length of adjusted filenames:", length(adj_filenames), paste(
-          adj_filenames,
-          collapse = ", "
-        ))
-      )
-    )
-  }
-
   # write out only adjusted filenames
   file.rename(from = old_nums, to = adj_filenames)
 
