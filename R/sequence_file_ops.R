@@ -45,10 +45,7 @@ sequence_file_ops <- function(n, target_dir = "munge", filetype = "R",
 
   # create the filenames using random hashes
   req_files <- paste0(paste(target_dir, req_nos, sep = "/"),
-                      "-",
-                      stringi::stri_rand_strings(n = length(req_nos),
-                                                 length = 10),
-                      ".",
+                      "-.",
                       filetype)
   print(paste("Required files are", paste(req_files, collapse = ", ")))
 

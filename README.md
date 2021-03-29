@@ -59,7 +59,7 @@ vector.
 <u>filetype</u>: The suffix to append the filename with. Do not include full
 stops / periods. Defaults to "R".  
 <u>force</u>: Defaults to FALSE. If set to TRUE, sequence_file_ops will
-verwrite any pre-existing files that match the write filenames asked for.
+overwrite any pre-existing files that match the write filenames asked for.
 
 ***
 
@@ -81,9 +81,9 @@ prior to calling wrap_up.
 
 ### Version 0.3
 
-* Additional tests.
-* adj_file_nos() no longer introduces hashcodes into names (file.rename bug 
-resolved).
+* New tests.
+* adj_file_nos() & sequence_file_ops() no longer introduces hashcodes into names
+(file.rename bug resolved).
 
 ### Version 0.2
 
