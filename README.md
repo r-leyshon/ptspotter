@@ -116,11 +116,6 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* file.rename issue: If you rename 1 to 2 then rename 2 to 3 then you have
-effectively renamed 1 to 3.Probably reversing order of renames would work.
-Rename 5 to 6 then rename 4 to 5 etc.
-* above resolved but number of full stops prior to file suffix is now
-incrementing on successive runs.
 * unit tests for all functions  
 * function to trim decimals from filenames.
 
