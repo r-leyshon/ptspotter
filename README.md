@@ -81,6 +81,9 @@ prior to calling wrap_up.
 
 ### Version 0.3
 
+* Additional tests.
+* adj_file_nos() no longer introduces hashcodes into names (file.rename bug 
+resolved).
 
 ### Version 0.2
 
