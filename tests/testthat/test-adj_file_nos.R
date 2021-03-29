@@ -15,6 +15,9 @@ mixed_end_count <- length(list.files("mixed_folder"))
 
 
 # tests -------------------------------------------------------------------
+
+# file counts -------------------------------------------------------------
+
 test_that("Compare input to output", {
   # count files
   expect_identical(start_count,
@@ -23,8 +26,15 @@ test_that("Compare input to output", {
                    mixed_end_count)
 })
 
+# duplicated files --------------------------------------------------------
+
 test_that("Check output files are unique",
           expect_false(object = any(duplicated(list.files("munge")))
                       )
           )
 
+# recurring fullstops -----------------------------------------------------
+
+test_that("Check for double dots",
+          expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("munge"))))
+          )
