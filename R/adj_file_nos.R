@@ -33,18 +33,6 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   # remove all numbers from listed filenames vector
   alpha_only <- stringr::str_remove(num_filenms, "^[0-9].")
 
-  # test lengths are equal
-  if (length(num_filenms) != length(nums_only)) {
-    stop(
-      paste(
-        "Execution halted: Number of files and extracted digits unequal.",
-        paste0("Length of filenames: ", length(num_filenms), ". ",
-              paste(num_filenms, collapse = ", ")),
-        paste0("Length of extracted digits: ", length(nums_only), ". ",
-              paste(nums_only, collapse = ", "))
-      )
-    )
-  }
   # reassign the numbers ready for increasing / decreasing
   nums_new <- nums_only
 
