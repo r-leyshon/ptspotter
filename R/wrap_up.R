@@ -19,7 +19,8 @@
 #' @return Interrupts sequential script execution with an auditory signal. Logs
 #' the elapsed time and outputs the script location.
 #'
-#' @import this.path this.path
+#' @import this.path
+#' @import beepr
 #'
 #' @export
 wrap_up <- function(start_time, pipeline_message, pos = 1) {
