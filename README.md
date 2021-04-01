@@ -116,8 +116,8 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* adj_file_nos action = "down", now loses like named files.
-* unit tests for all functions  
+* unit test step size
+* unit tests for all functions 
 * function to trim decimals from filenames.
 
 ## Resolved: Convert to test.
