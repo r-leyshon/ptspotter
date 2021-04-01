@@ -46,12 +46,17 @@ adj_file_nos(target = 7, directory = "part_dec", action = "down")
 
 # file counts -------------------------------------------------------------
 
-test_that("input count matches output", {
-  # count files
-  expect_identical(start_count,
-                   end_count)
-  expect_identical(mixed_start_count,
-                   mixed_end_count)
+test_that("input file count matches output", {
+  expect_identical(start_count, end_count)
+
+  expect_identical(mixed_start_count, mixed_end_count)
+
+  expect_identical(length(down_nums), length(list.files("action_down")))
+
+  expect_identical(length(part_inc_nums), length(list.files("part_inc")))
+
+  expect_identical(length(part_dec_nums), length(list.files("part_dec")))
+
 })
 
 # duplicated files --------------------------------------------------------
