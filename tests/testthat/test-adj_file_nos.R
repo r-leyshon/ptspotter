@@ -63,9 +63,18 @@ test_that("filenames are unique",
 
 # recurring fullstops -----------------------------------------------------
 
-test_that("there are no double dots",
-          expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("munge"))))
-          )
+test_that("there are no double dots in filenames", {
+  expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("munge"))))
+
+  expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("mixed_folder"))))
+
+  expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("action_down"))))
+
+  expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("part_inc"))))
+
+  expect_false(any(grepl(pattern = "\\.{2,}", x = list.files("part_dec"))))
+
+          })
 
 # action == "down" --------------------------------------------------------
 test_that("all file numbers are decreased",
