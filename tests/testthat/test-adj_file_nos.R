@@ -56,10 +56,18 @@ test_that("input count matches output", {
 
 # duplicated files --------------------------------------------------------
 
-test_that("filenames are unique",
-          expect_false(object = any(duplicated(list.files("munge")))
-                      )
-          )
+test_that("filenames are unique", {
+  expect_false(object = any(duplicated(list.files("munge"))))
+
+  expect_false(object = any(duplicated(list.files("mixed_folder"))))
+
+  expect_false(object = any(duplicated(list.files("action_down"))))
+
+  expect_false(object = any(duplicated(list.files("part_inc"))))
+
+  expect_false(object = any(duplicated(list.files("part_dec"))))
+
+          })
 
 # recurring fullstops -----------------------------------------------------
 
