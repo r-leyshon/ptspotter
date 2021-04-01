@@ -2,16 +2,14 @@
 # create infrastructure for testing ---------------------------------------
 sequence_file_ops(n = 5)
 start_count <- length(list.files("munge"))
-# munge_files <- list.files("munge")
-munge_nums <- as.numeric(stringr::str_extract(list.files("munge"), "^[0-9]."))
+munge_nums <- as.numeric(str_extract(list.files("munge"), "^[0-9]."))
 adj_file_nos(target = 1)
 end_count <- length(list.files("munge"))
 
 # create mixed folder -----------------------------------------------------
 dir.create("mixed_folder")
 sequence_file_ops(n = 5, target_dir = "mixed_folder")
-# mixed_files <- list.files("mixed_folder")
-mixed_nums <- as.numeric(stringr::str_extract(list.files("mixed_folder"),
+mixed_nums <- as.numeric(str_extract(list.files("mixed_folder"),
                                               "^[0-9]."))
 file.create("mixed_folder/non_numbered.R")
 mixed_start_count <- length(list.files("mixed_folder"))
@@ -21,10 +19,22 @@ mixed_end_count <- length(list.files("mixed_folder"))
 # down --------------------------------------------------------------------
 dir.create("action_down")
 sequence_file_ops(c(5:10), target_dir = "action_down")
-# down_files <- list.files("action_down")
-down_nums <- as.numeric(stringr::str_extract(list.files("action_down"),
+down_nums <- as.numeric(str_extract(list.files("action_down"),
                                              "^[0-9]."))
 adj_file_nos(target = 5, directory = "action_down", action = "down")
+
+
+
+# part increment ----------------------------------------------------------
+dir.create("part_inc")
+sequence_file_ops(c(1:10), target_dir = "part_inc")
+part_inc_names <- list.files("part_inc")
+part_inc_nums <- as.numeric(str_extract(part_inc_names, "^[0-9]."))
+adj_file_nos(target = 6, directory = "part_inc")
+
+# part decrement ----------------------------------------------------------
+
+
 
 
 # tests -------------------------------------------------------------------
@@ -56,7 +66,7 @@ test_that("there are no double dots",
 test_that("all file numbers are decreased",
           expect_true(
             all(
-              as.numeric(stringr::str_extract(
+              as.numeric(str_extract(
                 list.files("action_down"), "^[0-9].")) < down_nums)
             )
           )
@@ -64,11 +74,11 @@ test_that("all file numbers are decreased",
 # step --------------------------------------------------------------------
 test_that("step argument works", {
           expect_true(
-            all(as.numeric(stringr::str_extract(
+            all(as.numeric(str_extract(
               list.files("munge"), "^[0-9].")) - munge_nums == 1)
           )
           expect_true(
-            all(as.numeric(stringr::str_extract(
+            all(as.numeric(str_extract(
               list.files(
                 "mixed_folder", pattern = "^[0-9]."),
               "^[0-9].")) - mixed_nums == 1)
@@ -80,7 +90,17 @@ test_that("step argument works", {
           })
 
 # target ------------------------------------------------------------------
+test_that("target preserves lower than assigned value", {
+ expect_identical(list.files("part_inc")[1:5], part_inc_names[1:5])
+  })
 
+test_that("files >= target are incremented", {
+  expect_true(
+    all(
+      as.numeric(str_extract(
+        list.files("part_inc")[6:10], "^[0-9].")) - part_inc_nums[6:10] == 1)
+    )
+          })
 
 # directory ---------------------------------------------------------------
 
