@@ -33,11 +33,16 @@ part_inc_nums <- as.numeric(str_extract(part_inc_names, "^[0-9]."))
 adj_file_nos(target = 6, directory = "part_inc")
 
 # part decrement ----------------------------------------------------------
-
-
-
+dir.create("part_dec")
+sequence_file_ops(c(1:5, 7:11), target_dir = "part_dec")
+part_dec_names <- list.files("part_dec")
+part_dec_nums <- as.numeric(str_extract(part_dec_names, "^[0-9]."))
+adj_file_nos(target = 7, directory = "part_dec", action = "down")
 
 # tests -------------------------------------------------------------------
+# -------------------------------------------------------------------------
+# -------------------------------------------------------------------------
+
 
 # file counts -------------------------------------------------------------
 
@@ -90,16 +95,26 @@ test_that("step argument works", {
           })
 
 # target ------------------------------------------------------------------
-test_that("target preserves lower than assigned value", {
- expect_identical(list.files("part_inc")[1:5], part_inc_names[1:5])
+test_that("files lower than assigned value are preserved", {
+  expect_identical(list.files("part_inc")[1:5], part_inc_names[1:5])
+
+  expect_identical(list.files("part_dec")[1:5], part_dec_names[1:5])
+
   })
 
-test_that("files >= target are incremented", {
+test_that("files >= target are adjusted", {
   expect_true(
     all(
       as.numeric(str_extract(
         list.files("part_inc")[6:10], "^[0-9].")) - part_inc_nums[6:10] == 1)
     )
+
+  expect_true(
+    all(
+      as.numeric(str_extract(
+        list.files("part_dec")[6:10], "^[0-9].")) - part_dec_nums[6:10] == -1)
+    )
+
           })
 
 # directory ---------------------------------------------------------------
