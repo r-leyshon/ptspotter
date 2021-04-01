@@ -24,8 +24,10 @@ adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   # filter out anything that doesn't contain digits at start of string
   num_filenms <- files_found[grepl("^[0-9].", files_found)]
 
-  # reverse filenames to ensure chain rewrite doesn't occur
-  num_filenms <- num_filenms[rev(grep("^[0-9].", num_filenms))]
+  # if action == up, reverse filenames to ensure chain rewrite doesn't occur
+  if(action == "up"){
+    num_filenms <- rev(num_filenms)
+  }
 
   # extract numbering
   nums_only <- as.numeric(stringr::str_extract(num_filenms, "^[0-9]."))

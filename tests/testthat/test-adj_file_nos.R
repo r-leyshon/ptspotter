@@ -54,8 +54,27 @@ test_that("all file numbers are decreased",
             all(
               as.numeric(stringr::str_extract(
                 list.files("action_down"), "^[0-9].")) < start_nums)
+            ),
+
+          expect_true(
+            as.numeric(stringr::str_extract(
+              list.files("action_down"), "^[0-9].")) - start_nums
             )
+
           )
+
+          )
+
+
+# step --------------------------------------------------------------------
+
+
+# target ------------------------------------------------------------------
+
+
+# directory ---------------------------------------------------------------
+
+
 
 # 0 in front --------------------------------------------------------------
 
