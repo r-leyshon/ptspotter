@@ -7,7 +7,7 @@
 memory_report()
 }
 \value{
-Performs garbage collection then prints memory size and script name
+Performs garbage collection then messages memory size and script name
 currently being executed.
 }
 \description{

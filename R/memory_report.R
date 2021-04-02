@@ -2,7 +2,7 @@
 #'
 #' Used to log memory allocation at points during sequential script execution.
 #'
-#' @return Performs garbage collection then prints memory size and script name
+#' @return Performs garbage collection then messages memory size and script name
 #' currently being executed.
 #'
 #' @import this.path
@@ -14,8 +14,8 @@ memory_report <- function() {
   # show me the filename of current file
   thisfile <- basename(this.path::this.path())
 
-  # print the used memory at this point
-  print(paste(
+  # message the used memory at this point
+  message(paste(
     "Memory size checked at",
     thisfile, "is",
     if(Sys.info()["sysname"] == "Darwin"){

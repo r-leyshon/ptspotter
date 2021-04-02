@@ -1,7 +1,7 @@
 #' Wrap up file execution.
 #'
 #' Used to interrupt sequential script execution while testing or debugging.
-#' Prints the elapsed time since execution of `start_time`. Assign `start_time`
+#' messages the elapsed time since execution of `start_time`. Assign `start_time`
 #' at the start of the first sequential script. Updates the pipeline message.
 #' Outputs an auditory signal and breaks sequential script execution,
 #' identifying the script at which execution was interrupted.
@@ -26,9 +26,9 @@
 wrap_up <- function(start_time, pipeline_message, pos = 1) {
   # calculate elapsed time
   elapsed <- Sys.time() - start_time
-  # print execution duration
-  print("Script executed. Duration: ")
-  print(utils::capture.output(round(elapsed, digits = 3)))
+  # message execution duration
+  message("Script executed. Duration: ")
+  message(utils::capture.output(round(elapsed, digits = 3)))
 
   # update pipeline message.
   pip_msg <- "Pipeline halted."

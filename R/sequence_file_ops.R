@@ -21,7 +21,7 @@ sequence_file_ops <- function(n, target_dir = "munge", filetype = "R",
   if(!file.exists(target_dir)){
     # if the directory doesn't exist, create it with a prompt.
     dir.create(target_dir)
-    print(paste("sequence_file_ops() created",
+    message(paste("sequence_file_ops() created",
                 paste0(target_dir, "/"), "as it was not found."))
   }
 
@@ -40,21 +40,21 @@ sequence_file_ops <- function(n, target_dir = "munge", filetype = "R",
     "0", req_nos[stringr::str_count(req_nos) == 1]
   )
 
-  # print confirmation msg
-  print(paste("Required numbers are", paste0(req_nos, collapse = ", ")))
+  # message confirmation msg
+  message(paste("Required numbers are", paste0(req_nos, collapse = ", ")))
 
   # create the filenames using random hashes
   req_files <- paste0(paste(target_dir, req_nos, sep = "/"),
                       "-.",
                       filetype)
-  print(paste("Required files are", paste(req_files, collapse = ", ")))
+  message(paste("Required files are", paste(req_files, collapse = ", ")))
 
   if(force == FALSE){
   # find any preexisting files
   ex_files <-  req_files[file.exists(req_files)]
-  # only print warning if at least one existing file is found
+  # only message warning if at least one existing file is found
   if(length(ex_files) > 0){
-  # print message
+  # message message
   warning(paste("Following found files will not be overwritten:",
                 paste(ex_files, collapse = ", ")))
   }
@@ -62,12 +62,12 @@ sequence_file_ops <- function(n, target_dir = "munge", filetype = "R",
   # write only new files
   only_new <- req_files[!(req_files %in% ex_files)]
   invisible(file.create(only_new))
-  # print conf msg
-  print(paste("New files created:", paste(only_new, collapse = ", ")))
+  # message conf msg
+  message(paste("New files created:", paste(only_new, collapse = ", ")))
 
   } else{
-    # print conf msg
-    print(paste(
+    # message conf msg
+    message(paste(
       "force = TRUE. Files may be overwritten. Following files created",
       paste(req_files, collapse = ", ")
       ))

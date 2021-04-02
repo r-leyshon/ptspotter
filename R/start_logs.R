@@ -28,14 +28,14 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
     #test for presence
 
     if("file_app" %in% ls(name = .GlobalEnv)){
-      print("File appender successfully assigned to 'file_app'")
+      message("File appender successfully assigned to 'file_app'")
 
       } else{
         stop("File appender not assigned. Logging not enabled.")
 
         }
     } else {
-      print("File appender already exists. Not re-assigned")
+      message("File appender already exists. Not re-assigned")
 
     }
 
@@ -46,14 +46,14 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
     assign("my_logger", my_logger, envir = as.environment(pos))
     # test for presence
     if("my_logger" %in% ls(name = .GlobalEnv)){
-      print("Logger object sucessfully assigned to 'my_logger'")
+      message("Logger object sucessfully assigned to 'my_logger'")
 
         } else{
           stop("Logger object not assigned. Logging not enabled.")
 
         }
       } else{
-        print("my_logger already exists. Not re-assigned.")
+        message("my_logger already exists. Not re-assigned.")
 
       }
 
@@ -99,7 +99,7 @@ log_file_ops <- function(dir_path = "logs",
     dir.create(dir_path)
 
     if(dir.exists(dir_path)){
-      print(paste0("Logging directory successfully created at '",
+      message(paste0("Logging directory successfully created at '",
                    dir_path, "/'"))
     }
 

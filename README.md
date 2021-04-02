@@ -116,7 +116,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* unit test step size
+* unit test message() in all funcs
 * unit tests for all functions 
 * function to trim decimals from filenames.
 

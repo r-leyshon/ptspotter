@@ -23,7 +23,7 @@ the elapsed time and outputs the script location.
 }
 \description{
 Used to interrupt sequential script execution while testing or debugging.
-Prints the elapsed time since execution of \code{start_time}. Assign \code{start_time}
+messages the elapsed time since execution of \code{start_time}. Assign \code{start_time}
 at the start of the first sequential script. Updates the pipeline message.
 Outputs an auditory signal and breaks sequential script execution,
 identifying the script at which execution was interrupted.
