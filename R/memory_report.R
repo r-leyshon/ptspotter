@@ -5,7 +5,7 @@
 #' @return Performs garbage collection then prints memory size and script name
 #' currently being executed.
 #'
-#' @import this.path this.path
+#' @import this.path
 #'
 #' @export
 memory_report <- function() {

@@ -108,7 +108,7 @@ log_file_ops <- function(dir_path = "logs",
   # create the logfile
   file.create(log_loc)
   if(file.exists(log_loc)){
-    print(paste0("Logfile successfully created at '", log_loc, "'"))
+    message(paste0("Logfile successfully created at '", log_loc, "'"))
   }
 
 }
