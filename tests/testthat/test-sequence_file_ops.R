@@ -13,11 +13,13 @@ sequence_file_ops(n = 5, target_dir = "testing_filetype", filetype = "txt")
 # -------------------------------------------------------------------------
 
 # expect message ----------------------------------------------------------
-test_that("func produces message on success",
-          expect_message(
-            sequence_file_ops(1, target_dir = "test_seq"), "New files created:"
-          )
-)
+test_that("func produces expected messages", {
+  expect_message(sequence_file_ops(1, target_dir = "test_seq"),
+                 "New files created:")
+
+  expect_message(sequence_file_ops(1, target_dir = "test_new_dir"),
+                 "created test_new_dir/ as it was not found.")
+})
 
 # n -----------------------------------------------------------------------
 test_that("different n formats are supported", {
@@ -60,8 +62,6 @@ test_that("specified filetype is found", {
 # force on and off in a mixed dir
 # warning when force is TRUE
 # message when force is false
-
-# creates target_dir ------------------------------------------------------
 
 
 # leading 0s --------------------------------------------------------------
