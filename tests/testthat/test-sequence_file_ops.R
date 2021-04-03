@@ -6,6 +6,7 @@ sequence_file_ops(n = 100, target_dir = "n_is_100")
 sequence_file_ops(n = c(1:100), target_dir = "n_is_1_to_100")
 sequence_file_ops(n = c(1, 3, 5, 7, 9), target_dir = "n_is_odd_nums")
 sequence_file_ops(n = c(1, 3:8, 10), target_dir = "n_is_mixed_vec")
+sequence_file_ops(n = 5, target_dir = "testing_filetype", filetype = "txt")
 
 
 # tests -------------------------------------------------------------------
@@ -44,6 +45,15 @@ test_that("target_dir has been created", {
           })
 
 # filetype ----------------------------------------------------------------
+test_that("specified filetype is found", {
+  expect_true(all(str_extract(list.files("testing_filetype"),
+                              pattern = "[^\\.]*$") == "txt"))
+
+  expect_true(all(str_extract(list.files("n_is_5"),
+                              pattern = "[^\\.]*$") == "R"))
+
+  })
+
 
 
 # force -------------------------------------------------------------------
