@@ -116,7 +116,8 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* unit test message() in all funcs
+* wrap_up always assigns to "pipeline_message", needs to be user assigned.
+* unit test message() sequence_file_ops
 * unit tests for all functions 
 * function to trim decimals from filenames.
 

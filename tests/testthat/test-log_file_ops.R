@@ -26,12 +26,14 @@ test_that("func creates logfile",
 # logfile pre-exists ------------------------------------------------------
 test_that("func errors if logfile_nm pre-exists",
           expect_error(log_file_ops(dir_path = "old_log_dir",
-                                    logfile_nm = "old_logfile"))
+                                    logfile_nm = "old_logfile"),
+                       "Logfile with name matching")
           )
 
 # log dir pre-exists ------------------------------------------------------
 test_that("func produces message on success",
           expect_message(
-            log_file_ops(dir_path = "just_log_dir", logfile_nm = "testing")
+            log_file_ops(dir_path = "just_log_dir", logfile_nm = "testing"),
+            "Logfile successfully created at"
             )
           )

@@ -43,7 +43,7 @@ sequence_file_ops <- function(n, target_dir = "munge", filetype = "R",
   # message confirmation msg
   message(paste("Required numbers are", paste0(req_nos, collapse = ", ")))
 
-  # create the filenames using random hashes
+  # create the filenames
   req_files <- paste0(paste(target_dir, req_nos, sep = "/"),
                       "-.",
                       filetype)
