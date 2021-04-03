@@ -34,7 +34,14 @@ test_that("different n formats are supported", {
 
 
 # target_dir --------------------------------------------------------------
-
+test_that("target_dir has been created", {
+  expect_true(dir.exists("n_is_5"))
+  expect_true(dir.exists("n_is_1_to_5"))
+  expect_true(dir.exists("n_is_100"))
+  expect_true(dir.exists("n_is_1_to_100"))
+  expect_true(dir.exists("n_is_odd_nums"))
+  expect_true(dir.exists("n_is_mixed_vec"))
+          })
 
 # filetype ----------------------------------------------------------------
 
