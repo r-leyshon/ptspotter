@@ -1,8 +1,11 @@
 
 # fileOps -----------------------------------------------------------------
 sequence_file_ops(n = 5, target_dir = "n_is_5")
-
-
+sequence_file_ops(n = c(1:5), target_dir = "n_is_1_to_5")
+sequence_file_ops(n = 100, target_dir = "n_is_100")
+sequence_file_ops(n = c(1:100), target_dir = "n_is_1_to_100")
+sequence_file_ops(n = c(1, 3, 5, 7, 9), target_dir = "n_is_odd_nums")
+sequence_file_ops(n = c(1, 3:8, 10), target_dir = "n_is_mixed_vec")
 
 
 # tests -------------------------------------------------------------------
@@ -15,9 +18,19 @@ test_that("func produces message on success",
           )
 )
 
-
 # n -----------------------------------------------------------------------
-# test single digit and different vector types
+test_that("different n formats are supported", {
+  expect_identical(length(list.files("n_is_5")),
+                   length(list.files("n_is_1_to_5")))
+
+  expect_identical(length(list.files("n_is_100")),
+                   length(list.files("n_is_1_to_100")))
+
+  expect_identical(as.integer(5), length(list.files("n_is_odd_nums")))
+
+  expect_identical(as.integer(8), length(list.files("n_is_mixed_vec")))
+
+})
 
 
 # target_dir --------------------------------------------------------------
