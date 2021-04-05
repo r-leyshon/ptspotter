@@ -1,6 +1,6 @@
 
 # create infrastructure for testing ---------------------------------------
-sequence_file_ops(n = 5)
+seq_file_ops(n = 5)
 start_count <- length(list.files("munge"))
 munge_nums <- as.numeric(str_extract(list.files("munge"), "^[0-9]."))
 adj_file_nos(target = 1)
@@ -8,7 +8,7 @@ end_count <- length(list.files("munge"))
 
 # create mixed folder -----------------------------------------------------
 dir.create("mixed_folder")
-sequence_file_ops(n = 5, target_dir = "mixed_folder")
+seq_file_ops(n = 5, target_dir = "mixed_folder")
 mixed_nums <- as.numeric(str_extract(list.files("mixed_folder"),
                                               "^[0-9]."))
 file.create("mixed_folder/non_numbered.R")
@@ -18,7 +18,7 @@ mixed_end_count <- length(list.files("mixed_folder"))
 
 # down --------------------------------------------------------------------
 dir.create("action_down")
-sequence_file_ops(c(5:10), target_dir = "action_down")
+seq_file_ops(c(5:10), target_dir = "action_down")
 down_nums <- as.numeric(str_extract(list.files("action_down"),
                                              "^[0-9]."))
 adj_file_nos(target = 5, directory = "action_down", action = "down")
@@ -27,14 +27,14 @@ adj_file_nos(target = 5, directory = "action_down", action = "down")
 
 # part increment ----------------------------------------------------------
 dir.create("part_inc")
-sequence_file_ops(c(1:10), target_dir = "part_inc")
+seq_file_ops(c(1:10), target_dir = "part_inc")
 part_inc_names <- list.files("part_inc")
 part_inc_nums <- as.numeric(str_extract(part_inc_names, "^[0-9]."))
 adj_file_nos(target = 6, directory = "part_inc")
 
 # part decrement ----------------------------------------------------------
 dir.create("part_dec")
-sequence_file_ops(c(1:5, 7:11), target_dir = "part_dec")
+seq_file_ops(c(1:5, 7:11), target_dir = "part_dec")
 part_dec_names <- list.files("part_dec")
 part_dec_nums <- as.numeric(str_extract(part_dec_names, "^[0-9]."))
 adj_file_nos(target = 7, directory = "part_dec", action = "down")

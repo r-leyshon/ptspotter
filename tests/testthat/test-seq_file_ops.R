@@ -1,12 +1,12 @@
 
 # fileOps -----------------------------------------------------------------
-sequence_file_ops(n = 5, target_dir = "n_is_5")
-sequence_file_ops(n = c(1:5), target_dir = "n_is_1_to_5")
-sequence_file_ops(n = 100, target_dir = "n_is_100")
-sequence_file_ops(n = c(1:100), target_dir = "n_is_1_to_100")
-sequence_file_ops(n = c(1, 3, 5, 7, 9), target_dir = "n_is_odd_nums")
-sequence_file_ops(n = c(1, 3:8, 10), target_dir = "n_is_mixed_vec")
-sequence_file_ops(n = 5, target_dir = "testing_filetype", filetype = "txt")
+seq_file_ops(n = 5, target_dir = "n_is_5")
+seq_file_ops(n = c(1:5), target_dir = "n_is_1_to_5")
+seq_file_ops(n = 100, target_dir = "n_is_100")
+seq_file_ops(n = c(1:100), target_dir = "n_is_1_to_100")
+seq_file_ops(n = c(1, 3, 5, 7, 9), target_dir = "n_is_odd_nums")
+seq_file_ops(n = c(1, 3:8, 10), target_dir = "n_is_mixed_vec")
+seq_file_ops(n = 5, target_dir = "testing_filetype", filetype = "txt")
 
 
 # tests -------------------------------------------------------------------
@@ -14,10 +14,10 @@ sequence_file_ops(n = 5, target_dir = "testing_filetype", filetype = "txt")
 
 # expect message ----------------------------------------------------------
 test_that("func produces expected messages", {
-  expect_message(sequence_file_ops(1, target_dir = "test_seq"),
+  expect_message(seq_file_ops(1, target_dir = "test_seq"),
                  "New files created:")
 
-  expect_message(sequence_file_ops(1, target_dir = "test_new_dir"),
+  expect_message(seq_file_ops(1, target_dir = "test_new_dir"),
                  "created test_new_dir/ as it was not found.")
 })
 

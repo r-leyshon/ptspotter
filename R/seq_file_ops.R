@@ -1,4 +1,4 @@
-#' sequence_file_ops
+#' seq_file_ops
 #'
 #' Quickly create the required number of sequentially labelled files.
 #'
@@ -9,19 +9,19 @@
 #'
 #' @param filetype The suffix to append the filename. Defaults to ".R".
 #'
-#'@param force Defaults to FALSE. If set to TRUE, sequence_file_ops will
+#'@param force Defaults to FALSE. If set to TRUE, seq_file_ops will
 #'overwrite any pre-existing files that match the write filenames asked for.
 #'
 #' @return Write a series of sequentially numbered files within a specified
 #' directory. Creates the directory if required.
 #' @export
 
-sequence_file_ops <- function(n, target_dir = "munge", filetype = "R",
+seq_file_ops <- function(n, target_dir = "munge", filetype = "R",
                               force = FALSE){
   if(!file.exists(target_dir)){
     # if the directory doesn't exist, create it with a prompt.
     dir.create(target_dir)
-    message(paste("sequence_file_ops() created",
+    message(paste("seq_file_ops() created",
                 paste0(target_dir, "/"), "as it was not found."))
   }
 
