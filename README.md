@@ -49,7 +49,7 @@ instead.
 
 ***
 
-* **sequence_file_ops**:  Write a series of sequentially numbered files within a
+* **seq_file_ops**:  Write a series of sequentially numbered files within a
 specified directory. Creates the directory if required.  
 Arguments:  
 <u>target_dir</u>: Directory to create files. Defaults to "munge". Creates
@@ -58,7 +58,7 @@ the directory if file.exists(target_dir) evaluates to FALSE.
 vector.  
 <u>filetype</u>: The suffix to append the filename with. Do not include full
 stops / periods. Defaults to "R".  
-<u>force</u>: Defaults to FALSE. If set to TRUE, sequence_file_ops will
+<u>force</u>: Defaults to FALSE. If set to TRUE, seq_file_ops will
 overwrite any pre-existing files that match the write filenames asked for.
 
 ***
@@ -78,8 +78,9 @@ object is assigned prior to calling wrap_up.
 ### Version 0.3
 
 * New tests.
-* adj_file_nos() & sequence_file_ops() no longer introduces hashcodes into names
+* adj_file_nos() & seq_file_ops() no longer introduces hashcodes into names
 (file.rename bug resolved).
+* sequence_file_ops renamed to seq_file_ops.
 
 ### Version 0.2
 
@@ -112,7 +113,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* unit test message() sequence_file_ops
+* unit test message() seq_file_ops
 * unit tests for all functions 
 * examples in documentation
 * github.io vignettes.
@@ -122,7 +123,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 * adj_file_nos is currently failing unit test. Losing first file. Issue is when 
 target = 1. Adjust to use file.copy then file.remove the original source files.
-* issue: sequence_file_ops(n = 5) creates 5 files, naming is 01.R etc.
+* issue: seq_file_ops(n = 5) creates 5 files, naming is 01.R etc.
 adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved
 but convert to a test. Above issue only applies when filename alpha are all
 equal.
