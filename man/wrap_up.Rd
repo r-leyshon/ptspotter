@@ -4,15 +4,11 @@
 \alias{wrap_up}
 \title{Wrap up file execution.}
 \usage{
-wrap_up(start_time, pipeline_message, pos = 1)
+wrap_up(start_time, pos = 1)
 }
 \arguments{
 \item{start_time}{A POSIXct object created by executing Sys.time()'.Ensure
 this object is assigned prior to calling wrap_up().}
-
-\item{pipeline_message}{A character vector object used to convey information
-about the current status of the pipeline. Ensure this object is assigned
-prior to calling wrap_up().}
 
 \item{pos}{The environment which to assign pipeline_message. Defaults to 1,
 equivalent to the .GlobalEnv.}

@@ -64,16 +64,12 @@ overwrite any pre-existing files that match the write filenames asked for.
 ***
 
 * **wrap_up**: Calculates and prints execution duration since
-'start_time <- Sys.time' Updates `pipeline_message` with "Pipeline halted.".
-Plays an audio jingle using
-[{beepr}](https://cran.r-project.org/package=beepr). Stops execution with a
-message indicating file location of wrap_up call.  
+'start_time <- Sys.time'.
+Plays an audio jingle using [{beepr}](https://cran.r-project.org/package=beepr).
+Stops execution with a message indicating file location of wrap_up call.  
 Arguments:  
 <u>s_time</u>: A POSIXct object created by executing Sys.time'. Ensure this
 object is assigned prior to calling wrap_up.  
-<u>pipeline_message</u>: A character vector object used to convey information
-about the current status of the pipeline. Ensure this object is assigned
-prior to calling wrap_up.
 
 ***
 

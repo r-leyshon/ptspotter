@@ -9,10 +9,6 @@
 #' @param start_time A POSIXct object created by executing Sys.time()'.Ensure
 #' this object is assigned prior to calling wrap_up().
 #'
-#' @param pipeline_message A character vector object used to convey information
-#' about the current status of the pipeline. Ensure this object is assigned
-#' prior to calling wrap_up().
-#'
 #' @param pos The environment which to assign pipeline_message. Defaults to 1,
 #' equivalent to the .GlobalEnv.
 #'
@@ -23,20 +19,17 @@
 #' @import beepr
 #'
 #' @export
-wrap_up <- function(start_time, pipeline_message, pos = 1) {
+wrap_up <- function(start_time, pos = 1) {
   # calculate elapsed time
   elapsed <- Sys.time() - start_time
   # message execution duration
   message("Script executed. Duration: ")
   message(utils::capture.output(round(elapsed, digits = 3)))
 
-  # update pipeline message.
-  pip_msg <- "Pipeline halted."
-  assign("pipeline_message", pip_msg, envir = as.environment(pos))
-
   # sound alert when script completes
-  beepr::beep("coin")
+  beep("coin")
 
   # stop execution
-  stop(paste("wrap_up at", basename(this.path::this.path())))
+  stop(paste("wrap_up at", basename(this.path())))
+
 }
