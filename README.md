@@ -119,6 +119,8 @@ overwrites pre-existing files if argument force = TRUE.
 * wrap_up always assigns to "pipeline_message", needs to be user assigned.
 * unit test message() sequence_file_ops
 * unit tests for all functions 
+* examples in documentation
+* github.io vignettes.
 * function to trim decimals from filenames.
 
 ## Resolved: Convert to test.
