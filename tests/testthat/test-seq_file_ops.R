@@ -61,8 +61,8 @@ test_that("specified filetype is found", {
 
 # force -------------------------------------------------------------------
 
-test_that("func produces warning for pre-existing sequences",
-          expect_warning(seq_file_ops(n = 5, target_dir = "testing_force"),
+test_that("func messages for pre-existing sequences",
+          expect_message(seq_file_ops(n = 5, target_dir = "testing_force"),
                          "Following found files will not be overwritten:")
           )
 
@@ -70,9 +70,9 @@ test_that("force has not allowed additional files to be written",
           expect_true(length(list.files("testing_force")) == 5)
           )
 
-test_that("force results in warning for part sequences",
+test_that("force results in message for part sequences",
 
-          expect_warning(seq_file_ops(n = 7, target_dir = "testing_force"),
+          expect_message(seq_file_ops(n = 7, target_dir = "testing_force"),
                          "Following found files will not be overwritten:")
           )
 
@@ -80,7 +80,15 @@ test_that("content of pre-existing sequence scripts is unaffected",
           expect_identical(readLines("testing_force/01-.R"), "testing force")
           )
 
+test_that("func warns when force == TRUE",
+          expect_warning(
+            seq_file_ops(1, target_dir = "testing_force", force = TRUE),
+            "force = TRUE. Files may be overwritten.")
+          )
 
+test_that("force == TRUE overwites pre-existing sequence files",
+          expect_true(length(readLines("testing_force/01-.R")) == 0)
+          )
 
 # leading 0s --------------------------------------------------------------
 

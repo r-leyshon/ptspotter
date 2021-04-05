@@ -55,7 +55,7 @@ seq_file_ops <- function(n, target_dir = "munge", filetype = "R",
   # only message warning if at least one existing file is found
   if(length(ex_files) > 0){
   # message message
-  warning(paste("Following found files will not be overwritten:",
+  message(paste("Following found files will not be overwritten:",
                 paste(ex_files, collapse = ", ")))
   }
 
@@ -67,7 +67,7 @@ seq_file_ops <- function(n, target_dir = "munge", filetype = "R",
 
   } else{
     # message conf msg
-    message(paste(
+    warning(paste(
       "force = TRUE. Files may be overwritten. Following files created",
       paste(req_files, collapse = ", ")
       ))
