@@ -23,8 +23,9 @@ wrap_up <- function(start_time, pos = 1) {
   # calculate elapsed time
   elapsed <- Sys.time() - start_time
   # message execution duration
-  message("Script executed. Duration: ")
-  message(utils::capture.output(round(elapsed, digits = 3)))
+  message(paste(
+    "Script executed. Duration:",
+    utils::capture.output(round(elapsed, digits = 3))))
 
   # sound alert when script completes
   beep("coin")

@@ -12,4 +12,9 @@ test_that("func produces expected error",
             )
           )
 
+test_that("func produces expected message",
+          expect_message(expect_error(wrap_up(start_time = s_time)),
+                         "Time difference of"
+                         )
 
+          )
