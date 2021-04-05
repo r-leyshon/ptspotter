@@ -7,7 +7,8 @@ seq_file_ops(n = c(1:100), target_dir = "n_is_1_to_100")
 seq_file_ops(n = c(1, 3, 5, 7, 9), target_dir = "n_is_odd_nums")
 seq_file_ops(n = c(1, 3:8, 10), target_dir = "n_is_mixed_vec")
 seq_file_ops(n = 5, target_dir = "testing_filetype", filetype = "txt")
-
+seq_file_ops(n = 5, target_dir = "testing_force")
+writeLines("testing force", "testing_force/01-.R")
 
 # tests -------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -59,9 +60,26 @@ test_that("specified filetype is found", {
 
 
 # force -------------------------------------------------------------------
-# force on and off in a mixed dir
-# warning when force is TRUE
-# message when force is false
+
+test_that("func produces warning for pre-existing sequences",
+          expect_warning(seq_file_ops(n = 5, target_dir = "testing_force"),
+                         "Following found files will not be overwritten:")
+          )
+
+test_that("force has not allowed additional files to be written",
+          expect_true(length(list.files("testing_force")) == 5)
+          )
+
+test_that("force results in warning for part sequences",
+
+          expect_warning(seq_file_ops(n = 7, target_dir = "testing_force"),
+                         "Following found files will not be overwritten:")
+          )
+
+test_that("content of pre-existing sequence scripts is unaffected",
+          expect_identical(readLines("testing_force/01-.R"), "testing force")
+          )
+
 
 
 # leading 0s --------------------------------------------------------------
