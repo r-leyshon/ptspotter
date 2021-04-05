@@ -112,7 +112,6 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* wrap_up always assigns to "pipeline_message", needs to be user assigned.
 * unit test message() sequence_file_ops
 * unit tests for all functions 
 * examples in documentation
