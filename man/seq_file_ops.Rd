@@ -24,3 +24,13 @@ directory. Creates the directory if required.
 \description{
 Quickly create the required number of sequentially labelled files.
 }
+\examples{
+seq_file_ops(10)
+
+seq_file_ops(c(1, 3:8, 10), target_dir = "complex_vector")
+
+# if force == FALSE, pre-existing numbered scripts will not be overwritten
+# only 02-.R and 09-.R are written below
+seq_file_ops(10, target_dir = "complex_vector")
+
+}
