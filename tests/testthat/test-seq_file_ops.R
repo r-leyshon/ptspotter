@@ -92,4 +92,21 @@ test_that("force == TRUE overwites pre-existing sequence files",
 
 # leading 0s --------------------------------------------------------------
 
+# regex used matches single digit at the start of a string that is NOT followed
+# by another digit. These shouldn't exist: 1-.R, 2-.R etc.
+pat <- "^\\d(?!\\d)"
+test_that("there are no single digits in sequence filenames", {
+  expect_false(all(str_detect(list.files("n_is_5"), pat)))
+  expect_false(all(str_detect(list.files("n_is_1_to_5"), pat)))
+  expect_false(all(str_detect(list.files("n_is_100"), pat)))
+  expect_false(all(str_detect(list.files("n_is_1_to_100"), pat)))
+  expect_false(all(str_detect(list.files("n_is_odd_nums"), pat)))
+  expect_false(all(str_detect(list.files("n_is_mixed_vec"), pat)))
+  expect_false(all(str_detect(list.files("testing_filetype"), pat)))
+  expect_false(all(str_detect(list.files("testing_force"), pat)))
+
+})
+
+
+
 

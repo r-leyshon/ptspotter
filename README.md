@@ -113,17 +113,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* unit test message() seq_file_ops
 * unit tests for all functions 
 * examples in documentation
 * github.io vignettes.
 * function to trim decimals from filenames.
-
-## Resolved: Convert to test.
-
-* adj_file_nos is currently failing unit test. Losing first file. Issue is when 
-target = 1. Adjust to use file.copy then file.remove the original source files.
-* issue: seq_file_ops(n = 5) creates 5 files, naming is 01.R etc.
-adj_file_nos(target = 4) then removes period, leaving syntax 01R etc. Resolved
-but convert to a test. Above issue only applies when filename alpha are all
-equal.
