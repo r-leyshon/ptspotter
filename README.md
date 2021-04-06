@@ -81,6 +81,7 @@ Arguments:
 * adj_file_nos() & seq_file_ops() no longer introduces hashcodes into names
 (file.rename bug resolved).
 * sequence_file_ops renamed to seq_file_ops.
+* wrap_up pos argument removed and start_time now optional.
 
 ### Version 0.2
 
@@ -113,7 +114,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* controlled error in wrap_up when no sys.time object found. 
+* write tests for log_enable
 * examples in documentation
 * github.io vignettes.
 * function to trim decimals from filenames.
