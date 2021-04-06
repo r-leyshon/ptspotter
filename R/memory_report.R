@@ -12,15 +12,14 @@ memory_report <- function() {
   # perform a manual garbage collection
   gc()
   # show me the filename of current file
-  thisfile <- basename(this.path::this.path())
+  thisfile <- basename(this.path())
 
   # message the used memory at this point
   message(paste(
-    "Memory size checked at",
-    thisfile, "is",
+    "Memory size checked at", thisfile, "is",
     if(Sys.info()["sysname"] == "Darwin"){
       pryr::mem_used()
       } else(utils::memory.size()
-             )
-    ))
-}
+             ))
+  )
+  }
