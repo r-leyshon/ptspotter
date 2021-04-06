@@ -4,23 +4,20 @@
 \alias{wrap_up}
 \title{Wrap up file execution.}
 \usage{
-wrap_up(start_time, pos = 1)
+wrap_up(start_time = NULL)
 }
 \arguments{
-\item{start_time}{A POSIXct object created by executing Sys.time()'.Ensure
-this object is assigned prior to calling wrap_up().}
-
-\item{pos}{The environment which to assign pipeline_message. Defaults to 1,
-equivalent to the .GlobalEnv.}
+\item{start_time}{Optional POSIXct object, created by assigning Sys.time()
+to an object prior to executing \code{wrap_up()}.}
 }
 \value{
 Interrupts sequential script execution with an auditory signal. Logs
-the elapsed time and outputs the script location.
+the elapsed time if start_time is used, outputs the script location.
 }
 \description{
 Used to interrupt sequential script execution while testing or debugging.
-messages the elapsed time since execution of \code{start_time}. Assign \code{start_time}
-at the start of the first sequential script. Updates the pipeline message.
-Outputs an auditory signal and breaks sequential script execution,
-identifying the script at which execution was interrupted.
+messages the elapsed time since execution of \code{start_time}. Assign
+\code{start_time} at the start of the first sequential script. Outputs an auditory
+signal and breaks sequential script execution, identifying the script at
+which execution was interrupted.
 }

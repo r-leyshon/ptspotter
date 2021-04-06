@@ -68,8 +68,8 @@ overwrite any pre-existing files that match the write filenames asked for.
 Plays an audio jingle using [{beepr}](https://cran.r-project.org/package=beepr).
 Stops execution with a message indicating file location of wrap_up call.  
 Arguments:  
-<u>s_time</u>: A POSIXct object created by executing Sys.time'. Ensure this
-object is assigned prior to calling wrap_up.  
+<u>start_time</u>: Optional POSIXct object, created by assigning Sys.time()
+#' to an object prior to executing `wrap_up()`.
 
 ***
 
@@ -113,7 +113,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* unit tests for all functions 
+* controlled error in wrap_up when no sys.time object found. 
 * examples in documentation
 * github.io vignettes.
 * function to trim decimals from filenames.
