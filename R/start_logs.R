@@ -13,10 +13,10 @@
 #'
 #' @export
 log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
-  file_app <- log4r::file_appender(logfile_loc,
+  file_app <- file_appender(logfile_loc,
                                    append = TRUE,
-                                   layout = log4r::default_log_layout())
-  my_logger <- log4r::logger(
+                                   layout = default_log_layout())
+  my_logger <- logger(
     threshold = "INFO",
     appenders = file_app)
 
