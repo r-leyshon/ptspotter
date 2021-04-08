@@ -1,6 +1,10 @@
 
 # create infrastructure for testing ---------------------------------------
 seq_file_ops(n = 5)
+
+writeLines("start of seq", "munge/01-.R")
+writeLines("end of seq", "munge/05-.R")
+
 start_count <- length(list.files("munge"))
 munge_nums <- as.numeric(str_extract(list.files("munge"), "^[0-9]."))
 adj_file_nos(target = 1)
@@ -12,6 +16,11 @@ seq_file_ops(n = 5, target_dir = "mixed_folder")
 mixed_nums <- as.numeric(str_extract(list.files("mixed_folder"),
                                               "^[0-9]."))
 file.create("mixed_folder/non_numbered.R")
+
+writeLines("start of seq", "mixed_folder/01-.R")
+writeLines("end of seq", "mixed_folder/05-.R")
+writeLines("not in seq", "mixed_folder/non_numbered.R")
+
 mixed_start_count <- length(list.files("mixed_folder"))
 adj_file_nos(target = 1, directory = "mixed_folder")
 mixed_end_count <- length(list.files("mixed_folder"))
@@ -19,15 +28,22 @@ mixed_end_count <- length(list.files("mixed_folder"))
 # down --------------------------------------------------------------------
 dir.create("action_down")
 seq_file_ops(c(5:10), target_dir = "action_down")
+
+writeLines("start of seq", "action_down/05-.R")
+writeLines("end of seq", "action_down/10-.R")
+
 down_nums <- as.numeric(str_extract(list.files("action_down"),
                                              "^[0-9]."))
 adj_file_nos(target = 5, directory = "action_down", action = "down")
 
-
-
 # part increment ----------------------------------------------------------
 dir.create("part_inc")
 seq_file_ops(c(1:10), target_dir = "part_inc")
+
+writeLines("start of seq", "part_inc/01-.R")
+writeLines("end of seq", "part_inc/10-.R")
+writeLines("start of inc", "part_inc/06-.R")
+
 part_inc_names <- list.files("part_inc")
 part_inc_nums <- as.numeric(str_extract(part_inc_names, "^[0-9]."))
 adj_file_nos(target = 6, directory = "part_inc")
@@ -35,6 +51,11 @@ adj_file_nos(target = 6, directory = "part_inc")
 # part decrement ----------------------------------------------------------
 dir.create("part_dec")
 seq_file_ops(c(1:5, 7:11), target_dir = "part_dec")
+
+writeLines("start of seq", "part_dec/01-.R")
+writeLines("end of seq", "part_dec/11-.R")
+writeLines("start of dec", "part_dec/07-.R")
+
 part_dec_names <- list.files("part_dec")
 part_dec_nums <- as.numeric(str_extract(part_dec_names, "^[0-9]."))
 adj_file_nos(target = 7, directory = "part_dec", action = "down")
@@ -42,7 +63,6 @@ adj_file_nos(target = 7, directory = "part_dec", action = "down")
 # tests -------------------------------------------------------------------
 # -------------------------------------------------------------------------
 # -------------------------------------------------------------------------
-
 
 # file counts -------------------------------------------------------------
 
@@ -139,12 +159,6 @@ test_that("files >= target are adjusted", {
 
           })
 
-# directory ---------------------------------------------------------------
-
-
-# 0 in front --------------------------------------------------------------
-
-
 # expect message ----------------------------------------------------------
 test_that("func produces message on success",
           expect_message(
@@ -152,3 +166,38 @@ test_that("func produces message on success",
           )
 )
 
+# script content ----------------------------------------------------------
+# test_that("whats in part_inc",
+#           expect_identical(c(
+#             "04-.R",
+#             "05-.R",
+#             "06-.R",
+#             "07-.R",
+#             "04-.R",
+#             "05-.R",
+#             "06-.R",
+#             "07-.R",
+#             "08-.R",
+#             "09-.R"), list.files("part_inc"))
+# )
+
+test_that("file contents are incremented as expected", {
+  expect_identical(readLines("munge/03-.R"), "start of seq")
+  expect_identical(readLines("munge/07-.R"), "end of seq")
+
+  expect_identical(readLines("mixed_folder/02-.R"), "start of seq")
+  expect_identical(readLines("mixed_folder/06-.R"), "end of seq")
+  expect_identical(readLines("mixed_folder/non_numbered.R"), "not in seq")
+
+  expect_identical(readLines("action_down/04-.R"), "start of seq")
+  expect_identical(readLines("action_down/09-.R"), "end of seq")
+
+  expect_identical(readLines("part_inc/01-.R"), "start of seq")
+  expect_identical(readLines("part_inc/11-.R"), "end of seq")
+  expect_identical(readLines("part_inc/07-.R"), "start of inc")
+
+  expect_identical(readLines("part_dec/01-.R"), "start of seq")
+  expect_identical(readLines("part_dec/10-.R"), "end of seq")
+  expect_identical(readLines("part_dec/06-.R"), "start of dec")
+
+  })
