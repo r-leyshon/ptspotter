@@ -16,6 +16,26 @@
 #'
 #' @return Renumbers filenames in the specified directory, according to the
 #' specified action. Only affects the target file and above.
+#'
+#' #' @examples
+#'\dontrun{
+#'seq_file_ops(10)
+#'
+#'# Increase files numbered 6 and above by 1
+#'adj_file_nos(target = 6)
+#'
+#'# Increase above target files by a further 2
+#'adj_file_nos(target = 6, step = 2)
+#'
+#'# Use step = "down" to restore original sequence
+#'adj_file_nos(target = 6, action = "down", step = 3)
+#'
+#'# for images
+#'seq_file_ops(n = 5, target_dir = "images", filetype = "png")
+#'# adjust by decimals
+#'adj_file_nos(target = 1, directory = "images", step = 0.1)
+#'}
+#'
 #' @export
 adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
   # list all files in specified directory
