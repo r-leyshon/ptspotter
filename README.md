@@ -114,7 +114,7 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* examples in documentation
 *log_enable optional args for logger_nm, file_app_nm
+* update docs for above args.
 * github.io vignettes.
 * function to trim decimals from filenames.
