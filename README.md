@@ -116,5 +116,6 @@ overwrites pre-existing files if argument force = TRUE.
 
 * write tests for log_enable
 * examples in documentation
+*log_enable optional args for logger_nm, file_app_nm
 * github.io vignettes.
 * function to trim decimals from filenames.

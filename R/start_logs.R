@@ -35,7 +35,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
 
         }
     } else {
-      message("File appender already exists. Not re-assigned")
+      message("File appender already exists. Not re-assigned.")
 
     }
 
@@ -49,11 +49,11 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
       message("Logger object sucessfully assigned to 'my_logger'")
 
         } else{
-          stop("Logger object not assigned. Logging not enabled.")
+          stop("Logger not assigned. Logging not enabled.")
 
         }
       } else{
-        message("my_logger already exists. Not re-assigned.")
+        message("Logger already exists. Not re-assigned.")
 
       }
 
