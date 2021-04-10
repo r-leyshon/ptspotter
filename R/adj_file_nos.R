@@ -17,8 +17,8 @@
 #' @return Renumbers filenames in the specified directory, according to the
 #' specified action. Only affects the target file and above.
 #'
-#' #' @examples
-#'\dontrun{
+#' @examples
+#' \dontrun{
 #'seq_file_ops(10)
 #'
 #'# Increase files numbered 6 and above by 1

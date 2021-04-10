@@ -11,6 +11,14 @@
 #'
 #' @import log4r
 #'
+#' @examples
+#' \dontrun{
+#' # create logging infrastructure
+#' log_file_ops()
+#' # enable logging
+#' log_enable()
+#' }
+#'
 #' @export
 log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
   file_app <- file_appender(logfile_loc,
@@ -81,6 +89,12 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
 #'
 #' @return Creates log directory and log file if required. Calls log_enable()
 #' to assign necessary logging objects in global scope.
+#'
+#' @examples
+#' \dontrun{
+#' log_file_ops()
+#' }
+#'
 #' @export
 log_file_ops <- function(dir_path = "logs",
                          logfile_nm = "logfile"){

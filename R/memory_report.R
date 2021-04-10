@@ -7,6 +7,11 @@
 #'
 #' @import this.path
 #'
+#' @examples
+#' \dontrun{
+#' memory_report()
+#' }
+#'
 #' @export
 memory_report <- function() {
   # perform a manual garbage collection

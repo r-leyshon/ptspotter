@@ -18,3 +18,12 @@ Creates logger and file appender.
 \description{
 Assigns the necessary global scope objects for logging with log4r.
 }
+\examples{
+\dontrun{
+# create logging infrastructure
+log_file_ops()
+# enable logging
+log_enable()
+}
+
+}

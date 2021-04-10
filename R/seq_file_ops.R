@@ -16,7 +16,7 @@
 #' directory. Creates the directory if required.
 #'
 #' @examples
-#'\dontrun{
+#' \dontrun{
 #'seq_file_ops(10)
 #'
 #'seq_file_ops(c(1, 3:8, 10), target_dir = "complex_vector")
