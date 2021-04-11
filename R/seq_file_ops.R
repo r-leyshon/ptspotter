@@ -9,8 +9,8 @@
 #'
 #' @param filetype The suffix to append the filename. Defaults to ".R".
 #'
-#'@param force Defaults to FALSE. If set to TRUE, seq_file_ops will
-#'overwrite any pre-existing files that match the write filenames asked for.
+#' @param force Defaults to FALSE. If set to TRUE, seq_file_ops will
+#' overwrite any pre-existing files that match the write filenames asked for.
 #'
 #' @return Write a series of sequentially numbered files within a specified
 #' directory. Creates the directory if required.
