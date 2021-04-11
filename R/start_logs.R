@@ -38,13 +38,13 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1,
 
   # file appender
   # check for presence of file_app in case of reruns
-  if(!deparse(substitute(appender_nm)) %in% ls(name = .GlobalEnv)){
+  if(!deparse(substitute(appender_nm)) %in% ls(name = as.environment(pos))){
     # assign file appender
     assign(deparse(substitute(appender_nm)), file_app,
            envir = as.environment(pos))
 
     #test for presence
-    if(deparse(substitute(appender_nm)) %in% ls(name = .GlobalEnv)){
+    if(deparse(substitute(appender_nm)) %in% ls(name = as.environment(pos))){
       message(paste("File appender successfully assigned to",
                     deparse(substitute(appender_nm)))
       )
@@ -60,12 +60,12 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1,
 
   # logger object
   #test for presence of my_logger in case of reruns
-  if(!deparse(substitute(logger_nm)) %in% ls(name = .GlobalEnv)){
+  if(!deparse(substitute(logger_nm)) %in% ls(name = as.environment(pos))){
     # create logger
     assign(deparse(substitute(logger_nm)), my_logger,
            envir = as.environment(pos))
     # test for presence
-    if(deparse(substitute(logger_nm)) %in% ls(name = .GlobalEnv)){
+    if(deparse(substitute(logger_nm)) %in% ls(name = as.environment(pos))){
       message(paste("Logger object sucessfully assigned to",
                     deparse(substitute(logger_nm))))
 
@@ -82,9 +82,8 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1,
   if(!file.exists(logfile_loc)){
     warning(
       "Logfile not found. Please run ptspotter::log_file_ops.")
-  }
-
     }
+  }
 
 
 # log_file_ops ------------------------------------------------------------
