@@ -10,14 +10,23 @@ test_that("func produces message on success", {
     with(globalenv(), {
       log_enable(logfile_loc = "log_enable_test/log_enable.txt")}),
     "successfully assigned to")
+  expect_message(
+    with(globalenv(), {
+      log_enable(logfile_loc = "log_enable_test/log_enable.txt",
+                 logger_nm = diff_logger,
+                 appender_nm = diff_appender)}),
+    "successfully assigned to")
 
 })
+
 
 # expect env objects ------------------------------------------------------
 test_that("log_enable created logging infrastructure", {
   with(globalenv(), {
     expect_true("my_logger" %in% ls())
     expect_true("file_app" %in% ls())
+    expect_true("diff_logger" %in% ls())
+    expect_true("diff_appender" %in% ls())
   })
 
 })
