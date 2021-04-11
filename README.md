@@ -114,7 +114,5 @@ overwrites pre-existing files if argument force = TRUE.
 
 ## To do
 
-* tests for logfile_nm and appender_nm
-* log_enable pos argument, some checks within local scope are hard coded.
 * github.io vignettes.
 * function to trim decimals from filenames.
