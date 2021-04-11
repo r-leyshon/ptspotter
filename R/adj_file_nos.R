@@ -30,7 +30,7 @@
 #'# Use step = "down" to restore original sequence
 #'adj_file_nos(target = 6, action = "down", step = 3)
 #'
-#'# for images
+#'# writing books or websites:
 #'seq_file_ops(n = 5, target_dir = "images", filetype = "png")
 #'# adjust by decimals
 #'adj_file_nos(target = 1, directory = "images", step = 0.1)

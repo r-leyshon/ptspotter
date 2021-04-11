@@ -7,6 +7,12 @@
 #' @param pos The environment which to assign pipeline_message. Defaults to 1,
 #' equivalent to the .GlobalEnv.
 #'
+#' @param logger_nm What to call the logger. Provide unquoted strings with no
+#' spaces. Defaults to my_logger.
+#'
+#' @param appender_nm What to call the appender function. Provide unquoted
+#' strings with no spaces. Defaults to file_app.
+#'
 #' @return Creates logger and file appender.
 #'
 #' @import log4r
@@ -20,23 +26,28 @@
 #' }
 #'
 #' @export
-log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
+log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1,
+                       logger_nm = my_logger, appender_nm = file_app) {
+
   file_app <- file_appender(logfile_loc,
-                                   append = TRUE,
-                                   layout = default_log_layout())
+                            append = TRUE,
+                            layout = default_log_layout())
   my_logger <- logger(
     threshold = "INFO",
     appenders = file_app)
 
   # file appender
   # check for presence of file_app in case of reruns
-  if(!"file_app" %in% ls(name = .GlobalEnv)){
+  if(!deparse(substitute(appender_nm)) %in% ls(name = .GlobalEnv)){
     # assign file appender
-    assign("file_app", file_app, envir = as.environment(pos))
-    #test for presence
+    assign(deparse(substitute(appender_nm)), file_app,
+           envir = as.environment(pos))
 
-    if("file_app" %in% ls(name = .GlobalEnv)){
-      message("File appender successfully assigned to 'file_app'")
+    #test for presence
+    if(deparse(substitute(appender_nm)) %in% ls(name = .GlobalEnv)){
+      message(paste("File appender successfully assigned to",
+                    deparse(substitute(appender_nm)))
+      )
 
       } else{
         stop("File appender not assigned. Logging not enabled.")
@@ -49,12 +60,14 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
 
   # logger object
   #test for presence of my_logger in case of reruns
-  if(!"my_logger" %in% ls(name = .GlobalEnv)){
+  if(!deparse(substitute(logger_nm)) %in% ls(name = .GlobalEnv)){
     # create logger
-    assign("my_logger", my_logger, envir = as.environment(pos))
+    assign(deparse(substitute(logger_nm)), my_logger,
+           envir = as.environment(pos))
     # test for presence
-    if("my_logger" %in% ls(name = .GlobalEnv)){
-      message("Logger object sucessfully assigned to 'my_logger'")
+    if(deparse(substitute(logger_nm)) %in% ls(name = .GlobalEnv)){
+      message(paste("Logger object sucessfully assigned to",
+                    deparse(substitute(logger_nm))))
 
         } else{
           stop("Logger not assigned. Logging not enabled.")
@@ -96,9 +109,7 @@ log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1) {
 #' }
 #'
 #' @export
-log_file_ops <- function(dir_path = "logs",
-                         logfile_nm = "logfile"){
-
+log_file_ops <- function(dir_path = "logs", logfile_nm = "logfile"){
   # store log location
   log_loc <- paste0(dir_path, "/", logfile_nm, ".txt")
 
