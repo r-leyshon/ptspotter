@@ -79,9 +79,10 @@ Arguments:
 
 * New tests.
 * adj_file_nos() & seq_file_ops() no longer introduces hashcodes into names
-(file.rename bug resolved).
+(file.rename behaviour resolved).
 * sequence_file_ops renamed to seq_file_ops.
 * wrap_up pos argument removed and start_time now optional.
+* log_enable now has optional arguments logger_nm and appender_nm.
 
 ### Version 0.2
 
