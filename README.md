@@ -24,7 +24,7 @@ file numbering. Accepts decimals also.
 
 * **log_file_ops**: Creates a specified logging directory and logfile if
 required.
-Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to
+Expects [log4r](https://cran.r-project.org/package=log4r) is attached to
 namespace.  
 Arguments:  
 <u>dir_path</u>: The name of the folder in which the logfile should be saved.
@@ -36,7 +36,7 @@ Defaults to "logfile".
 
 * **log_enable**: Assigns file appender and logger objects to global
 environment.
-Expects [{log4r}](https://cran.r-project.org/package=log4r) is attached to
+Expects [log4r](https://cran.r-project.org/package=log4r) is attached to
 namespace.  
 Arguments:  
 <u>logfile_loc</u>: The path to the logfile. Defaults to "logs/logfile.txt".
@@ -65,7 +65,7 @@ overwrite any pre-existing files that match the write filenames asked for.
 
 * **wrap_up**: Calculates and prints execution duration since
 'start_time <- Sys.time'.
-Plays an audio jingle using [{beepr}](https://cran.r-project.org/package=beepr).
+Plays an audio jingle using [beepr](https://cran.r-project.org/package=beepr).
 Stops execution with a message indicating file location of wrap_up call.  
 Arguments:  
 <u>start_time</u>: Optional POSIXct object, created by assigning Sys.time()
