@@ -1,5 +1,5 @@
 Package: ptspotter
-Title: Helper Functions for Use with Project Template
+Title: Helper Functions For Use With Project Template
 Version: 1.0
 Authors@R:
     c(person(given = "Rich",
