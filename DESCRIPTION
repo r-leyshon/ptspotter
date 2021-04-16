@@ -11,7 +11,9 @@ Authors@R:
            role = "ctb",
            email = "akwsimmo@gmail.com"))
 Description: Utility functions produced specifically (but not limited to) for
-    working with Project Template data pipelines.
+    working with Project Template data pipelines. This package helps to quickly
+    create and manage sequentially numbered scripts, quickly set up logging with
+    log4r and functions to help debug and monitor procedures.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
