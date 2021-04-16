@@ -1,4 +1,4 @@
-# PT Spotter version 0.3.
+# PT Spotter version 1.0
 
 ## Description
 
@@ -74,6 +74,10 @@ Arguments:
 ***
 
 ## Changelog
+
+### Version 1.0
+
+* Bumped to 1.0 for CRAN submission and standardisation.
 
 ### Version 0.3
 
