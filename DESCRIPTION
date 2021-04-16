@@ -1,10 +1,10 @@
 Package: ptspotter
-Title: Helper Functions For Use With Project Template
+Title: Helper Functions for Use with Project Template
 Version: 1.0
 Authors@R:
     c(person(given = "Rich",
            family = "Leyshon",
-           role = c("aut", "cre"),
+           role = c("aut", "cph", "cre"),
            email = "leyshonrr@hotmail.co.uk"),
       person(given = "Andrew",
            family = "Simmons",
