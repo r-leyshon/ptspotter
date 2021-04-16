@@ -8,8 +8,3 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
-
-── R CMD check results ───────────────────────────────────────────── ptspotter 1.0 ────
-Duration: 12.1s
-
-0 errors ✓ | 0 warnings ✓ | 0 notes ✓

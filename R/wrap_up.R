@@ -16,15 +16,14 @@
 #' @import beepr
 #'
 #' @examples
-#' \dontrun{
+#'
 #' # halt execution with no timing
-#' wrap_up()
+#' try(wrap_up())
 #'
 #' # create timing checkpoint
 #' s_time <- Sys.time()
 #' # halt execution with timing
-#' wrap_up(s_time)
-#' }
+#' try(wrap_up(s_time))
 #'
 #' @export
 wrap_up <- function(start_time = NULL) {
