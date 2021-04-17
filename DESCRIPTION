@@ -10,10 +10,10 @@ Authors@R:
            family = "Simmons",
            role = "ctb",
            email = "akwsimmo@gmail.com"))
-Description: Utility functions produced specifically (but not limited to) for
-    working with "ProjectTemplate" data pipelines. This package helps to quickly
+Description: Utility functions produced specifically for (but not limited to) 
+    working with 'ProjectTemplate' data pipelines. This package helps to quickly
     create and manage sequentially numbered scripts, quickly set up logging with
-    "log4r" and functions to help debug and monitor procedures.
+    'log4r' and functions to help debug and monitor procedures.
 License: MIT + file LICENSE
 URL: https://github.com/r-leyshon/ptspotter
 BugReports: https://github.com/r-leyshon/ptspotter/issues
