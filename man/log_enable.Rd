@@ -30,6 +30,7 @@ Creates logger and file appender.
 Assigns the necessary global scope objects for logging with log4r.
 }
 \examples{
+\dontrun{
 # create logging infrastructure
 log_file_ops()
 # enable logging
@@ -37,5 +38,5 @@ log_enable()
 
 # tidy up environment
 unlink("logs", recursive = TRUE)
-
+}
 }
