@@ -2,4 +2,5 @@
 ^\.Rproj\.user$
 ^cran-comments\.md$
 ^CODE_OF_CONDUCT\.md$
+^README\.md$
 ^NEWS\.md$
