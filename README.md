@@ -78,51 +78,9 @@ Please note that the ptspotter project is released with a [Contributor Code of C
 
 ***
 
-## Changelog
-
-### Version 1.0
-
-* Bumped to 1.0 for CRAN submission and standardisation.
-
-### Version 0.3
-
-* New tests.
-* adj_file_nos() & seq_file_ops() no longer introduces hashcodes into names
-(file.rename behaviour resolved).
-* sequence_file_ops renamed to seq_file_ops.
-* wrap_up pos argument removed and start_time now optional.
-* log_enable now has optional arguments logger_nm and appender_nm.
-
-### Version 0.2
-
-* current_file now uses basename() for more efficient implementation.
-* log_enable asks for log_file_ops if logfile does not exist.
-* Prefers assign over <<- with position parameter.
-* adj_file_nos and sequence_file_ops use filename hashes for part filename
-duplication in the target directory (when some files have been named and some
-have not).
-* adj_file_nos no longer errors if target directory is a mix of numbered and
-non-numbered files.
-
-### Version 0.1
-
-* adj_file_nos introduces alphanumeric hash into filename if all files are
-identical.
-* current_file cleans string differently for Mac OS.
-* wrap_up uses control flow to prompt for log4r infrastructure.
-* sequence_file_ops - function to quickly create numbered scripts. Only
-overwrites pre-existing files if argument force = TRUE.
-
-***
-
 ## Installation Notes
 
 * If installing from GitHub results in a non-zero exit status, try:
 `Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS=TRUE)`, solution from [here](https://github.com/r-lib/remotes/issues/434).
 
 ***
-
-## To do
-
-* github.io vignettes.
-* function to trim decimals from filenames.
