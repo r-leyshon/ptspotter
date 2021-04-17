@@ -7,10 +7,8 @@
 #'
 #' @import this.path
 #'
-#' @examples
-#' \dontrun{
-#' memory_report()
-#' }
+#' @example
+#' try(memory_report())
 #'
 #' @export
 memory_report <- function() {

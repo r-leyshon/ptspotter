@@ -18,12 +18,13 @@
 #' @import log4r
 #'
 #' @examples
-#' \dontrun{
 #' # create logging infrastructure
 #' log_file_ops()
 #' # enable logging
 #' log_enable()
-#' }
+#'
+#' # tidy up environment
+#' unlink("logs", recursive = TRUE)
 #'
 #' @export
 log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1,

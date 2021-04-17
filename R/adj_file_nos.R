@@ -18,7 +18,6 @@
 #' specified action. Only affects the target file and above.
 #'
 #' @examples
-#' \dontrun{
 #'seq_file_ops(10)
 #'
 #'# Increase files numbered 6 and above by 1
@@ -34,7 +33,9 @@
 #'seq_file_ops(n = 5, target_dir = "images", filetype = "png")
 #'# adjust by decimals
 #'adj_file_nos(target = 1, directory = "images", step = 0.1)
-#'}
+#'
+#'# tidying up environment
+#'unlink(c("munge", "images"), recursive = TRUE)
 #'
 #' @export
 adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {

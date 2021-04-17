@@ -13,9 +13,3 @@ currently being executed.
 \description{
 Used to log memory allocation at points during sequential script execution.
 }
-\examples{
-\dontrun{
-memory_report()
-}
-
-}
