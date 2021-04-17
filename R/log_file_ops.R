@@ -1,7 +1,7 @@
 #' log_file_ops
 #'
-#' Create the necessary file infrastructure to efficiently get up and running
-#' with log4r.
+#' Create the necessary file infrastructure to efficiently start logging with
+#' "log4r".
 #'
 #' @param dir_path The name of the folder in which the logfile should be saved.
 #' Creates the folder if required. Defaults to "logs".

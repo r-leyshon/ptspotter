@@ -1,6 +1,6 @@
 #' log_enable
 #'
-#' Assigns the necessary global scope objects for logging with log4r.
+#' Assigns the necessary global scope objects for logging with "log4r".
 #'
 #' @param logfile_loc The path to the logfile. Defaults to "logs/logfile.txt".
 #'

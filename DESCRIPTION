@@ -1,5 +1,5 @@
 Package: ptspotter
-Title: Helper Functions for Use with Project Template
+Title: Helper Functions for Use with "ProjectTemplate"
 Version: 1.0
 Authors@R:
     c(person(given = "Rich",
@@ -11,9 +11,9 @@ Authors@R:
            role = "ctb",
            email = "akwsimmo@gmail.com"))
 Description: Utility functions produced specifically (but not limited to) for
-    working with Project Template data pipelines. This package helps to quickly
+    working with "ProjectTemplate" data pipelines. This package helps to quickly
     create and manage sequentially numbered scripts, quickly set up logging with
-    log4r and functions to help debug and monitor procedures.
+    "log4r" and functions to help debug and monitor procedures.
 License: MIT + file LICENSE
 URL: https://github.com/r-leyshon/ptspotter
 BugReports: https://github.com/r-leyshon/ptspotter/issues

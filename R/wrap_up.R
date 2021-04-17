@@ -1,10 +1,9 @@
 #' Wrap up file execution.
 #'
 #' Used to interrupt sequential script execution while testing or debugging.
-#' messages the elapsed time since execution of `start_time`. Assign
-#' `start_time` at the start of the first sequential script. Outputs an auditory
-#' signal and breaks sequential script execution, identifying the script at
-#' which execution was interrupted.
+#' Outputs an auditory signal and breaks sequential script execution,
+#' identifying the script at which execution was interrupted.
+#' Is a Sys.time() object is passed to `start_time`, messages the elapsed time.
 #'
 #' @param start_time Optional POSIXct object, created by assigning Sys.time()
 #' to an object prior to executing `wrap_up()`.

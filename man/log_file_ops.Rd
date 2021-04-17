@@ -18,8 +18,8 @@ Creates log directory and log file if required. Calls log_enable()
 to assign necessary logging objects in specified scope.
 }
 \description{
-Create the necessary file infrastructure to efficiently get up and running
-with log4r.
+Create the necessary file infrastructure to efficiently start logging with
+"log4r".
 }
 \examples{
 \dontrun{

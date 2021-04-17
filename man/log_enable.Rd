@@ -27,7 +27,7 @@ strings with no spaces. Defaults to file_app.}
 Creates logger and file appender.
 }
 \description{
-Assigns the necessary global scope objects for logging with log4r.
+Assigns the necessary global scope objects for logging with "log4r".
 }
 \examples{
 \dontrun{

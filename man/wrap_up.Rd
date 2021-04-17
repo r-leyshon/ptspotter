@@ -16,10 +16,9 @@ the elapsed time if start_time is used, outputs the script location.
 }
 \description{
 Used to interrupt sequential script execution while testing or debugging.
-messages the elapsed time since execution of \code{start_time}. Assign
-\code{start_time} at the start of the first sequential script. Outputs an auditory
-signal and breaks sequential script execution, identifying the script at
-which execution was interrupted.
+Outputs an auditory signal and breaks sequential script execution,
+identifying the script at which execution was interrupted.
+Is a Sys.time() object is passed to \code{start_time}, messages the elapsed time.
 }
 \examples{
 
