@@ -4,11 +4,11 @@
 \alias{log_file_ops}
 \title{log_file_ops}
 \usage{
-log_file_ops(dir_path = "logs", logfile_nm = "logfile")
+log_file_ops(dir_path = NULL, logfile_nm = "logfile")
 }
 \arguments{
 \item{dir_path}{The name of the folder in which the logfile should be saved.
-Creates the folder if required. Defaults to "logs".}
+Creates the folder if required.}
 
 \item{logfile_nm}{Provide a name for the logfile. Do not include suffix.
 Defaults to "logfile".}
@@ -22,7 +22,7 @@ Create the necessary file infrastructure to efficiently start logging with
 "log4r".
 }
 \examples{
-log_file_ops()
+log_file_ops(dir_path = "logs")
 
 unlink("logs", recursive = TRUE)
 

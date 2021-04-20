@@ -4,7 +4,7 @@
 #' "log4r".
 #'
 #' @param dir_path The name of the folder in which the logfile should be saved.
-#' Creates the folder if required. Defaults to "logs".
+#' Creates the folder if required.
 #'
 #' @param logfile_nm Provide a name for the logfile. Do not include suffix.
 #' Defaults to "logfile".
@@ -13,12 +13,12 @@
 #' to assign necessary logging objects in specified scope.
 #'
 #' @examples
-#' log_file_ops()
+#' log_file_ops(dir_path = "logs")
 #'
 #' unlink("logs", recursive = TRUE)
 #'
 #' @export
-log_file_ops <- function(dir_path = "logs", logfile_nm = "logfile"){
+log_file_ops <- function(dir_path = NULL, logfile_nm = "logfile"){
   # store log location
   log_loc <- paste0(dir_path, "/", logfile_nm, ".txt")
 

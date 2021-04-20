@@ -40,13 +40,14 @@ the user. That's why wrapping examples in \dontrun{} adds the comment
 Does not seem necessary in all cases.
 Please unwrap the examples if they are executable in < 5 sec, or replace
 \dontrun{} with \donttest{}.
-**\dontrun{} removed from all functions.**
-
+**\dontrun{} removed from all functions. Repaced with tempdir().**
 
 * Please ensure that your functions do not write by default or in your
 examples/vignettes/tests in the user's home filespace (including the
 package directory and getwd()). This is not allowed by CRAN policies.
 Please omit any default path in writing functions.
+**Default paths removed from functions.**
+
 * In your examples/vignettes/tests you can write to tempdir().
 
 * Did you submit your package via the CRAN webform? Since there was no

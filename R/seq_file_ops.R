@@ -4,8 +4,8 @@
 #'
 #' @param n The number of files to create. Also accepts numerical vector.
 #'
-#' @param target_dir Directory to create files. Defaults to "munge". Creates
-#' the directory if file.exists(target_dir) evaluates to FALSE.
+#' @param target_dir Directory to create files. Creates the directory if
+#' file.exists(target_dir) evaluates to FALSE.
 #'
 #' @param filetype The suffix to append the filename. Defaults to ".R".
 #'
@@ -17,9 +17,9 @@
 #'
 #' @examples
 #'
-#'seq_file_ops(10)
+#'seq_file_ops(n = 10, target_dir = "munge")
 #'
-#'seq_file_ops(c(1, 3:8, 10), target_dir = "complex_vector")
+#'seq_file_ops(n = c(1, 3:8, 10), target_dir = "complex_vector")
 #'
 #'# if force == FALSE, pre-existing numbered scripts will not be overwritten
 #'# only 02-.R and 09-.R are written below
@@ -29,7 +29,7 @@
 #'unlink("complex_vector", recursive = TRUE)
 #'
 #' @export
-seq_file_ops <- function(n, target_dir = "munge", filetype = "R",
+seq_file_ops <- function(n, target_dir = NULL, filetype = "R",
                               force = FALSE){
   if(!file.exists(target_dir)){
     # if the directory doesn't exist, create it with a prompt.

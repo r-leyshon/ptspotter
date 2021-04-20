@@ -1,13 +1,13 @@
 
 # create infrastructure for testing ---------------------------------------
-seq_file_ops(n = 5)
+seq_file_ops(n = 5, target_dir = "munge")
 
 writeLines("start of seq", "munge/01-.R")
 writeLines("end of seq", "munge/05-.R")
 
 start_count <- length(list.files("munge"))
 munge_nums <- as.numeric(str_extract(list.files("munge"), "^[0-9]."))
-adj_file_nos(target = 1)
+adj_file_nos(target = 1, directory = "munge")
 end_count <- length(list.files("munge"))
 
 # create mixed folder -----------------------------------------------------
@@ -162,24 +162,11 @@ test_that("files >= target are adjusted", {
 # expect message ----------------------------------------------------------
 test_that("func produces message on success",
           expect_message(
-            adj_file_nos(1), "Filenames adjusted from:"
+            adj_file_nos(1, directory = "munge"), "Filenames adjusted from:"
           )
 )
 
 # script content ----------------------------------------------------------
-# test_that("whats in part_inc",
-#           expect_identical(c(
-#             "04-.R",
-#             "05-.R",
-#             "06-.R",
-#             "07-.R",
-#             "04-.R",
-#             "05-.R",
-#             "06-.R",
-#             "07-.R",
-#             "08-.R",
-#             "09-.R"), list.files("part_inc"))
-# )
 
 test_that("file contents are incremented as expected", {
   expect_identical(readLines("munge/03-.R"), "start of seq")

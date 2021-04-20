@@ -7,7 +7,7 @@
 #' @param target Required. The number in the sequential scripts to begin the
 #' adjustment. The adjustment will affect script with that leading digit and
 #' greater.
-#' @param directory Defaults to "munge". The directory holding the sequential
+#' @param directory The directory holding the sequential
 #' scripts.
 #' @param action Defaults to "up". Whether to adjust file numbers up or down.
 #'
@@ -18,16 +18,16 @@
 #' specified action. Only affects the target file and above.
 #'
 #' @examples
-#'seq_file_ops(10)
+#'seq_file_ops(n = 10, target_dir = "munge")
 #'
 #'# Increase files numbered 6 and above by 1
-#'adj_file_nos(target = 6)
+#'adj_file_nos(target = 6, directory = "munge")
 #'
 #'# Increase above target files by a further 2
-#'adj_file_nos(target = 6, step = 2)
+#'adj_file_nos(target = 6, directory = "munge", step = 2)
 #'
 #'# Use step = "down" to restore original sequence
-#'adj_file_nos(target = 6, action = "down", step = 3)
+#'adj_file_nos(target = 6, directory = "munge", action = "down", step = 3)
 #'
 #'# writing books or websites:
 #'seq_file_ops(n = 5, target_dir = "images", filetype = "png")
@@ -38,7 +38,7 @@
 #'unlink(c("munge", "images"), recursive = TRUE)
 #'
 #' @export
-adj_file_nos <- function(target, directory = "munge", action = "up", step = 1) {
+adj_file_nos <- function(target, directory = NULL, action = "up", step = 1) {
   # list all files in specified directory
   files_found <- list.files(directory)
 

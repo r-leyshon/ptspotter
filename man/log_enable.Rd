@@ -5,14 +5,14 @@
 \title{log_enable}
 \usage{
 log_enable(
-  logfile_loc = "logs/logfile.txt",
+  logfile_loc = NULL,
   pos = 1,
   logger_nm = my_logger,
   appender_nm = file_app
 )
 }
 \arguments{
-\item{logfile_loc}{The path to the logfile. Defaults to "logs/logfile.txt".}
+\item{logfile_loc}{The path to the logfile. Suggested use "logs/logfile.txt".}
 
 \item{pos}{The environment which to assign pipeline_message. Defaults to 1,
 equivalent to the .GlobalEnv.}
@@ -31,9 +31,9 @@ Assigns the necessary global scope objects for logging with "log4r".
 }
 \examples{
 # create logging infrastructure
-log_file_ops()
+log_file_ops(dir_path = "logs/logfile.txt")
 # enable logging
-log_enable()
+log_enable(logfile_loc = "logs/logfile.txt")
 
 # tidy up environment
 unlink("logs", recursive = TRUE)

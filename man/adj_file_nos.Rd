@@ -4,14 +4,14 @@
 \alias{adj_file_nos}
 \title{Adjust file numbers.}
 \usage{
-adj_file_nos(target, directory = "munge", action = "up", step = 1)
+adj_file_nos(target, directory = NULL, action = "up", step = 1)
 }
 \arguments{
 \item{target}{Required. The number in the sequential scripts to begin the
 adjustment. The adjustment will affect script with that leading digit and
 greater.}
 
-\item{directory}{Defaults to "munge". The directory holding the sequential
+\item{directory}{The directory holding the sequential
 scripts.}
 
 \item{action}{Defaults to "up". Whether to adjust file numbers up or down.}
@@ -29,16 +29,16 @@ specified directory, allowing efficient adjustment of script sequence for
 additional or removed files.
 }
 \examples{
-seq_file_ops(10)
+seq_file_ops(n = 10, target_dir = "munge")
 
 # Increase files numbered 6 and above by 1
-adj_file_nos(target = 6)
+adj_file_nos(target = 6, directory = "munge")
 
 # Increase above target files by a further 2
-adj_file_nos(target = 6, step = 2)
+adj_file_nos(target = 6, directory = "munge", step = 2)
 
 # Use step = "down" to restore original sequence
-adj_file_nos(target = 6, action = "down", step = 3)
+adj_file_nos(target = 6, directory = "munge", action = "down", step = 3)
 
 # writing books or websites:
 seq_file_ops(n = 5, target_dir = "images", filetype = "png")
