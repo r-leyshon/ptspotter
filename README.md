@@ -1,5 +1,9 @@
 # PT Spotter version 1.0
 
+<!-- badges: start -->
+[![R build status](https://github.com/r-leyshon/ptspotter/workflows/R-CMD-check/badge.svg)](https://github.com/r-leyshon/ptspotter/actions)
+<!-- badges: end -->
+
 ## Description
 
 Helper functions for working with [ProjectTemplate](http://projecttemplate.net/)
