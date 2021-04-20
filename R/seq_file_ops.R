@@ -17,7 +17,6 @@
 #'
 #' @examples
 #'
-#' \dontrun{
 #'seq_file_ops(10)
 #'
 #'seq_file_ops(c(1, 3:8, 10), target_dir = "complex_vector")
@@ -28,7 +27,6 @@
 #'
 #'unlink("munge", recursive = TRUE)
 #'unlink("complex_vector", recursive = TRUE)
-#'}
 #'
 #' @export
 seq_file_ops <- function(n, target_dir = "munge", filetype = "R",

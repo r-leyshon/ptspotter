@@ -18,7 +18,6 @@
 #' @import log4r
 #'
 #' @examples
-#' \dontrun{
 #' # create logging infrastructure
 #' log_file_ops()
 #' # enable logging
@@ -26,7 +25,7 @@
 #'
 #' # tidy up environment
 #' unlink("logs", recursive = TRUE)
-#'}
+#'
 #' @export
 log_enable <- function(logfile_loc = "logs/logfile.txt", pos = 1,
                        logger_nm = my_logger, appender_nm = file_app) {

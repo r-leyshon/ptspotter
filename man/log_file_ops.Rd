@@ -22,9 +22,8 @@ Create the necessary file infrastructure to efficiently start logging with
 "log4r".
 }
 \examples{
-\dontrun{
 log_file_ops()
 
 unlink("logs", recursive = TRUE)
-}
+
 }

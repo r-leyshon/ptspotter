@@ -5,6 +5,7 @@
 ### Version 1.0
 
 * Bumped to 1.0 for CRAN submission and standardisation.
+* Standard R Cmd check continuous integration with GitHub Actions.
 
 ### Version 0.3
 

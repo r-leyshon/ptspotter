@@ -13,11 +13,10 @@
 #' to assign necessary logging objects in specified scope.
 #'
 #' @examples
-#' \dontrun{
 #' log_file_ops()
 #'
 #' unlink("logs", recursive = TRUE)
-#'}
+#'
 #' @export
 log_file_ops <- function(dir_path = "logs", logfile_nm = "logfile"){
   # store log location
