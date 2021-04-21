@@ -18,24 +18,28 @@
 #' specified action. Only affects the target file and above.
 #'
 #' @examples
-#'seq_file_ops(n = 10, target_dir = "munge")
+#' \dontshow{.old_wd <- setwd(tempdir())}
 #'
-#'# Increase files numbered 6 and above by 1
-#'adj_file_nos(target = 6, directory = "munge")
+#' seq_file_ops(n = 10, target_dir = "munge")
 #'
-#'# Increase above target files by a further 2
-#'adj_file_nos(target = 6, directory = "munge", step = 2)
+#' # Increase files numbered 6 and above by 1
+#' adj_file_nos(target = 6, directory = "munge")
 #'
-#'# Use step = "down" to restore original sequence
-#'adj_file_nos(target = 6, directory = "munge", action = "down", step = 3)
+#' # Increase above target files by a further 2
+#' adj_file_nos(target = 6, directory = "munge", step = 2)
 #'
-#'# writing books or websites:
-#'seq_file_ops(n = 5, target_dir = "images", filetype = "png")
-#'# adjust by decimals
-#'adj_file_nos(target = 1, directory = "images", step = 0.1)
+#' # Use step = "down" to restore original sequence
+#' adj_file_nos(target = 6, directory = "munge", action = "down", step = 3)
 #'
-#'# tidying up environment
-#'unlink(c("munge", "images"), recursive = TRUE)
+#' # writing books or websites:
+#' seq_file_ops(n = 5, target_dir = "images", filetype = "png")
+#' # adjust by decimals
+#' adj_file_nos(target = 1, directory = "images", step = 0.1)
+#'
+#' # tidying up environment
+#' unlink(c("munge", "images"), recursive = TRUE)
+#'
+#' \dontshow{setwd(.old_wd)}
 #'
 #' @export
 adj_file_nos <- function(target, directory = NULL, action = "up", step = 1) {

@@ -13,9 +13,14 @@
 #' to assign necessary logging objects in specified scope.
 #'
 #' @examples
+#'
+#' \dontshow{.old_wd <- setwd(tempdir())}
+#'
 #' log_file_ops(dir_path = "logs")
 #'
 #' unlink("logs", recursive = TRUE)
+#'
+#' \dontshow{setwd(.old_wd)}
 #'
 #' @export
 log_file_ops <- function(dir_path = NULL, logfile_nm = "logfile"){

@@ -17,16 +17,20 @@
 #'
 #' @examples
 #'
-#'seq_file_ops(n = 10, target_dir = "munge")
+#' \dontshow{.old_wd <- setwd(tempdir())}
 #'
-#'seq_file_ops(n = c(1, 3:8, 10), target_dir = "complex_vector")
+#' seq_file_ops(n = 10, target_dir = "munge")
 #'
-#'# if force == FALSE, pre-existing numbered scripts will not be overwritten
-#'# only 02-.R and 09-.R are written below
-#'seq_file_ops(10, target_dir = "complex_vector")
+#' seq_file_ops(n = c(1, 3:8, 10), target_dir = "complex_vector")
 #'
-#'unlink("munge", recursive = TRUE)
-#'unlink("complex_vector", recursive = TRUE)
+#' # if force == FALSE, pre-existing numbered scripts will not be overwritten
+#' # only 02-.R and 09-.R are written below
+#' seq_file_ops(10, target_dir = "complex_vector")
+#'
+#' unlink("munge", recursive = TRUE)
+#' unlink("complex_vector", recursive = TRUE)
+#'
+#' \dontshow{setwd(.old_wd)}
 #'
 #' @export
 seq_file_ops <- function(n, target_dir = NULL, filetype = "R",

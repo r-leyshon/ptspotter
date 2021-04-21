@@ -18,6 +18,8 @@
 #' @import log4r
 #'
 #' @examples
+#' \dontshow{.old_wd <- setwd(tempdir())}
+#'
 #' # create logging infrastructure
 #' log_file_ops(dir_path = "logs/logfile.txt")
 #' # enable logging
@@ -25,6 +27,8 @@
 #'
 #' # tidy up environment
 #' unlink("logs", recursive = TRUE)
+#'
+#' \dontshow{setwd(.old_wd)}
 #'
 #' @export
 log_enable <- function(logfile_loc = NULL, pos = 1,

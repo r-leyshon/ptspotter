@@ -26,6 +26,8 @@ Quickly create the required number of sequentially labelled files.
 }
 \examples{
 
+\dontshow{.old_wd <- setwd(tempdir())}
+
 seq_file_ops(n = 10, target_dir = "munge")
 
 seq_file_ops(n = c(1, 3:8, 10), target_dir = "complex_vector")
@@ -36,5 +38,7 @@ seq_file_ops(10, target_dir = "complex_vector")
 
 unlink("munge", recursive = TRUE)
 unlink("complex_vector", recursive = TRUE)
+
+\dontshow{setwd(.old_wd)}
 
 }

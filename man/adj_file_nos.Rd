@@ -29,6 +29,8 @@ specified directory, allowing efficient adjustment of script sequence for
 additional or removed files.
 }
 \examples{
+\dontshow{.old_wd <- setwd(tempdir())}
+
 seq_file_ops(n = 10, target_dir = "munge")
 
 # Increase files numbered 6 and above by 1
@@ -47,5 +49,7 @@ adj_file_nos(target = 1, directory = "images", step = 0.1)
 
 # tidying up environment
 unlink(c("munge", "images"), recursive = TRUE)
+
+\dontshow{setwd(.old_wd)}
 
 }

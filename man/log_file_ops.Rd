@@ -22,8 +22,13 @@ Create the necessary file infrastructure to efficiently start logging with
 "log4r".
 }
 \examples{
+
+\dontshow{.old_wd <- setwd(tempdir())}
+
 log_file_ops(dir_path = "logs")
 
 unlink("logs", recursive = TRUE)
+
+\dontshow{setwd(.old_wd)}
 
 }

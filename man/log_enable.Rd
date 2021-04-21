@@ -30,6 +30,8 @@ Creates logger and file appender.
 Assigns the necessary global scope objects for logging with "log4r".
 }
 \examples{
+\dontshow{.old_wd <- setwd(tempdir())}
+
 # create logging infrastructure
 log_file_ops(dir_path = "logs/logfile.txt")
 # enable logging
@@ -37,5 +39,7 @@ log_enable(logfile_loc = "logs/logfile.txt")
 
 # tidy up environment
 unlink("logs", recursive = TRUE)
+
+\dontshow{setwd(.old_wd)}
 
 }
