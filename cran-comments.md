@@ -49,6 +49,7 @@ Please omit any default path in writing functions.
 **Default paths removed from functions.**
 
 * In your examples/vignettes/tests you can write to tempdir().
+**tempdir used in examples & tests. No vignettes at this point.**
 
 * Did you submit your package via the CRAN webform? Since there was no
 submission mail generated.

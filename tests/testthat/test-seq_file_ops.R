@@ -1,3 +1,4 @@
+with(globalenv(), {.old_wd <- setwd(tempdir())})
 
 # fileOps -----------------------------------------------------------------
 seq_file_ops(n = 5, target_dir = "n_is_5")
@@ -107,6 +108,4 @@ test_that("there are no single digits in sequence filenames", {
 
 })
 
-
-
-
+with(globalenv(), {setwd(.old_wd)})

@@ -1,3 +1,4 @@
+with(globalenv(), {.old_wd <- setwd(tempdir())})
 
 # create infrastructure for testing ---------------------------------------
 seq_file_ops(n = 5, target_dir = "munge")
@@ -188,3 +189,5 @@ test_that("file contents are incremented as expected", {
   expect_identical(readLines("part_dec/06-.R"), "start of dec")
 
   })
+
+with(globalenv(), {setwd(.old_wd)})

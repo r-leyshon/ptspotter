@@ -1,3 +1,5 @@
+with(globalenv(), {.old_wd <- setwd(tempdir())})
+
 # file ops ----------------------------------------------------------------
 log_file_ops(dir_path = "log_enable_test", logfile_nm = "log_enable")
 
@@ -40,3 +42,5 @@ test_that("func produces expected warnings for missing infrastructure",{
   expect_message(expect_warning(log_enable(logfile_loc = "not_found.txt")),
                  "Logger already exists.")
 })
+
+with(globalenv(), {setwd(.old_wd)})

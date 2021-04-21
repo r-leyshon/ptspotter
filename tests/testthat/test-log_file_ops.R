@@ -1,3 +1,5 @@
+with(globalenv(), {.old_wd <- setwd(tempdir())})
+
 # fileops -----------------------------------------------------------------
 log_file_ops(dir_path = "log_testing", logfile_nm = "test")
 
@@ -37,3 +39,5 @@ test_that("func produces message on success",
             "Logfile successfully created at"
             )
           )
+
+with(globalenv(), {setwd(.old_wd)})

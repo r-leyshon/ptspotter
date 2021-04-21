@@ -17,7 +17,7 @@ Arguments:
 `target`: Required. The number in the sequential scripts to begin the
 adjustment. The adjustment will affect script with that leading digit and
 greater. Note that digits must be leading the filename and not trailing.  
-`directory`: Defaults to "munge". The directory holding the sequential
+`directory`: The directory holding the sequential
 scripts to adjust.  
 `action`: "up or "down". Defaults to "up". Whether to adjust file numbers
 up or down.  
@@ -32,7 +32,7 @@ Expects ['log4r'](https://cran.r-project.org/package=log4r) is attached to
 namespace.  
 Arguments:  
 `dir_path`: The name of the folder in which the logfile should be saved.
-Creates the folder if required. Defaults to "logs".  
+Creates the folder if required. 
 `logfile_nm`: Provide a name for the logfile. Do not include suffix.
 Defaults to "logfile".  
 
@@ -43,7 +43,7 @@ environment.
 Expects ['log4r'](https://cran.r-project.org/package=log4r) is attached to
 namespace.  
 Arguments:  
-`logfile_loc`: The path to the logfile. Defaults to "logs/logfile.txt".
+`logfile_loc`: The path to the logfile.
 
 ***
 
@@ -56,8 +56,7 @@ size. Uses **'utils::memory.size()'** unless on Mac OS, where
 * **'seq_file_ops()'**:  Write a series of sequentially numbered files within a
 specified directory. Creates the directory if required.  
 Arguments:  
-`target_dir`: Directory to create files. Defaults to "munge". Creates
-the directory if file.exists(target_dir) evaluates to FALSE.  
+`target_dir`: Directory to create files. Creates the directory if file.exists(target_dir) evaluates to FALSE.  
 `n`: The number of files to create. Accepts a single number or numerical
 vector.  
 `filetype`: The suffix to append the filename with. Do not include full

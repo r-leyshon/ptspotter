@@ -40,8 +40,6 @@ identical.
 
 ## To do
 
-* In your examples/vignettes/tests you can write to tempdir().
-
 * Did you submit your package via the CRAN webform? Since there was no
 submission mail generated.
 
