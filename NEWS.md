@@ -40,9 +40,5 @@ identical.
 
 ## To do
 
-* Did you submit your package via the CRAN webform? Since there was no
-submission mail generated.
-
-
 * github.io vignettes.
 * function to trim decimals from filenames.
