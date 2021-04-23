@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### Version 1.0.1
+
+* 'stringi' dependency removed.
+
 ### Version 1.0
 
 * Bumped to 1.0 for CRAN submission and standardisation.
@@ -40,5 +44,5 @@ identical.
 
 ## To do
 
-* github.io vignettes.
-* function to trim decimals from filenames.
+* Vignettes.
+* Set up coverage w/ GitHub actions.

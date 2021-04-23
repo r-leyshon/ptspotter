@@ -86,6 +86,6 @@ log_enable <- function(logfile_loc = NULL, pos = 1,
   # Check if the logfile already exists, if not output a warning.
   if(!file.exists(logfile_loc)){
     warning(
-      "Logfile not found. Please run ptspotter::log_file_ops.")
+      "Logfile not found. Please run `ptspotter::log_file_ops()`.")
     }
   }

@@ -53,3 +53,4 @@ munge/
 logs/
 # git_ignore directory
 git_ignore
+inst/doc

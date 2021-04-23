@@ -1,0 +1,19 @@
+---
+title: "sequential_scripts"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{sequential_scripts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ptspotter)
+```

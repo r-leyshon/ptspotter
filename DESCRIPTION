@@ -1,6 +1,6 @@
 Package: ptspotter
 Title: Helper Functions for Use with "ProjectTemplate"
-Version: 1.0
+Version: 1.0.1
 Authors@R:
     c(person(given = "Rich",
            family = "Leyshon",
@@ -26,9 +26,11 @@ Depends:
         beepr(>= 1.3)
 Imports:
     pryr (>= 0.1.4),
-    stringi (>= 1.5.3),
     stringr (>= 1.4.0),
-    utils (>= 4.0.4)
+    utils
 Suggests:
     ProjectTemplate (>= 0.9.3),
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

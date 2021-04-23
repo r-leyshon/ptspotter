@@ -17,6 +17,8 @@
 #' @return Renumbers filenames in the specified directory, according to the
 #' specified action. Only affects the target file and above.
 #'
+#'@importFrom stringr str_count str_extract str_remove
+#'
 #' @examples
 #' \dontshow{.old_wd <- setwd(tempdir())}
 #'
@@ -55,10 +57,10 @@ adj_file_nos <- function(target, directory = NULL, action = "up", step = 1) {
   }
 
   # extract numbering
-  nums_only <- as.numeric(stringr::str_extract(num_filenms, "^[0-9]."))
+  nums_only <- as.numeric(str_extract(num_filenms, "^[0-9]."))
 
   # remove all numbers from listed filenames vector
-  alpha_only <- stringr::str_remove(num_filenms, "^[0-9].")
+  alpha_only <- str_remove(num_filenms, "^[0-9].")
 
   # reassign the numbers ready for increasing / decreasing
   nums_new <- nums_only
@@ -80,8 +82,8 @@ adj_file_nos <- function(target, directory = NULL, action = "up", step = 1) {
   }
 
   # wherever the digits are single, add a 0 in front
-  nums_new[stringr::str_count(nums_new) == 1] <- paste0(
-    "0", nums_new[stringr::str_count(nums_new) == 1]
+  nums_new[str_count(nums_new) == 1] <- paste0(
+    "0", nums_new[str_count(nums_new) == 1]
   )
   message(paste("Digits assigned: ", paste(nums_new, collapse = ", ")))
 

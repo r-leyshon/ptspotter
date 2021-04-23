@@ -5,7 +5,8 @@
 #' @return Performs garbage collection then messages memory size and script name
 #' currently being executed.
 #'
-#' @import this.path
+#' @import this.path utils
+#' @importFrom pryr mem_used
 #'
 #' @example
 #' try(memory_report())
@@ -21,8 +22,8 @@ memory_report <- function() {
   message(paste(
     "Memory size checked at", thisfile, "is",
     if(Sys.info()["sysname"] == "Darwin"){
-      pryr::mem_used()
-      } else(utils::memory.size()
+      mem_used()
+      } else(memory.size()
              ))
   )
   }

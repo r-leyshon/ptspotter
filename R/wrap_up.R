@@ -11,8 +11,7 @@
 #' @return Interrupts sequential script execution with an auditory signal. Logs
 #' the elapsed time if start_time is used, outputs the script location.
 #'
-#' @import this.path
-#' @import beepr
+#' @import beepr this.path utils
 #'
 #' @examples
 #'
@@ -32,7 +31,7 @@ wrap_up <- function(start_time = NULL) {
     # message execution duration
     message(paste(
     "Script executed. Duration:",
-    utils::capture.output(round(elapsed, digits = 3))))
+    capture.output(round(elapsed, digits = 3))))
   }
 
   # sound alert when script completes

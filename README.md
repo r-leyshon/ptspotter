@@ -1,4 +1,4 @@
-# PT Spotter version 1.0
+# PT Spotter version 1.0.1
 
 <!-- badges: start -->
 [![R build status](https://github.com/r-leyshon/ptspotter/workflows/R-CMD-check/badge.svg)](https://github.com/r-leyshon/ptspotter/actions)
