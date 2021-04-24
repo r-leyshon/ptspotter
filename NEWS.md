@@ -46,3 +46,5 @@ identical.
 
 * Vignettes.
 * Set up coverage w/ GitHub actions.
+* Feat: new func that detects a sequence after running `adj_file_nos()` and 
+fills the gaps.
