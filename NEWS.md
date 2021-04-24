@@ -5,6 +5,7 @@
 ### Version 1.0.1
 
 * 'stringi' dependency removed.
+* Vignettes for sequential scripts and logging included.
 
 ### Version 1.0
 
@@ -44,7 +45,6 @@ identical.
 
 ## To do
 
-* Vignettes.
 * Set up coverage w/ GitHub actions.
 * Feat: new func that detects a sequence after running `adj_file_nos()` and 
 fills the gaps.
