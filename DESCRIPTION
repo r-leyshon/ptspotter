@@ -32,5 +32,6 @@ Suggests:
     ProjectTemplate (>= 0.9.3),
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    markdown
 VignetteBuilder: knitr
