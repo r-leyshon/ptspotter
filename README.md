@@ -44,6 +44,11 @@ Expects ['log4r'](https://cran.r-project.org/package=log4r) is attached to
 namespace.  
 Arguments:  
 `logfile_loc`: The path to the logfile.
+`pos`: The environment which to assign pipeline_message. Defaults to 1,
+equivalent to the .GlobalEnv.
+`logger_nm`: What to call the logger. Provide unquoted strings with no spaces. Defaults to my_logger.
+`appender_nm`:  What to call the appender function. Provide unquoted strings
+with no spaces. Defaults to file_app.
 
 ***
 

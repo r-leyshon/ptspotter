@@ -30,7 +30,7 @@ log_file_ops <- function(dir_path = NULL, logfile_nm = "logfile"){
   if(file.exists(log_loc)){
     # if logfile exists output warning & stop
     stop("Logfile with name matching logfile_nm found. Have you previously run
-         enable_log()?")
+         `ptspotter::log_enable()`?")
 
   } else if(!dir.exists(dir_path)){
     # only create folder if it doesn't exist
