@@ -45,6 +45,9 @@ identical.
 
 ## To do
 
+* Compatibility for passing vector to `adj_file_nos()`, ie inc or dec in 2 or
+more positions.
+* Unit test for above.
 * Set up coverage w/ GitHub actions.
 * Feat: new func that detects a sequence after running `adj_file_nos()` and 
 fills the gaps.
