@@ -190,4 +190,15 @@ test_that("file contents are incremented as expected", {
 
   })
 
+
+# errors ------------------------------------------------------------------
+
+test_that("func errors as expected", {
+  expect_error(adj_file_nos(c(1, 2), "munge"),
+               "Please use single digits for `target` only.")
+  expect_error(adj_file_nos(1),
+               "invalid 'path' argument")
+
+})
+
 with(globalenv(), {setwd(.old_wd)})

@@ -8,8 +8,8 @@ adj_file_nos(target, directory = NULL, action = "up", step = 1)
 }
 \arguments{
 \item{target}{Required. The number in the sequential scripts to begin the
-adjustment. The adjustment will affect script with that leading digit and
-greater.}
+adjustment. Use single digits only. The adjustment will affect script with
+that leading digit and greater.}
 
 \item{directory}{The directory holding the sequential
 scripts.}

@@ -4,6 +4,8 @@
 
 ### Version 1.0.1
 
+* `adj_file_nos()` now errors on passing vector to `target`.
+* Additional tests for `adj_file_nos()`.
 * 'stringi' dependency removed.
 * Vignettes for sequential scripts and logging included.
 
