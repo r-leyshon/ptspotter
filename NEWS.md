@@ -47,8 +47,6 @@ identical.
 
 ## To do
 
-* return error on length > 1 for `target` in `adj_file_nos()`.
-* unit test above.
 * `adj_file_nos()` reverse messages when `action == "up"`.
 * Set up coverage w/ GitHub actions & 'covr'.
 * Feat: Compatibility for passing vector to `adj_file_nos()`, ie inc or dec in
