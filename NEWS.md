@@ -45,9 +45,10 @@ identical.
 
 ## To do
 
-* Compatibility for passing vector to `adj_file_nos()`, ie inc or dec in 2 or
-more positions.
+* return error on length > 1 for `target` in `adj_file_nos()`.
+* unit test above.
+* `adj_file_nos()` reverse messages when `action == "up"`.
+* Set up coverage w/ GitHub actions & 'covr'.
+* Feat: Compatibility for passing vector to `adj_file_nos()`, ie inc or dec in
+2 or more positions.
 * Unit test for above.
-* Set up coverage w/ GitHub actions.
-* Feat: new func that detects a sequence after running `adj_file_nos()` and 
-fills the gaps.
