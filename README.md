@@ -14,9 +14,8 @@ Helper functions for use with [ProjectTemplate](http://projecttemplate.net/)
 
 * **'adj_file_nos()'**: Increase or decrease scripts with numerical prefixes.  
 Arguments:  
-`target`: Required. The number in the sequential scripts to begin the
-adjustment. The adjustment will affect script with that leading digit and
-greater. Note that digits must be leading the filename and not trailing.  
+`target`: Required. The number in the sequential scripts to begin the 
+adjustment. Use single digits only. The adjustment will affect script with that leading digit and greater. 
 `directory`: The directory holding the sequential
 scripts to adjust.  
 `action`: "up or "down". Defaults to "up". Whether to adjust file numbers

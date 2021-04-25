@@ -5,8 +5,8 @@
 #' additional or removed files.
 #'
 #' @param target Required. The number in the sequential scripts to begin the
-#' adjustment. The adjustment will affect script with that leading digit and
-#' greater.
+#' adjustment. Use single digits only. The adjustment will affect script with
+#' that leading digit and greater.
 #' @param directory The directory holding the sequential
 #' scripts.
 #' @param action Defaults to "up". Whether to adjust file numbers up or down.
@@ -45,6 +45,11 @@
 #'
 #' @export
 adj_file_nos <- function(target, directory = NULL, action = "up", step = 1) {
+  # passing vectors to target currently dangerous. Future compatibility.
+  if(length(target) > 1) {
+    stop("Please use single digits for `target` only.")
+  }
+
   # list all files in specified directory
   files_found <- list.files(directory)
 
