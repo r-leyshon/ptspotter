@@ -1,7 +1,10 @@
 # PT Spotter version 1.0.1
 
 <!-- badges: start -->
-[![R build status](https://github.com/r-leyshon/ptspotter/workflows/R-CMD-check/badge.svg)](https://github.com/r-leyshon/ptspotter/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/ptspotter)](https://CRAN.R-project.org/package=ptspotter)  
+[![R build status](https://github.com/r-leyshon/ptspotter/workflows/R-CMD-check/badge.svg)](https://github.com/r-leyshon/ptspotter/actions)  
+
+[![Codecov test coverage](https://codecov.io/gh/r-leyshon/ptspotter/branch/master/graph/badge.svg)](https://codecov.io/gh/r-leyshon/ptspotter?branch=master)
 <!-- badges: end -->
 
 ## Description
@@ -15,7 +18,7 @@ Helper functions for use with [ProjectTemplate](http://projecttemplate.net/)
 * **'adj_file_nos()'**: Increase or decrease scripts with numerical prefixes.  
 Arguments:  
 `target`: Required. The number in the sequential scripts to begin the 
-adjustment. Use single digits only. The adjustment will affect script with that leading digit and greater. 
+adjustment. Use single digits only. The adjustment will affect script with that leading digit and greater.  
 `directory`: The directory holding the sequential
 scripts to adjust.  
 `action`: "up or "down". Defaults to "up". Whether to adjust file numbers
@@ -31,7 +34,7 @@ Expects ['log4r'](https://cran.r-project.org/package=log4r) is attached to
 namespace.  
 Arguments:  
 `dir_path`: The name of the folder in which the logfile should be saved.
-Creates the folder if required. 
+Creates the folder if required.  
 `logfile_nm`: Provide a name for the logfile. Do not include suffix.
 Defaults to "logfile".  
 
@@ -42,10 +45,10 @@ environment.
 Expects ['log4r'](https://cran.r-project.org/package=log4r) is attached to
 namespace.  
 Arguments:  
-`logfile_loc`: The path to the logfile.
+`logfile_loc`: The path to the logfile.  
 `pos`: The environment which to assign pipeline_message. Defaults to 1,
-equivalent to the .GlobalEnv.
-`logger_nm`: What to call the logger. Provide unquoted strings with no spaces. Defaults to my_logger.
+equivalent to the .GlobalEnv.  
+`logger_nm`: What to call the logger. Provide unquoted strings with no spaces. Defaults to my_logger.  
 `appender_nm`:  What to call the appender function. Provide unquoted strings
 with no spaces. Defaults to file_app.
 

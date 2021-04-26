@@ -6,3 +6,4 @@
 ^NEWS\.md$
 ^CRAN-RELEASE$
 ^\.github$
+^codecov\.yml$
