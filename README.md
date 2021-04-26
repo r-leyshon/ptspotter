@@ -3,7 +3,6 @@
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/ptspotter)](https://CRAN.R-project.org/package=ptspotter)  
 [![R build status](https://github.com/r-leyshon/ptspotter/workflows/R-CMD-check/badge.svg)](https://github.com/r-leyshon/ptspotter/actions)  
-
 [![Codecov test coverage](https://codecov.io/gh/r-leyshon/ptspotter/graph/badge.svg)]()
 <!-- badges: end -->
 
