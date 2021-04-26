@@ -8,6 +8,7 @@
 * Additional tests for `adj_file_nos()`.
 * 'stringi' dependency removed.
 * Vignettes for sequential scripts and logging included.
+* Set up coverage w/ GitHub actions & 'covr'.
 
 ### Version 1.0
 
@@ -48,7 +49,6 @@ identical.
 ## To do
 
 * `adj_file_nos()` reverse messages when `action == "up"`.
-* Set up coverage w/ GitHub actions & 'covr'.
 * Feat: Compatibility for passing vector to `adj_file_nos()`, ie inc or dec in
 2 or more positions.
 * Unit test for above.
