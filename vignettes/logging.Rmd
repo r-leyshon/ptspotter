@@ -21,7 +21,7 @@ library(ptspotter)
 
 ## Logging with 'log4r'
 
-Logging is an excellent way to monitor the status of your data pipelines. Please consult the ['log4r' documentation ](https://cran.r-project.org/web/packages/log4r/log4r.pdf) for a comprehensive
+Logging is an excellent way to monitor the status of your data pipelines. Please consult the ['log4r' documentation ](https://CRAN.R-project.org/package=log4r) for a comprehensive
 guide to its features.
 
 ## Logging File Operations
