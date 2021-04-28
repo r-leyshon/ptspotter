@@ -163,7 +163,7 @@ test_that("files >= target are adjusted", {
 # expect message ----------------------------------------------------------
 test_that("func produces message on success",
           expect_message(
-            adj_file_nos(1, directory = "munge"), "Filenames adjusted from:"
+            adj_file_nos(1, directory = "munge"), "5 Filenames adjusted."
           )
 )
 

@@ -9,6 +9,7 @@
 * 'stringi' dependency removed.
 * Vignettes for sequential scripts and logging included.
 * Set up coverage w/ GitHub actions & 'covr'.
+* `seq_file_ops()` and `adj_file_nos()` are now less chatty.
 
 ### Version 1.0
 
@@ -42,7 +43,8 @@ non-numbered files.
 identical.
 * `wrap_up()` current file cleans string differently for Mac OS.
 * `wrap_up()` uses control flow to prompt for "log4r" infrastructure.
-* `sequence_file_ops()` new function - quickly create numbered scripts. Only overwrites pre-existing files if argument `force = TRUE`.
+* `sequence_file_ops()` new function - quickly create numbered scripts. Only
+overwrites pre-existing files if argument `force = TRUE`.
 
 ***
 
