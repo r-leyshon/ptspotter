@@ -59,14 +59,10 @@ seq_file_ops <- function(n, target_dir = NULL, filetype = "R",
     "0", req_nos[str_count(req_nos) == 1]
   )
 
-  # message confirmation msg
-  message(paste("Required numbers are", paste0(req_nos, collapse = ", ")))
-
   # create the filenames
   req_files <- paste0(paste(target_dir, req_nos, sep = "/"),
                       "-.",
                       filetype)
-  message(paste("Required files are", paste(req_files, collapse = ", ")))
 
   if(force == FALSE){
   # find any preexisting files
