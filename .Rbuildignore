@@ -7,3 +7,5 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^codecov\.yml$
+vignettes/index.Rmd
+vignettes/www/*
