@@ -74,6 +74,10 @@ list.files("munge")
 
 Note that `seq_file_ops()` creates the directory specified with `target_dir` if it does not already exist.
 
+<br>
+![Using `seq_file_ops()` to create 10 files in the "munge" directory](www/seq_file_ops.gif)
+<br>
+
 ***
 
 #### Incrementing Sequenced Files
@@ -86,6 +90,11 @@ adj_file_nos(target = 5, directory = "munge", step = 2)
 
 list.files("munge")
 ```
+
+<br>
+![Using `adj_file_nos()` to increase part of a file sequence](www/adj_up.gif)
+<br>
+
 
 You can see I now have a gap in my sequence. To fill it, I can rerun the `seq_file_ops()` command run earlier. **But wait, won't that write over my existing scripts?** I hear you ask. Not if you keep the `force = FALSE`, the default value.
 
@@ -115,6 +124,10 @@ adj_file_nos(target = 5, directory = "munge", action = "down", step = 2)
 list.files("munge")
 ```
 
+<br>
+![Using `adj_file_nos()` to decrease part of a file sequence](www/adj_down.gif)
+<br>
+
 ***
 
 ### Logging with 'log4r'.{.tabset}
@@ -133,7 +146,9 @@ log_file_ops(dir_path = "logs")
 list.files("logs")
 ```
 
-
+<br>
+![Using `log_file_ops()` to set up logging infrastructure](www/log_file_ops.gif)
+<br>
 
 #### Logging Environment.
 
@@ -161,6 +176,10 @@ Checking the content of the logfile.
 ```{r}
 readLines("logs/logfile.txt")
 ```
+
+<br>
+![Using `log_enable()` to create 'log4r' environment dependencies](www/log_enable.gif)
+<br>
 
 
 
