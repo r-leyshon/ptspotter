@@ -4,6 +4,8 @@
 [![CRAN status](https://www.r-pkg.org/badges/version/ptspotter)](https://CRAN.R-project.org/package=ptspotter) [![R build status](https://github.com/r-leyshon/ptspotter/workflows/R-CMD-check/badge.svg)](https://github.com/r-leyshon/ptspotter/actions) ![Codecov test coverage](https://codecov.io/gh/r-leyshon/ptspotter/graph/badge.svg)
 <!-- badges: end -->
 
+For more guidance please see the [ptspotter blog](https://r-leyshon.github.io/ptspotter_blog/)
+
 ## Description
 
 Helper functions for use with [ProjectTemplate](http://projecttemplate.net/)
