@@ -6,11 +6,12 @@ output:
   html_document:
     toc: true
     toc_float: true
+    theme: united
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = tempdir())
+# knitr::opts_knit$set(root.dir = tempdir())
 ```
 
 ## What is 'ptspotter'?
@@ -31,7 +32,7 @@ You may find you are spending a disproportionate amount of time manually renumbe
 
 `memory_report()` and `wrap_up()` are thin wrapper functions that capture some common functions that can be used for debugging procedures. You can use `memory_report()` to monitor memory allocation at select points within your written procedure. `wrap_up()` is used to `stop()` a procedure at any point but has the advantage of using the excellent ['this.path'](https://CRAN.R-project.org/package=this.path) package to help you pinpoint (and remember) which R script you called `wrap_up()` from.
 
-When logging a procedure with ['log4r'](https://cran.r-project.org/web/packages/log4r/index.html), there are a few setup steps to take in getting everything up and running. 'ProjectTemplate' does a great job of making this pain free. However I don't always use it, expecially if a project is smaller and doesn't merit the more formalised approach that 'ProjectTemplate' adheres to. `log_file_ops()` is used to setup the directory and logfile prerequisites. `log_enable()` is used to setup the 'log4r' logger and file appender requirements. These 2 functions allow you to quickly get logging any R workflow.
+When logging a procedure with ['log4r'](https://cran.r-project.org/web/packages/log4r/index.html), there are a few setup steps to take in getting everything up and running. 'ProjectTemplate' does a great job of making this pain free. However I don't always use 'ProjectTemplate', particularly if a project is smaller and doesn't merit the more formalised approach that 'ProjectTemplate' adheres to. `log_file_ops()` can be used to setup the directory and logfile prerequisites. `log_enable()` will assign the logger and file appender that 'log4r' requires. These 2 functions allow you to quickly get logging any R workflow.
 
 ***
 
@@ -48,6 +49,7 @@ Loading the development version from GitHub.
 ```{r, eval=FALSE}
 devtools::install_github("r-leyshon/ptspotter")
 ```
+***
 
 ## Using 'ptspotter' Functions.
 
@@ -58,7 +60,10 @@ library(ptspotter)
 ```
 
 
-### File Operations.
+### File Operations.{.tabset}
+
+
+#### Create File Sequence
 
 To quickly produce the required number of sequential scripts within a directory of your choice.
 
@@ -68,6 +73,10 @@ list.files("munge")
 ```
 
 Note that `seq_file_ops()` creates the directory specified with `target_dir` if it does not already exist.
+
+***
+
+#### Incrementing Sequenced Files
 
 At some point in the development process, features may be added to the procedure. This may leave you needing to renumber the scripts. Instead of manually renumbering these scripts, `adj_file_nos()` can do the work for you. In the following example, I need to add 2 more scripts halfway through the sequence.
 
@@ -86,7 +95,11 @@ seq_file_ops(n = 10, target_dir = "munge", force = FALSE)
 
 As you can see, `seq_file_ops()` tells you that the pre-existing files in your specified sequence have not been overwritten. 
 
-Now let's imagine those new features were really not such a great idea after all. Let's remove the 2 files we added.
+***
+
+#### Decrementing Sequenced Files
+
+Let's imagine some features were really not such a great idea after all. Let's remove 2 files in the file sequence.
 
 ```{r}
 unwanted <- paste("munge", c("05-.R", "06-.R"), sep = "//")
@@ -94,7 +107,7 @@ file.remove(unwanted)
 
 list.files("munge")
 ```
-We have that gap in the sequence again. To correct this, we can use `adj_file_nos()` once more, this time specifying the argument `action = "down"`
+We now have a gap in the sequence. To correct this, we can use `adj_file_nos()`, specifying the argument `action = "down"`
 
 ```{r}
 adj_file_nos(target = 5, directory = "munge", action = "down", step = 2)
@@ -102,9 +115,57 @@ adj_file_nos(target = 5, directory = "munge", action = "down", step = 2)
 list.files("munge")
 ```
 
+***
+
+### Logging with 'log4r'.{.tabset}
+
+Logging is a great idea, particularly for more complex procedures and software that you will be passing on to others. It can be crucial in debugging and monitoring pipelines where the development team are not responsible for execution. 
+
+
+
+#### Logging Architecture.
+
+Firstly, you will need to ensure that a folder to store the logfile has been created. The logfile and directory only need to be created once, so please avoid putting this code within your 'ProjectTemplate' munge code.
+
+```{r}
+log_file_ops(dir_path = "logs")
+
+list.files("logs")
+```
+
+
+
+#### Logging Environment.
+
+Prior to configuring your R environment ready for logging, please ensure you have followed along in **Logging Architecture**.
+
+Once you have created a logfile, we can start logging output to that location. Use `log_enable()` to quickly create the 'log4r' environment objects required to do this.
+
+
+```{r}
+log_enable(logfile_loc = "logs/logfile.txt")
+```
+
+Then you can use any of the 'log4r' functions to log your process.
+
+```{r}
+library(log4r)
+info(my_logger, "some information")
+warn(my_logger, "some warning")
+error(my_logger, try(stop("some error")))
+```
+
+
+Checking the content of the logfile.
+
+```{r}
+readLines("logs/logfile.txt")
+```
+
+
 
 ```{r, include=FALSE}
-unlink("munge", recursive = TRUE)
+unlink(c("munge", "logs"), recursive = TRUE)
 ```
 
 

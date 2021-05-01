@@ -50,7 +50,8 @@ overwrites pre-existing files if argument `force = TRUE`.
 
 ## To do
 
-* `adj_file_nos()` reverse messages when `action == "up"`.
+* Add gifs for logging and fileops to index
+* Explore knitting index to root and package build.
 * Feat: Compatibility for passing vector to `adj_file_nos()`, ie inc or dec in
 2 or more positions.
 * Unit test for above.
