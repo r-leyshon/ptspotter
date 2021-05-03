@@ -1,31 +1,9 @@
-# CRAN feedback
+# 'ptspotter' v1.0.1
 
-## Submission 1:
-***
-
-* \dontrun{} should only be used if the example really cannot be executed
-(e.g. because of missing additional software, missing API keys, ...) by
-the user. That's why wrapping examples in \dontrun{} adds the comment
-("# Not run:") as a warning for the user.
-Does not seem necessary in all cases.
-Please unwrap the examples if they are executable in < 5 sec, or replace
-\dontrun{} with \donttest{}.
-**`\dontrun{}` removed from all functions. Replaced with `tempdir()`.**
-
-* Please ensure that your functions do not write by default or in your
-examples/vignettes/tests in the user's home filespace (including the
-package directory and getwd()). This is not allowed by CRAN policies.
-Please omit any default path in writing functions.
-**Default paths removed from functions.**
-
-* In your examples/vignettes/tests you can write to tempdir().
-**`tempdir()` used in examples & tests. No vignettes at this point.**
-
-* Did you submit your package via the CRAN webform? Since there was no
-submission mail generated.
-**Initially submitted with `devtools::submit_cran()`. For resubmission I will**
-**use the webform.**
-
+**Apologies** for the relatively quick re-submission. Passing a vector of length
+greater than 1 to the `target` argument of `adj_file_nos()` risks losing
+peoples' work. 1.0.1 causes this to error and vector compatibility could be
+added as a feature in a future version.
 
 ## Test environments
 ***
@@ -39,7 +17,6 @@ submission mail generated.
 ```
 0 errors ✓ | 0 warnings ✓ | 0 notes ✓
 
-* This is a new release.
 * There are no references for the package.
 ```
 

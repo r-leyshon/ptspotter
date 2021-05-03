@@ -2,11 +2,6 @@
 
 ## Changelog
 
-**Apologies** for the relatively quick resubmission. Passing a vector of length
-greater than 1 to the `target` argument of `adj_file_nos()` risks losing
-peoples' work. 1.0.1 causes this to error and vector compatibility could be
-added as a feature in a future version.
-
 ### Version 1.0.1
 
 * `adj_file_nos()` now errors on passing vector to `target`.
