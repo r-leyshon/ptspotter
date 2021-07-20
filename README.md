@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/ptspotter)](https://CRAN.R-project.org/package=ptspotter) [![R build status](https://github.com/r-leyshon/ptspotter/workflows/R-CMD-check/badge.svg)](https://github.com/r-leyshon/ptspotter/actions) ![Codecov test coverage](https://codecov.io/gh/r-leyshon/ptspotter/graph/badge.svg)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/ptspotter?color=blue)](https://r-pkg.org/pkg/ptspotter)
 <!-- badges: end -->
 
 For more guidance please see the [ptspotter blog](https://r-leyshon.github.io/ptspotter_blog/)
