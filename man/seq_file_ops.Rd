@@ -25,8 +25,9 @@ directory. Creates the directory if required.
 Quickly create the required number of sequentially labelled files.
 }
 \examples{
-
-\dontshow{.old_wd <- setwd(tempdir())}
+\dontshow{
+.old_wd <- setwd(tempdir())
+}
 
 seq_file_ops(n = 10, target_dir = "munge")
 
@@ -39,6 +40,8 @@ seq_file_ops(10, target_dir = "complex_vector")
 unlink("munge", recursive = TRUE)
 unlink("complex_vector", recursive = TRUE)
 
-\dontshow{setwd(.old_wd)}
+\dontshow{
+setwd(.old_wd)
+}
 
 }
