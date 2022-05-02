@@ -28,8 +28,7 @@ Suggests:
     ProjectTemplate (>= 0.9.3),
     rmarkdown,
     testthat
-VignetteBuilder: 
-    knitr
+VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
