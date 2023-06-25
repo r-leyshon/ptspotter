@@ -38,6 +38,8 @@ wrap_up <- function(start_time = NULL) {
   beep("coin")
 
   # stop execution
-  stop(paste("wrap_up at", basename(this.path())))
+  stop(paste("wrap_up at", basename(if (as.numeric_version(getNamespaceVersion("this.path")) >= "2.0.0")
+    sys.path()
+  else this.path())))
 
 }

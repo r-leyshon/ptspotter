@@ -17,7 +17,9 @@ memory_report <- function() {
   # perform a manual garbage collection
   gc()
   # show me the filename of current file
-  thisfile <- basename(this.path())
+  thisfile <- basename(if (as.numeric_version(getNamespaceVersion("this.path")) >= "2.0.0")
+    sys.path()
+  else this.path())
 
   # message the used memory at this point
   message(paste(
