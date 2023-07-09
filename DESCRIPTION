@@ -3,7 +3,7 @@ Title: Helper Functions for Use with "ProjectTemplate"
 Version: 1.0.1
 Authors@R:c(
     person("Rich", "Leyshon", , "leyshonrr@hotmail.co.uk", role = c("aut", "cph", "cre")),
-    person("Andrew", "Simmons", , "akwsimmo@gmail.com", role = "ctb")
+    person("Iris", "Simmons", , "ikwsimmo@gmail.com", role = "ctb")
   )
 Description: Utility functions produced specifically for (but not limited
     to) working with 'ProjectTemplate' data pipelines. This package helps
