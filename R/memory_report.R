@@ -13,13 +13,11 @@
 #' try(memory_report())
 #'
 #' @export
-memory_report <- function() {
+memory_report <- utils::removeSource(function() {
   # perform a manual garbage collection
   gc()
   # show me the filename of current file
-  thisfile <- basename(if (as.numeric_version(getNamespaceVersion("this.path")) >= "2.0.0")
-    sys.path()
-  else this.path())
+  thisfile <- basename(this.path())
 
   # message the used memory at this point
   message(paste(
@@ -31,4 +29,4 @@ memory_report <- function() {
       )
     }
   ))
-}
+})
