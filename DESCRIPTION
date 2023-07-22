@@ -1,6 +1,6 @@
 Package: ptspotter
 Title: Helper Functions for Use with "ProjectTemplate"
-Version: 1.0.1
+Version: 1.0.2
 Authors@R:c(
     person("Rich", "Leyshon", , "leyshonrr@hotmail.co.uk", role = c("aut", "cph", "cre")),
     person("Iris", "Simmons", , "ikwsimmo@gmail.com", role = "ctb")
