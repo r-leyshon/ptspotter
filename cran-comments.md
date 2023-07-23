@@ -1,3 +1,47 @@
+# 'ptspotter' v1.0.2
+
+Patches submitted by author of `this.path` in preparation for breaking changes.
+
+## Test environments
+***
+
+* local R installation, R 4.0.4
+* ubuntu 16.04 (on travis-ci), R 4.0.4
+* win-builder (devel)
+
+## R CMD check results
+***
+```
+── R CMD check results ───────────────────────────────────────── ptspotter 1.0.2
+Duration: 16.8s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+```
+
+**Please note the cran_summary output of `rhub::check_for_cran()`:**
+## Test environments
+***
+```
+N  checking for non-standard things in the check directory
+   Found the following files/directories:
+✔  checking HTML version of manual
+     ''NULL''
+N  checking for detritus in the temp directory
+   Found the following files/directories:
+     'lastMiKTeXException'
+
+```
+
+## Reverse dependencies
+***
+
+OK: 0
+BROKEN: 0
+Total time: <1 min
+
+***
+***
+
 # 'ptspotter' v1.0.1
 
 **Apologies** for the relatively quick re-submission. Passing a vector of length
