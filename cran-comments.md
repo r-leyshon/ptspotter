@@ -1,6 +1,7 @@
 # 'ptspotter' v1.0.2
 
 Patches submitted by author of `this.path` in preparation for breaking changes.
+Buildignore revdep directory.
 
 ## Test environments
 ***
